@@ -1,9 +1,15 @@
-import React from 'react'
+import { Container } from "@mui/material";
+import MiniDrawer from "../../layouts/Drawer/Drawer";
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <MiniDrawer />
+      <Container>
+        <h1>Home page</h1>
+      </Container>
+    </>
   )
-}
+};
 
-export default Home
+export default Home;

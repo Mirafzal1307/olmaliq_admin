@@ -21,7 +21,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 const AppRoutes = () => {
   return (
-    <Routes basename={process.env.PUBLIC_URL}>
+    <Routes>
      
     </Routes>
   );

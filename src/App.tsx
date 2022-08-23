@@ -1,10 +1,10 @@
 import React from "react";
-import MainRoutes from "./routes";
+import Routes from "./routes/index";
 
 function App() {
   return (
     <>
-      <MainRoutes />
+      <Routes />
     </>
   );
 }
