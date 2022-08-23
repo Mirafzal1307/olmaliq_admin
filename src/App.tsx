@@ -1,18 +1,10 @@
 import React from "react";
-
-
-
-
-
-// Create a client
-
+import MainRoutes from "./routes";
 
 function App() {
-
-
   return (
     <>
-    hello world
+      <MainRoutes />
     </>
   );
 }
