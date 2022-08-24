@@ -13,7 +13,7 @@ const MainRoutes = [
   {
     icon: <HomeIcon />,
     title: "Boshqaruv paneli",
-    path: "/",
+    path: "/dashboard",
     element: <Home />
   },
   {
