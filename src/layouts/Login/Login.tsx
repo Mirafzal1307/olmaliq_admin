@@ -1,4 +1,4 @@
-import { Grid, TextField } from "@mui/material";
+import { FormControlLabel, Grid, Radio, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import "./style.css"
 import AllLogin from "../../images/AllLogin.png"
@@ -66,6 +66,21 @@ const Login = () => {
             error={formik.touched.login && Boolean(formik.errors.login)}
             helperText={formik.touched.login && formik.errors.login}
           />
+          <TextField
+            margin="normal"
+            variant="outlined"
+            required
+            name="password"
+            label="Parolni kiriting"
+            type="password"
+            id="password"
+            className={classes.loginForm}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
+          {/* <FormControlLabel value="remember" control={<Radio />} /> */}
         </Grid>
       </Grid>
     </>
