@@ -6,6 +6,7 @@ import MiniDrawer from "../../layouts/Drawer/Drawer";
 import HttpClient from "../../Api/HttpClient";
 import { Iuser } from "../../Api/admin/type";
 const Home = () => {
+<<<<<<< HEAD
 async function getData () {
     // let list = await 
     // console.log(list);
@@ -28,6 +29,18 @@ async function getData () {
   interface getUsetList {
     data: Iuser[]
   }
+=======
+  const getData = async () => {
+    let res = await axios({
+      method: "GET",
+      url: "https://jsonplaceholder.typicode.com/users",
+    });
+    console.log(res);
+  }
+
+  console.log("Home component");
+
+>>>>>>> 91f6d58fa742d8345004563ef3bdb613a2dd075e
   useEffect(() => {
     getData()
     axios.get("https://jsonplaceholder.typicode.com/users")

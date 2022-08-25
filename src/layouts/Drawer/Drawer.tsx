@@ -16,6 +16,11 @@ import { Link as RouterLink } from 'react-router-dom';
 import MainRoutes from '../../routes/routes'
 import { makeStyles } from "@mui/styles"
 import AppBarComponent from '../AppBar/AppBar';
+import { Avatar, FormControl, Grid, NativeSelect, Toolbar } from '@mui/material';
+import MenuIcon from "@mui/icons-material/Menu";
+import SearchIcon from "@mui/icons-material/Search";
+import AvatarLogo from "../../images/Frame 50 1.png";
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 
 const drawerWidth = 240;
 
@@ -38,6 +43,27 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
   }),
 }));
 
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<AppBarProps>(({ theme, open }) => ({
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean;
+}
+
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -55,13 +81,24 @@ const useStyles = makeStyles({
   },
   routeText: {
     color: "#444444",
-  }
+  },
+  searchInput: {
+    border: "none",
+    padding: "11px 20px 11px",
+    "&:focus": {
+      outline: "none !important",
+    },
+  },
 });
 
 export default function MiniDrawer() {
   const classes = useStyles()
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -70,7 +107,45 @@ export default function MiniDrawer() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBarComponent />
+      <AppBar
+        position="fixed"
+        open={open}
+        style={{ boxShadow: "none", borderBottom: "2px solid #EEEEEE" }}
+      >
+        <Toolbar
+          style={{ background: "white", justifyContent: "space-between" }}
+        >
+          <Grid>
+            <IconButton
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{ mr: 2, ...(open && { display: "none" }), color: "#555555" }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <input placeholder="Izlash..." className={classes.searchInput} />
+            <IconButton>
+              <SearchIcon />
+            </IconButton>
+          </Grid>
+          <Grid sx={{ display: "flex" }}>
+            <FormControl>
+              <NativeSelect
+                defaultValue="O’zbekcha"
+                inputProps={{
+                  name: "language",
+                }}
+              >
+                <option value="O’zbekcha">O’zbekcha</option>
+                <option value="Ruscha">Ruscha</option>
+                <option value="Inglizcha">Inglizcha</option>
+              </NativeSelect>
+            </FormControl>
+            <Avatar src={AvatarLogo} sx={{ marginLeft: "20px" }} />
+          </Grid>
+        </Toolbar>
+      </AppBar>
       <Drawer
         sx={{
           width: drawerWidth,
