@@ -1,5 +1,8 @@
+import { Iuser } from './type';
 import HttpClient from "../HttpClient";
-
-export function getUsers(): any {
-    return HttpClient().get("/users")
+interface Iusers {
+    user: Iuser[]
+}
+export function getUsers():any {
+    return HttpClient().get<Iuser[]>("/users")
 }

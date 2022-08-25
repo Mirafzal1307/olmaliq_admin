@@ -51,15 +51,31 @@ class HttpClient {
   instance: AxiosInstance;
 
   constructor(baseURL: string) {
+    
     this.instance = axios.create({
       baseURL,
     });
+    console.log(this.instance);
 
     this.instance.interceptors.request.use(
       function (config) {
         console.info(config);
         return config;
       },
+      function (error: AxiosError) {
+        console.error(
+          "AXIOS: request use error --",
+          error.message,
+          error.response,
+          error.stack
+        );
+        return Promise.reject(error);
+      }
+    ); 
+    this.instance.interceptors.request.use(
+      (response) => {
+        console.log(response);
+return response},
       function (error: AxiosError) {
         console.error(
           "AXIOS: request use error --",

@@ -1,19 +1,41 @@
 import { Container } from "@mui/material";
-import axios from "axios";
+import axios, {AxiosResponse} from 'axios';
 import { useEffect } from "react";
 import { getUsers } from "../../Api/admin/CategoryApi";
 import MiniDrawer from "../../layouts/Drawer/Drawer";
-
+import HttpClient from "../../Api/HttpClient";
+import { Iuser } from "../../Api/admin/type";
 const Home = () => {
-  const getData = async () => {
-    let res: any = await axios.get("https://jsonplaceholder.typicode.com/users");
-    console.log(res);
+async function getData () {
+    // let list = await 
+    // console.log(list);
+    try {
+    //  const  res = await fetch("https://jsonplaceholder.typicode.com/users")
+      // const  res = await axios.request<Iuser>({
+      //   method: 'get',
+      //   url: "https://jsonplaceholder.typicode.com/users"
+      // })
+      interface getUsetList {
+        data: Iuser[]
+      }
+      const res= await HttpClient().get<getUsetList>('users')
+    console.log(res, HttpClient());
+    } catch(er) {
+      console.log(er);
+      
+    }
   }
-
+  interface getUsetList {
+    data: Iuser[]
+  }
   useEffect(() => {
     getData()
+    axios.get("https://jsonplaceholder.typicode.com/users")
+    .then((res: AxiosResponse) => {
+      console.log(res);
+      
+    })
   }, [])
-
   return (
     <>
       <MiniDrawer />
