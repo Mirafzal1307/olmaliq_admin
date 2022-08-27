@@ -1,0 +1,34 @@
+{
+  "admin": {
+    "drawer": {
+      "menu_title": {
+        "dashboard": "Панель задач",
+        "product": "Продукт",
+        "category": "Категория",
+        "order": "Заказ",
+        "settings": "Настройки"
+      },
+      "language_label": {
+        "uzbek": "Узбекский",
+        "russian": "Русский",
+        "english": "Английский"
+      }
+    },
+    "category_page": {
+      "category_landing_side": {
+        "main_text": "Категория",
+        "create_category": "+ Создать категорию",
+        "category_direction_home": "Панель задач",
+        "category_direction_category": "Категория",
+        "category_direction_create_category": "Создать категорию"
+      },
+      "category_create_side": {
+        "create_main_text": "Создать категорию",
+        "create_select_category": "Выберите категорию:",
+        "create_select_category_input": "Создайте категорию...",
+        "create_select_subcategory": "Выберите подкатегорию:",
+        "create_select_new_subcategory": "Новое название подкатегории"
+      }
+    }
+  }
+}

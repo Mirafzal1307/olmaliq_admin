@@ -15,10 +15,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { Link as RouterLink } from 'react-router-dom';
 import MainRoutes from '../../routes/routes'
 import { makeStyles } from "@mui/styles"
-import { Avatar, FormControl, Grid, NativeSelect, Toolbar } from '@mui/material';
+import { Avatar, FormControl, Grid, MenuItem, NativeSelect, Select, Toolbar } from '@mui/material';
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
@@ -93,6 +94,7 @@ export default function MiniDrawer() {
   const classes = useStyles()
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const { t, i18n } = useTranslation();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -100,6 +102,10 @@ export default function MiniDrawer() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLElement>) => {
+    i18n.changeLanguage((event.target as HTMLInputElement).value);
   };
 
   return (
@@ -130,17 +136,23 @@ export default function MiniDrawer() {
           <Grid sx={{ display: "flex" }}>
             <FormControl>
               <NativeSelect
-                defaultValue="O’zbekcha"
-                inputProps={{
-                  name: "language",
-                }}
+                onChange={handleLanguageChange}
               >
-                <option value="O’zbekcha">O’zbekcha</option>
-                <option value="Ruscha">Ruscha</option>
-                <option value="Inglizcha">Inglizcha</option>
+                <option value={t("admin.drawer.language_label.uzbek")}>
+                  {t("admin.drawer.language_label.uzbek")}
+                </option>
+                <option value={t("admin.drawer.language_label.russian")}>
+                  {t("admin.drawer.language_label.russian")}
+                </option>
+                <option value={t("admin.drawer.language_label.english")}>
+                  {t("admin.drawer.language_label.english")}
+                </option>
               </NativeSelect>
             </FormControl>
-            <Avatar src={require("../../Img/Frame 50 1.png")} sx={{ marginLeft: "20px" }} />
+            <Avatar
+              src={require("../../Img/Frame 50 1.png")}
+              sx={{ marginLeft: "20px" }}
+            />
           </Grid>
         </Toolbar>
       </AppBar>
@@ -171,14 +183,14 @@ export default function MiniDrawer() {
           {MainRoutes.map((item) => (
             <ListItem
               disablePadding
-              key={item.path}
+              key={item?.path}
               component={RouterLink as any}
-              to={item.path}
+              to={item?.path}
             >
               <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemIcon>{item?.icon}</ListItemIcon>
                 <ListItemText className={classes.routeText}>
-                  {item.title}
+                  {/* {t(`${item?.title}`)} */} {item.title}
                 </ListItemText>
               </ListItemButton>
             </ListItem>
