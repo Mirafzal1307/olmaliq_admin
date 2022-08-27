@@ -1,5 +1,5 @@
-import { Container } from "@mui/material"
-import MiniDrawer from "../../layouts/Drawer/Drawer"
+import { Container } from "@mui/material";
+import MiniDrawer from "../../layouts/Drawer/Drawer";
 
 const Order = () => {
   return (
@@ -9,7 +9,7 @@ const Order = () => {
         <h1>Order page</h1>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Order
+export default Order;

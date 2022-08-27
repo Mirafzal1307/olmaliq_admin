@@ -15,11 +15,9 @@ import ListItemText from '@mui/material/ListItemText';
 import { Link as RouterLink } from 'react-router-dom';
 import MainRoutes from '../../routes/routes'
 import { makeStyles } from "@mui/styles"
-import AppBarComponent from '../AppBar/AppBar';
 import { Avatar, FormControl, Grid, NativeSelect, Toolbar } from '@mui/material';
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import AvatarLogo from "../../images/Frame 50 1.png";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 
 const drawerWidth = 240;
@@ -142,7 +140,7 @@ export default function MiniDrawer() {
                 <option value="Inglizcha">Inglizcha</option>
               </NativeSelect>
             </FormControl>
-            <Avatar src={AvatarLogo} sx={{ marginLeft: "20px" }} />
+            <Avatar src={require("../../Img/Frame 50 1.png")} sx={{ marginLeft: "20px" }} />
           </Grid>
         </Toolbar>
       </AppBar>

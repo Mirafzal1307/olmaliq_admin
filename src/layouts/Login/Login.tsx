@@ -1,9 +1,9 @@
-import { FormControlLabel, Grid, Radio, TextField } from "@mui/material";
+import { Grid, Radio, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import "./style.css"
-import AllLogin from "../../images/AllLogin.png"
 import { useFormik } from "formik"
 import * as Yup from "yup"
+import { useState } from "react";
 
 const useStyles = makeStyles({
   styleGrid: {
@@ -14,15 +14,49 @@ const useStyles = makeStyles({
   styleGridImg: {
     display: "block",
     margin: "auto",
-    marginTop: "30px"
+    marginTop: "30px",
   },
   loginForm: {
-    width: "540px"
-  }
-})
+    width: "540px",
+  },
+  mainText: {
+    color: "#2DA55F",
+    fontFamily: "Montserrat !important",
+    fontSize: "43px",
+    fontWeight: "700"
+  },
+  rememberText: {
+    fontFamily: "Montserrat",
+    fontSize: "14px",
+    fontWeight: "400",
+    color: "#444444",
+  },
+  loginButton: {
+    color: "white",
+    background: "#2DA55F",
+    border: "1px solid #2DA55F",
+    borderRadius: "5px",
+    padding: "11px 250px",
+    fontFamily: "Montserrat",
+    fontSize: "14px",
+    fontWeight: "600",
+  },
+});
 
 const Login = () => {
   const classes = useStyles()
+
+  const [selectedValue, setSelectedValue] = useState("a");
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSelectedValue(event.target.value);
+  };
+  const controlProps = (item: string) => ({
+    checked: selectedValue === item,
+    onChange: handleChange,
+    value: item,
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": item },
+  });
 
   const handleLogin = (email: string, password: string) => {
     
@@ -48,10 +82,10 @@ const Login = () => {
     <>
       <Grid sx={{ display: "flex", margin: "0" }}>
         <Grid className={classes.styleGrid}>
-          <img className={classes.styleGridImg} src={AllLogin} alt="" />
+          <img className={classes.styleGridImg} src={require("../../Img/AllLogin.png")} alt="" />
         </Grid>
-        <Grid>
-          <h1>Boshqaruv paneli</h1>
+        <Grid sx={{ textAlign: "center", margin: "auto" }}>
+          <h1 className={classes.mainText}>Boshqaruv paneli</h1>
           <TextField
             margin="normal"
             variant="outlined"
@@ -80,7 +114,13 @@ const Login = () => {
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
-          {/* <FormControlLabel value="remember" control={<Radio />} /> */}
+          <Grid sx={{ display: "flex", alignItems: "center", marginLeft: "22%" }}>
+            <Radio {...controlProps("c")} color="success" />
+            <p className={classes.rememberText}>Eslab qolinsinmi?</p>
+          </Grid>
+          <button
+            className={classes.loginButton}
+          >Kirish</button>
         </Grid>
       </Grid>
     </>
