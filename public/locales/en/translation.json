@@ -1,0 +1,34 @@
+{
+  "admin": {
+    "drawer": {
+      "menu_title": {
+        "dashboard": "Admin dashboard",
+        "product": "Product",
+        "category": "Category",
+        "order": "Order",
+        "settings": "settings"
+      },
+      "language_label": {
+        "uzbek": "Uzbek",
+        "russian": "Russian",
+        "english": "English"
+      }
+    },
+    "category_page": {
+      "category_landing_side": {
+        "main_text": "Category",
+        "create_category": "+ Create category",
+        "category_direction_home": "Admin dashboard",
+        "category_direction_category": "Category",
+        "category_direction_create_category": "Create category"
+      },
+      "category_create_side": {
+        "create_main_text": "Create category",
+        "create_select_category": "Select category:",
+        "create_select_category_input": "Create category...",
+        "create_select_subcategory": "Select sub category:",
+        "create_select_new_subcategory": "New name of sub category"
+      }
+    }
+  }
+}
