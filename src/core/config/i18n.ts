@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     backend: {
-      loadPath: `${process.env.PUBLIC_URL}/locales/{{lng}}/translation.json`,
+      loadPath: `/locales/{{lng}}/translation.json`,
     },
     fallbackLng: "uz",
     interpolation: {

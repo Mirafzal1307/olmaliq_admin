@@ -2,7 +2,7 @@ import Home from "../core/components/Home"
 import Product from "../core/components/Product"
 import ProductIcon from "../Img/icons/ProductIcon";
 import HomeIcon from "../Img/icons/Home";
-import Category from "../core/components/Category";
+import Category from "../core/components/Category/Category";
 import Order from "../core/components/Order";
 import Settings from "../core/components/Settings";
 import SettingsIcon from "../Img/icons/SettingsIcon";
