@@ -1,8 +1,9 @@
-import { FormControl, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { makeStyles } from '@mui/styles';
+import React from 'react';
+import { FormControl, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import { useTranslation } from "react-i18next"
 import { styled } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { categoryListButton, categoryListInfo } from '../../theme/CategoryStyle';
 
 const CategoryPhone = () => {
     return <img src={require("../../../Img/CategoryPhone.png")} alt="" />;
@@ -53,24 +54,7 @@ export const categories = [
   },
 ];
 
-const useStyles = makeStyles({
-    button: {
-        background: "transparent",
-        border: "none"
-    },
-    info: {
-        border: "2px solid #2DA55F",
-        borderTopLeftRadius: "5px",
-        borderBottomLeftRadius: "5px",
-        padding: "10px",
-        fontFamily: "Poppins",
-        fontSize: "16px",
-        fontWeight: "600",
-        color: "#2DA55F"
-    }
-})
-
-const BootstrapInput = styled(InputBase)(({ theme }) => ({
+const BootstrapInput = styled(InputBase)(() => ({
   "& .MuiInputBase-input": {
     borderTopRightRadius: "5px",
     borderBottomRightRadius: "5px",
@@ -83,7 +67,6 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 const CategoryList = () => {
     const { t } = useTranslation()
-    const classes = useStyles()
 
   return (
     <>
@@ -109,14 +92,14 @@ const CategoryList = () => {
             </TableHead>
             <TableBody>
               {categories.map((item) => (
-                <TableRow>
+                <TableRow key={item?.id}>
                   <TableCell>{item?.id}</TableCell>
                   <TableCell>{item?.photo}</TableCell>
                   <TableCell>{item?.name}</TableCell>
                   <TableCell>{item?.date}</TableCell>
                   <TableCell>
                     <Grid sx={{ display: "flex", alignItems: "center" }}>
-                      <p className={classes.info}>Info</p>
+                      <Typography style={categoryListInfo}>Info</Typography>
                       <FormControl variant="standard">
                         <Select
                           labelId="demo-customized-select-label"
@@ -124,14 +107,14 @@ const CategoryList = () => {
                           input={<BootstrapInput />}
                         >
                           <MenuItem>
-                            <button className={classes.button}>
+                            <button style={categoryListButton}>
                               {t(
                                 "admin.category_page.category_list.category_list_actions_edit"
                               )}
                             </button>
                           </MenuItem>
                           <MenuItem>
-                            <button className={classes.button}>
+                            <button style={categoryListButton}>
                               {t(
                                 "admin.category_page.category_list.category_list_actions_delete"
                               )}

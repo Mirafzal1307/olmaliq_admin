@@ -1,16 +1,17 @@
-import { Grid, Paper } from '@mui/material';
+import React from 'react';
+import { Grid, Paper, Typography } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import { useTranslation } from "react-i18next"
 
 const useStyles = makeStyles({
-    start_text: {
-        fontFamily: "Montserrat",
-        fontSize: "31px",
-        fontWeight: "600",
-        color: "#444444",
-        textAlign: "center",
-        paddingTop: "15px"
-    }
+  start_text: {
+    fontFamily: "Montserrat",
+    fontSize: "31px",
+    fontWeight: "600",
+    color: "#444444",
+    textAlign: "center",
+    paddingTop: "15px"
+  }
 })
 
 const CategoryListNone = () => {
@@ -22,7 +23,7 @@ const CategoryListNone = () => {
       <Grid item>
         <Paper sx={{ padding: "158px 253px" }}>
           <img src={require("../../../Img/Smartphone.png")} alt="" />
-          <p className={classes.start_text}>{t("admin.category_page.category_list_none.start_text")}</p>
+          <Typography className={classes.start_text}>{t("admin.category_page.category_list_none.start_text")}</Typography>
         </Paper>
       </Grid>
     </>
