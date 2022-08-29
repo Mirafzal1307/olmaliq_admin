@@ -27,7 +27,19 @@
         "create_select_category": "Выберите категорию:",
         "create_select_category_input": "Создайте категорию...",
         "create_select_subcategory": "Выберите подкатегорию:",
-        "create_select_new_subcategory": "Новое название подкатегории"
+        "create_select_new_subcategory": "Новое название подкатегории",
+        "create_category_select": "Создать категорию"
+      },
+      "category_list_none": {
+        "start_text": "Начинаем !!!"
+      },
+      "category_list": {
+        "category_list_photo": "Фото",
+        "category_list_name": "Название",
+        "category_list_date": "Дата",
+        "category_list_actions": "Действия",
+        "category_list_actions_edit": "Изменить",
+        "category_list_actions_delete": "Удалить"
       }
     }
   }
