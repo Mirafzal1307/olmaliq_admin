@@ -27,7 +27,19 @@
         "create_select_category": "Select category:",
         "create_select_category_input": "Create category...",
         "create_select_subcategory": "Select sub category:",
-        "create_select_new_subcategory": "New name of sub category"
+        "create_select_new_subcategory": "New name of sub category",
+        "create_category_select": "Create category"
+      },
+      "category_list_none": {
+        "start_text": "We start !!!"
+      },
+      "category_list": {
+        "category_list_photo": "Photo",
+        "category_list_name": "Name",
+        "category_list_date": "Date",
+        "category_list_actions": "Actions",
+        "category_list_actions_edit": "Edit",
+        "category_list_actions_delete": "Delete"
       }
     },
     "adverts_page": {

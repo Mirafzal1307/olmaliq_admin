@@ -15,10 +15,11 @@ import ListItemText from '@mui/material/ListItemText';
 import { Link as RouterLink } from 'react-router-dom';
 import MainRoutes from '../../routes/routes'
 import { makeStyles } from "@mui/styles"
-import { Avatar, FormControl, Grid, MenuItem, NativeSelect, Select, Toolbar } from '@mui/material';
+import { Avatar, FormControl, FormControlLabel, Grid, MenuItem, NativeSelect, Radio, RadioGroup, Toolbar } from '@mui/material';
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
@@ -104,7 +105,7 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLElement>) => {
+  const handleLanguageChange = (event: SelectChangeEvent<unknown>) => {
     i18n.changeLanguage((event.target as HTMLInputElement).value);
   };
 
@@ -134,20 +135,23 @@ export default function MiniDrawer() {
             </IconButton>
           </Grid>
           <Grid sx={{ display: "flex" }}>
-            <FormControl>
-              <NativeSelect
+            <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+              <Select
+                aria-label="language"
+                name="language-radio-group"
                 onChange={handleLanguageChange}
+                value={i18n.language}
               >
-                <option value={t("admin.drawer.language_label.uzbek")}>
+                <MenuItem value="uz">
                   {t("admin.drawer.language_label.uzbek")}
-                </option>
-                <option value={t("admin.drawer.language_label.russian")}>
+                </MenuItem>
+                <MenuItem value="ru">
                   {t("admin.drawer.language_label.russian")}
-                </option>
-                <option value={t("admin.drawer.language_label.english")}>
+                </MenuItem>
+                <MenuItem value="en">
                   {t("admin.drawer.language_label.english")}
-                </option>
-              </NativeSelect>
+                </MenuItem>
+              </Select>
             </FormControl>
             <Avatar
               src={require("../../Img/Frame 50 1.png")}

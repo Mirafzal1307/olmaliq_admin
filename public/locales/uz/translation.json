@@ -27,7 +27,24 @@
         "create_select_category": "Turkumni tanlang:",
         "create_select_category_input": "Turkumni yarating...",
         "create_select_subcategory": "Ichki turkumni tanlang:",
-        "create_select_new_subcategory": "Yangi kichik turkum nomi"
+        "create_select_new_subcategory": "Yangi kichik turkum nomi",
+        "create_category_select": "Turkum qo'shish"
+      },
+      "category_list_none": {
+        "start_text": "Boshladik !!!"
+      },
+      "category_list": {
+        "category_list_photo": "Rasmi",
+        "category_list_name": "Nomi",
+        "category_list_date": "Sana",
+        "category_list_actions": "Amallar",
+        "category_list_actions_edit": "Tahrirlash",
+        "category_list_actions_delete": "O’chirish"
+      }
+    },
+    "reklom": {
+      "reklom_list": {
+        "text": "sdasdasd"
       }
     }
   }
