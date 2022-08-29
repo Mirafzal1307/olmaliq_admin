@@ -1,12 +1,12 @@
-import { Container, Grid, Paper } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import MiniDrawer from "../../layouts/Drawer/Drawer";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from "react-i18next";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
   main_text: {
     fontFamily: "Montserrat",
-    fontSize: "31px",
+    fontSize: "31px !important",
     fontWeight: "600",
     color: "#444444 !important",
   },
@@ -15,7 +15,6 @@ const useStyles = makeStyles({
     fontSize: "16px",
     fontWeight: "400",
     color: "#444444 !important",
-    marginRight: "6px",
   },
   createCategoryDirectionSpan: {
     fontFamily: "Poppins",
@@ -31,46 +30,53 @@ const useStyles = makeStyles({
     padding: "13px 28px",
     fontFamily: "Poppins",
     fontSize: "17px",
-    fontWeight: "700"
-  }
+    fontWeight: "700",
+  },
 });
 
 const LandingTop = () => {
-  const { t } = useTranslation()
-  const classes = useStyles()
+  const { t } = useTranslation();
+  const classes = useStyles();
 
   return (
     <>
       <Container>
-        <Grid sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "32px" }}>
+        <Grid
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "32px",
+          }}
+        >
           <Grid>
-            <h1 className={classes.main_text}>
+            <Typography variant="h4" className={classes.main_text}>
               {t("admin.category_page.category_landing_side.main_text")}
-            </h1>
+            </Typography>
             <Grid sx={{ display: "flex" }}>
-              <p className={classes.createCategoryDirection}>
+              <Typography className={classes.createCategoryDirection}>
                 {t(
                   "admin.category_page.category_landing_side.category_direction_home"
                 )}
-              </p>{" "}
-              <p className={classes.createCategoryDirection}>{">"}</p>
-              <p className={classes.createCategoryDirection}>
+              </Typography>
+              <Typography style={{margin: "0 5px"}}>{">"}</Typography>
+              <Typography className={classes.createCategoryDirection}>
                 {t(
                   "admin.category_page.category_landing_side.category_direction_category"
                 )}
-              </p>
-              <p className={classes.createCategoryDirection}>{">"}</p>
-              <p className={classes.createCategoryDirectionSpan}>
+              </Typography>
+              <Typography style={{margin: "0 5px"}}>{">"}</Typography>
+              <Typography className={classes.createCategoryDirectionSpan}>
                 {t(
                   "admin.category_page.category_landing_side.category_direction_create_category"
                 )}
-              </p>
+              </Typography>
             </Grid>
           </Grid>
           <Grid>
-            <button className={classes.createButton}>
+            <Button className={classes.createButton}>
               {t("admin.category_page.category_landing_side.create_category")}
-            </button>
+            </Button>
           </Grid>
         </Grid>
       </Container>

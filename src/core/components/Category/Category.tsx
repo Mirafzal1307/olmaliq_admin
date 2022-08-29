@@ -11,9 +11,9 @@ const Category = () => {
   return (
     <>
       <MiniDrawer />
+      <LandingTop />
       <Container>
-        <LandingTop />
-        <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Toolbar style={{padding: 0}} sx={{ justifyContent: "space-between" }}>
           <CategoryCreate />
           {categories.length === 0 ? <CategoryListNone /> : <CategoryList />}
         </Toolbar>

@@ -6,7 +6,8 @@
         "product": "Mahsulot",
         "category": "Turkum",
         "order": "Buyurtma",
-        "settings": "Sozlamalar"
+        "settings": "Sozlamalar",
+        "adverts": "Reklom"
       },
       "language_label": {
         "uzbek": "O’zbekcha",
@@ -42,9 +43,16 @@
         "category_list_actions_delete": "O’chirish"
       }
     },
-    "reklom": {
-      "reklom_list": {
-        "text": "sdasdasd"
+    "adverts_page": {
+      "adverts_page_paper": {
+        "adverts_page_paper_title": "Reklama",
+        "adverts_page_paper_categoryTitle": "Ichki turkum asosiy surati"
+      },
+      "adverts_page_modal": {
+        "modal_name": "Diqqat",
+        "modal_text": "Siz rostdan ham ushbu suratni o’chirmoqchimisiz?",
+        "modal_red": "O'chirish",
+        "modal_green": "Bekor qilish"
       }
     }
   }

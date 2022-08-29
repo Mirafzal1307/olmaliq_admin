@@ -16,21 +16,16 @@ const StyledModal = styled(ModalUnstyled)`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.5)
 `;
 const style = {
   width: 500,
-  bgcolor: "#ffffff !important",
+  bgcolor: "#fff !important",
   borderRadius: "10px",
   pt: 2,
   pb: 3,
 };
 const useStyles = makeStyles({
-  editButton: {
-    background: "transparent",
-    padding: 0,
-    border: "none",
-    cursor: "pointer",
-  },
   titleRows: {
     color: "#065374 !important",
     fontFamily: "Poppins !important",
@@ -63,17 +58,19 @@ const useStyles = makeStyles({
     margin: "0",
   },
   h2: {
-    fontFamily: 'Poppins',
+    fontFamily: "Poppins",
     fontSize: "17px",
     fontWeight: "400",
     margin: "10px 0 20px 0",
-    lineHeight: '138%'
+    lineHeight: "138%",
   },
   deleteButton: {
+    width: '45px',
+    height: '45px',
     backgroundColor: "#2DA55F !important",
     cursor: "pointer",
-    padding: "15px 0 !important",
     borderRadius: "5px",
+    border: 'none'
   },
   cancel: {
     background: "#FF4B4B !important",
@@ -110,19 +107,16 @@ function Modal(props: any): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const handleOpen = (): void => setOpen(true);
   const handleClose = (): void => setOpen(false);
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const classes = useStyles();
 
-  const handleLanguageChange = (event: React.ChangeEvent<HTMLElement>) => {
-    i18n.changeLanguage((event.target as HTMLInputElement).value);
-  };
 
   return (
     <>
       <Tooltip title="Yuklash">
-        <Button onClick={handleOpen} className={classes.deleteButton}>
+        <button onClick={handleOpen} className={classes.deleteButton}>
           <img src={require("../../Img/Download.png")} alt="rasm bor edi" />
-        </Button>
+        </button>
       </Tooltip>
       <StyledModal
         aria-labelledby="unstyled-modal-title"
@@ -133,21 +127,15 @@ function Modal(props: any): JSX.Element {
       >
         <Box sx={style} className={classes.box}>
           <h1 className={classes.h1}>
-            {t("adverts_page.adverts_page_modal.modal_name")}!
+            {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
-          <h2
-            id="unstyled-modal-title"
-            className={classes.h2}
-          >
-            {t("adverts_page.adverts_page_modal.modal_text")}!
+          <h2 id="unstyled-modal-title" className={classes.h2}>
+            {t("admin.adverts_page.adverts_page_modal.modal_text")}!
           </h2>
           <div>
-            <Button
-              onClick={handleClose}
-              className={classes.cancel}
-            >
+            <Button onClick={handleClose} className={classes.cancel}>
               <img src={require("../../Img/Exit.png")} alt="rasm bor edi" />
-              {t("adverts_page.adverts_page_modal.modal_red")}
+              {t("admin.adverts_page.adverts_page_modal.modal_red")}
             </Button>
             <Button
               onClick={() => {
@@ -157,8 +145,11 @@ function Modal(props: any): JSX.Element {
               }}
               className={classes.deletes}
             >
-              <img src={require("../../Img/Succes.png")} alt="rasm bor edi" />
-              {t("adverts_page.adverts_page_modal.modal_green")}
+              <img
+                src={require("../../Img/Success.png")}
+                alt="rasm bor edi"
+              />
+              {t("admin.adverts_page.adverts_page_modal.modal_green")}
             </Button>
           </div>
         </Box>
