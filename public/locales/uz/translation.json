@@ -1,0 +1,34 @@
+{
+  "admin": {
+    "drawer": {
+      "menu_title": {
+        "dashboard": "Boshqaruv paneli",
+        "product": "Mahsulot",
+        "category": "Turkum",
+        "order": "Buyurtma",
+        "settings": "Sozlamalar"
+      },
+      "language_label": {
+        "uzbek": "O’zbekcha",
+        "russian": "Ruscha",
+        "english": "Inglizcha"
+      }
+    },
+    "category_page": {
+      "category_landing_side": {
+        "main_text": "Turkum",
+        "create_category": "+ Turkum yaratish",
+        "category_direction_home": "Boshqaruv paneli",
+        "category_direction_category": "Turkum",
+        "category_direction_create_category": "Turkumga qo'shish"
+      },
+      "category_create_side": {
+        "create_main_text": "Turkum yaratish",
+        "create_select_category": "Turkumni tanlang:",
+        "create_select_category_input": "Turkumni yarating...",
+        "create_select_subcategory": "Ichki turkumni tanlang:",
+        "create_select_new_subcategory": "Yangi kichik turkum nomi"
+      }
+    }
+  }
+}

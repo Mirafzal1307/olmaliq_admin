@@ -3,6 +3,7 @@ import React from "react";
 import { styled } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
+import { useTranslation } from "react-i18next";
 // import { refresh } from "./refresh";
 
 const StyledModal = styled(ModalUnstyled)`
@@ -109,14 +110,17 @@ function Modal(props: any): JSX.Element {
   const [open, setOpen] = React.useState(false);
   const handleOpen = (): void => setOpen(true);
   const handleClose = (): void => setOpen(false);
+  const { t, i18n } = useTranslation();
   const classes = useStyles();
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLElement>) => {
+    i18n.changeLanguage((event.target as HTMLInputElement).value);
+  };
+
   return (
     <>
       <Tooltip title="Yuklash">
-        <Button
-          onClick={handleOpen}
-          className={classes.deleteButton}
-        >
+        <Button onClick={handleOpen} className={classes.deleteButton}>
           <img src={require("../../Img/Download.png")} alt="rasm bor edi" />
         </Button>
       </Tooltip>
@@ -128,14 +132,22 @@ function Modal(props: any): JSX.Element {
         className={classes.Backdrop}
       >
         <Box sx={style} className={classes.box}>
-          <h1 className={classes.h1}>Diqqat!</h1>
-          <h2 id="unstyled-modal-title" className={classes.h2}>
-            Siz rostdanham ushbu suratni <br /> o’chirmoqchimisiz?
+          <h1 className={classes.h1}>
+            {t("adverts_page.adverts_page_modal.modal_name")}!
+          </h1>
+          <h2
+            id="unstyled-modal-title"
+            className={classes.h2}
+          >
+            {t("adverts_page.adverts_page_modal.modal_text")}!
           </h2>
           <div>
-            <Button onClick={handleClose} className={classes.cancel}>
+            <Button
+              onClick={handleClose}
+              className={classes.cancel}
+            >
               <img src={require("../../Img/Exit.png")} alt="rasm bor edi" />
-              O'chirish
+              {t("adverts_page.adverts_page_modal.modal_red")}
             </Button>
             <Button
               onClick={() => {
@@ -146,7 +158,7 @@ function Modal(props: any): JSX.Element {
               className={classes.deletes}
             >
               <img src={require("../../Img/Succes.png")} alt="rasm bor edi" />
-              Bekor qilish
+              {t("adverts_page.adverts_page_modal.modal_green")}
             </Button>
           </div>
         </Box>
