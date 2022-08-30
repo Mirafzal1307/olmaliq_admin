@@ -1,5 +1,5 @@
 import React from "react";
-import { Toolbar } from "@mui/material";
+import { Grid, Toolbar } from "@mui/material";
 import { Container } from "@mui/system";
 import MiniDrawer from "../../../layouts/Drawer/Drawer";
 import LandingTop from "../LandingTop";
@@ -8,6 +8,7 @@ import CategoryList from "./CategoryList";
 import CategoryListNone from "./CategoryListNone";
 import { categories } from "./CategoryList";
 import { useTranslation } from "react-i18next";
+import CategoryCreateList from "./CategoryCreateList";
 
 const Category = () => {
   const { t } = useTranslation()
@@ -31,10 +32,17 @@ const Category = () => {
             "admin.category_page.category_landing_side.create_category"
           )}
         />
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <CategoryCreate />
-          {categories.length === 0 ? <CategoryListNone /> : <CategoryList />}
-        </Toolbar>
+        <Grid container>
+          <Grid item xs={5}>
+            {/* <Toolbar sx={{ justifyContent: "space-beetwen" }}> */}
+              <CategoryCreate />
+              {/* {categories.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
+            {/* </Toolbar> */}
+          </Grid>
+          <Grid item xs={7}>
+              <CategoryCreateList />
+          </Grid>
+        </Grid>
       </Container>
     </>
   );

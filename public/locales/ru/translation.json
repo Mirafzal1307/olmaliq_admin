@@ -40,6 +40,14 @@
         "category_list_actions": "Действия",
         "category_list_actions_edit": "Изменить",
         "category_list_actions_delete": "Удалить"
+      },
+      "category_create_list": {
+        "data_name": "Смартфоны (Подкатегория)",
+        "small_categories": "1.Название подкатегории",
+        "plaseholder_name": "Смартфоны",
+        "small_categories_photos": "2.Основное изображение подкатегории",
+        "note_about": "Примечание:",
+        "note_about_all": "Выберите фотографию, чтобы сделать ее по умолчанию. Когда вы загружаете новую фотографию, она должна быть не более 50 пикселей в высоту и 80 пикселей в ширину."
       }
     }
   }
