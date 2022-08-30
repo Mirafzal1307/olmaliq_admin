@@ -106,21 +106,13 @@ const CategoryCreateList = () => {
             <Typography style={noteAll}>
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
-            <div style={{ textAlign: "end", marginTop: "380px" }}>
+            <div style={{ textAlign: "end", marginTop: "400px" }}>
               <Button sx={{ textTransform: "none" }} style={cancelButton}>
-                <img
-                  src={require("../../../Img/Cancel.png")}
-                  style={{ marginRight: "10px" }}
-                  alt=""
-                />{" "}
+                <img src={require("../../../Img/Cancel.png")} alt="" />{" "}
                 O`chirish
               </Button>
               <Button sx={{ textTransform: "none" }} style={successSaveButton}>
-                <img
-                  src={require("../../../Img/Success.png")}
-                  style={{ marginRight: "10px" }}
-                  alt=""
-                />
+                <img src={require("../../../Img/Success.png")} style={{ marginRight: "10px" }} alt="" /> 
                 Saqlash
               </Button>
             </div>

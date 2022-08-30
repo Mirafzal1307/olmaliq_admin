@@ -110,3 +110,11 @@ export const cancelButton = {
   fontSize: "17px",
   borderRadius: "5px",
 };
+
+export const uploadImageCategory = {
+  padding: "5px",
+  width: "44px",
+  height: "44px",
+  border: "1px solid #2DA55F",
+  borderRadius: "5px",
+};
