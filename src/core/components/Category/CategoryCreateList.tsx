@@ -1,8 +1,8 @@
-import { Button, Grid, Paper, TextField, Toolbar, Typography } from "@mui/material";
+import { Button, FormLabel, Grid, Paper, TextField, Toolbar, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { note, noteAll, smartphoneSmall, subCategory } from "../../theme/CategoryStyle";
+import { cancelButton, forImagePreview, note, noteAll, smartphoneSmall, subCategory, successSaveButton } from "../../theme/CategoryStyle";
 
 const useStyles = makeStyles({
   categoryInput: {
@@ -18,6 +18,18 @@ const useStyles = makeStyles({
 const CategoryCreateList = () => {
   const { t } = useTranslation();
   const classes = useStyles()
+  const fileInputRef = useRef<any>();
+  const [preview, setPreview] = useState<any>();
+  const [image, setImage] = useState<any>();
+
+  const handleInputChange = (e: any): void => {
+    const file = e.target.files[0];
+    if (file && file.type.substr(0, 5) === "image") {
+      setImage(file);
+    } else {
+      setImage(null);
+    }
+  };
 
   return (
     <>
@@ -66,20 +78,51 @@ const CategoryCreateList = () => {
                 />
               </Grid>
               <Grid>
-                <img src={require("../../../Img/save.png")} alt="" />
+                <FormLabel
+                  htmlFor="file-input"
+                  onClick={(event) => {
+                    event.preventDefault();
+                    fileInputRef.current.click();
+                  }}
+                >
+                  <img
+                    src={require("../../../Img/save.png")}
+                    alt="dddd"
+                    style={forImagePreview}
+                  />
+                </FormLabel>
+                <input
+                  type="file"
+                  style={{ display: "none" }}
+                  ref={fileInputRef}
+                  accept="image/*"
+                  onChange={handleInputChange}
+                />
               </Grid>
             </Toolbar>
-
             <Typography style={note}>
               {t("admin.category_page.category_create_list.note_about")}
             </Typography>
             <Typography style={noteAll}>
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
-
-            <div style={{textAlign: "end", marginTop: "400px"}}>
-              <Button className="success">O`chirish</Button>
-              <Button className="success">Saqlash</Button>
+            <div style={{ textAlign: "end", marginTop: "380px" }}>
+              <Button sx={{ textTransform: "none" }} style={cancelButton}>
+                <img
+                  src={require("../../../Img/Cancel.png")}
+                  style={{ marginRight: "10px" }}
+                  alt=""
+                />{" "}
+                O`chirish
+              </Button>
+              <Button sx={{ textTransform: "none" }} style={successSaveButton}>
+                <img
+                  src={require("../../../Img/Success.png")}
+                  style={{ marginRight: "10px" }}
+                  alt=""
+                />
+                Saqlash
+              </Button>
             </div>
           </Paper>
         </Grid>

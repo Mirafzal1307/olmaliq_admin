@@ -1,14 +1,10 @@
 import React from "react";
-import { Container, Grid } from "@mui/material";
-import { useTranslation } from "react-i18next"
+import { Grid } from "@mui/material";
 import { ButtonStyle, createCategoryDirection, createCategoryDirectionSpan, mainText } from "../theme/LandingTopStyle";
 
 const LandingTop = (props: any) => {
-  const { t } = useTranslation()
-
   return (
     <>
-      <Container>
         <Grid sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "32px" }}>
           <Grid>
             <h1 style={mainText}>
@@ -34,7 +30,6 @@ const LandingTop = (props: any) => {
             </button>
           </Grid>
         </Grid>
-      </Container>
     </>
   );
 };

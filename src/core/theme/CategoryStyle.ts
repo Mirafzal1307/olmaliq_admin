@@ -79,6 +79,34 @@ export const noteAll = {
   fontFamily: "Poppins",
   fontSize: "11px",
   fontWeight: "600",
-  paddingLeft: "5px"
 };
 
+export const forImagePreview = {
+  width: "auto",
+  height: "auto"
+}
+
+export const successSaveButton = {
+  background: "#2DA55F",
+  color: "white",
+  border: "none",
+  alignItems: "center",
+  padding: "15px 20px",
+  fontFamily: "Poppins",
+  fontWeight: "600",
+  fontSize: "17px",
+  borderRadius: "5px",
+  marginLeft: "10px"
+}
+
+export const cancelButton = {
+  background: "#FF4B4B",
+  color: "white",
+  border: "none",
+  alignItems: "center",
+  padding: "15px 20px",
+  fontFamily: "Poppins",
+  fontWeight: "600",
+  fontSize: "17px",
+  borderRadius: "5px",
+};

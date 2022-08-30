@@ -43,9 +43,9 @@
       },
       "category_create_list": {
         "data_name": "Smartfonlar (Ichki turkumlar)",
-        "small_categories": "1.Pastki toifalarga nom bering",
+        "small_categories": "1.Turkum nomi",
         "plaseholder_name": "Smartfonlar",
-        "small_categories_photos": "2.Pastki toifadagi asosiy rasm",
+        "small_categories_photos": "2.Asosiy turkum surati",
         "note_about": "Eslatma:",
         "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak."
       }
