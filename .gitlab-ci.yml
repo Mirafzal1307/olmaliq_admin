@@ -34,8 +34,13 @@ build_kaniko:
 
 
 deploy_prod:
-  stage: deploy_prod
+  # stage: deploy_prod
   # image: kroniak/ssh-client
+  image: docker:latest
+  services:
+    - docker:18.09.7-dind
+  variables:
+    DOCKER_HOST: tcp://localhost:2375/
   image: docker
   tags:
     - shop
