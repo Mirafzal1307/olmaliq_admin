@@ -30,7 +30,7 @@ build_kaniko:
 
 deploy_prod:
   stage: deploy_prod
-  # image: kroniak/ssh-client
+  image: kroniak/ssh-client
   image: docker
   only:
     - development
@@ -45,6 +45,7 @@ deploy_prod:
   script:
     - apk add --update --no-cache openssh
     - chmod 400 $SSH_PRIVATE_KEY
+    - echo $PROD_SERVER_IP
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY"
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker pull registry.gitlab.com/1itech_company_uz/shop_admin:deploy"
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker stop shop_admin && docker rm shop_admin && docker run -e "REACT_APP_BASE_URL=https://api.uz" -e "PORT=3030" -e "REACT_APP_MINIO_ENPOINT=https://minio..uz" -e "REACT_APP_MERCHANT_ID=62a7601817d208a46387c0bf" -e "REACT_APP_PAYME_URL=https://checkout.paycom.uz/" -p 3030:3030 --name shop_admin -d registry.gitlab.com/1itech_company_uz/shop_admin:main"
