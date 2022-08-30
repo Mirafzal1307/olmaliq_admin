@@ -21,7 +21,7 @@ build_kaniko:
   script:
       # Prepare Kaniko configuration file
       - echo $CI_REGISTRY_IMAGE
-      - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_Ux`SER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+      - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
       # Build and push the image from the Dockerfile at the root of the project.
       - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $IMAGE_DESTINATION --cache-dir=/workspace/cache 
       # Print the full registry path of the pushed image
