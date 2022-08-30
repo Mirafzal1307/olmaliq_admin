@@ -35,7 +35,7 @@ build_kaniko:
 
 deploy_prod:
   stage: deploy_prod
-  image: kroniak/ssh-client
+  # image: kroniak/ssh-client
   image: docker
   tags:
     - shop
