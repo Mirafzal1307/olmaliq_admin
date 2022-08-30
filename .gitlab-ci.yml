@@ -10,6 +10,8 @@ build_kaniko:
   stage: build_kaniko
   variables:
     IMAGE_DESTINATION: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
+  tags:
+    - shop_runner
   only:
     - development
   image:
@@ -32,6 +34,8 @@ deploy_prod:
   stage: deploy_prod
   image: kroniak/ssh-client
   image: docker
+  tags:
+    - shop_runner
   only:
     - development
   services: 
