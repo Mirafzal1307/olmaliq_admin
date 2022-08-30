@@ -16,7 +16,12 @@ const Category = () => {
   return (
     <>
       <MiniDrawer />
+      <LandingTop />
       <Container>
+        <Toolbar style={{padding: 0}} sx={{ justifyContent: "space-between" }}>
+          <CategoryCreate />
+          {categories.length === 0 ? <CategoryListNone /> : <CategoryList />}
+        </Toolbar>
         <LandingTop
           mainText={t("admin.category_page.category_landing_side.main_text")}
           dashboardText={t(

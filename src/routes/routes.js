@@ -9,6 +9,8 @@ import Settings from "../core/components/Settings";
 import SettingsIcon from "../Img/icons/SettingsIcon";
 import CategoryIcon from "../Img/icons/CategoryIcon"
 import OrderIcon from "../Img/icons/OrderIcon";
+import AdvertsIcon from "../Img/icons/AvertsIcon";
+import Adverts from "../core/components/Adverts/Adverts";
 
 const MainRoutes = [
   {
@@ -40,6 +42,12 @@ const MainRoutes = [
     title: "Sozlamalar",
     path: "/settings",
     element: <Settings />
+  },
+  {
+    icon: <AdvertsIcon />,
+    title: "Reklom",
+    path: "/adverts",
+    element: <Adverts />
   },
 ]
 

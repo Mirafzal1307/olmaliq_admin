@@ -6,7 +6,8 @@
         "product": "Продукт",
         "category": "Категория",
         "order": "Заказ",
-        "settings": "Настройки"
+        "settings": "Настройки",
+        "adverts": "Реклама"
       },
       "language_label": {
         "uzbek": "Узбекский",
@@ -48,6 +49,18 @@
         "small_categories_photos": "2.Основное изображение подкатегории",
         "note_about": "Примечание:",
         "note_about_all": "Выберите фотографию, чтобы сделать ее по умолчанию. Когда вы загружаете новую фотографию, она должна быть не более 50 пикселей в высоту и 80 пикселей в ширину."
+      }
+    },
+    "adverts_page": {
+      "adverts_page_paper": {
+        "adverts_page_paper_title": "Реклама",
+        "adverts_page_paper_categoryTitle": "Основное изображение подкатегории"
+      },
+      "adverts_page_modal": {
+        "modal_name": "Внимание",
+        "modal_text": "Тебе очень нравится эта картинка ты хочешь удалить",
+        "modal_red": "Удалить",
+        "modal_green": "Отмена"
       }
     }
   }
