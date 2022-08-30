@@ -25,7 +25,7 @@ export const createCategoryDirection = {
 };
 
 export const mainText = {
-  fontFamily: "Montserrat",
+  fontFamily: "Poppins",
   fontSize: "31px",
   fontWeight: "600",
   color: "#444444 !important",
