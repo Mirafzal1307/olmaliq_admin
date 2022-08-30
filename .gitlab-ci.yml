@@ -2,6 +2,14 @@ image:
   name: gcr.io/kaniko-project/executor:debug
   entrypoint: [""]
 
+variables:
+  # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+
+
 stages:
   - build_kaniko
   - deploy_prod
@@ -34,7 +42,7 @@ build_kaniko:
 
 
 deploy_prod:
-  # stage: deploy_prod
+  stage: deploy_prod
   # image: kroniak/ssh-client
   image: docker:latest
   services:
