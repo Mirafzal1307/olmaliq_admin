@@ -63,11 +63,15 @@ deploy_prod:
   only:
     - development
   script:
-    - which ssh-agent || ( apk --update add openssh-client ) $ eval $(ssh-agent -s) $ echo "$SSH_PRIVATE_KEY" | ssh-add -
+    # - which ssh-agent || ( apk --update add openssh-client ) $ eval $(ssh-agent -s) $ echo "$SSH_PRIVATE_KEY" | ssh-add -
+
     # - apk update
     # - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
     # - rm -rf /var/cache/apk/*
     # - apk add --no-cache openssh
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")
+
     - chmod 400 $SSH_PRIVATE_KEY
     # - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY"
