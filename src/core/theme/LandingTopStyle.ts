@@ -1,9 +1,9 @@
 export const ButtonStyle = {
   backgroundColor: "#2DA55F",
   color: "white",
-  border: "none",
   borderRadius: "5px",
-  padding: "13px 28px",
+  width: "220px",
+  height: "50px",
   fontFamily: "Poppins",
   fontSize: "17px",
   fontWeight: "700",

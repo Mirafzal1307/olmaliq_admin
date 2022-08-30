@@ -52,9 +52,21 @@
       }
     },
     "adverts_page": {
+      "adverts_page_landingTop": {
+        "adverts_page_landingTop_name": "Reklom",
+        "adverts_page_landingTop_url1": "Bosh sahifa",
+        "adverts_page_landingTop_url2": "Reklom",
+        "adverts_page_landingTop_url3": "Reklom sozlamasi",
+        "adverts_page_landingTop_button": "Turkum yaratish"
+      },
       "adverts_page_paper": {
         "adverts_page_paper_title": "Reklama",
-        "adverts_page_paper_categoryTitle": "Ichki turkum asosiy surati"
+        "adverts_page_paper_categoryTitle": "Ichki turkum asosiy surati",
+        "adverts_page_paper_noteSpan": "Eslatma: ",
+        "adverts_page_paper_note": "Suratni ko'rish uchun uni tanlang. Yangi surat yuklaganingizda, surat o'lchami 1060x300 px'dan oshmasligilozim.",
+        "adverts_page_paper_categoryTitle2": "Reklama surati",
+        "adverts_page_paper_noteSpan2": "Eslatma:",
+        "adverts_page_paper_note2": "Suratni ko'rish uchun uni tanlang. Yangi surat yuklaganingizda, surat o'lchami 1060x300 px'dan oshmasligilozim."
       },
       "adverts_page_modal": {
         "modal_name": "Diqqat",

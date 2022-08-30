@@ -52,9 +52,18 @@
       }
     },
     "adverts_page": {
+      "adverts_page_landingTop": {
+        "adverts_page_landingTop_name": "Реклама",
+        "adverts_page_landingTop_url1": "Домашняя страница",
+        "adverts_page_landingTop_url2": "Реклама",
+        "adverts_page_landingTop_url3": "Реклама настройки",
+        "adverts_page_landingTop_button": "Cоздать категорию"
+      },
       "adverts_page_paper": {
         "adverts_page_paper_title": "Реклама",
-        "adverts_page_paper_categoryTitle": "Основное изображение подкатегории"
+        "adverts_page_paper_categoryTitle": "Основное изображение подкатегории",
+        "adverts_page_paper_noteSpan": "Напоминание: ",
+        "adverts_page_paper_note": "Выберите фотографию для просмотра. При загрузке новой фотографии размер фотографии не может превышать 1060x300 пикселей."
       },
       "adverts_page_modal": {
         "modal_name": "Внимание",
