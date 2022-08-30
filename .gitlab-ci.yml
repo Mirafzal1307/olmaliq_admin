@@ -69,7 +69,7 @@ deploy_prod:
     - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
     - rm -rf /var/cache/apk/*
     - apk add --no-cache openssh
-    - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")
+    # - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")
 
     - chmod 400 $SSH_PRIVATE_KEY
     # - ssh-add <(echo "$SSH_PRIVATE_KEY")
