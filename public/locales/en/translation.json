@@ -6,7 +6,8 @@
         "product": "Product",
         "category": "Category",
         "order": "Order",
-        "settings": "settings"
+        "settings": "settings",
+        "adverts": "adverts"
       },
       "language_label": {
         "uzbek": "Uzbek",
@@ -48,6 +49,18 @@
         "small_categories_photos": "2.Subcategory main image",
         "note_about": "Note:",
         "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide."
+      }
+    },
+    "adverts_page": {
+      "adverts_page_paper": {
+        "adverts_page_paper_title": "Adverts",
+        "adverts_page_paper_categoryTitle": "Subcategory main image"
+      },
+      "adverts_page_modal": {
+        "modal_name": "Attention",
+        "modal_text": "You really love this photo do you want to delete",
+        "modal_red": "Delete",
+        "modal_green": "Cancellation"
       }
     }
   }
