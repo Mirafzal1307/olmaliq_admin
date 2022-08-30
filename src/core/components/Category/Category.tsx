@@ -34,12 +34,10 @@ const Category = () => {
         />
         <Grid container>
           <Grid item xs={5}>
-            {/* <Toolbar sx={{ justifyContent: "space-beetwen" }}> */}
               <CategoryCreate />
-            {/* </Toolbar> */}
           </Grid>
           <Grid item xs={7}>
-              {/* {categories.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
+              {/* {categories?.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
               <CategoryCreateList />
           </Grid>
         </Grid>

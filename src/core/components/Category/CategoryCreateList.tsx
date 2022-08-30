@@ -1,8 +1,26 @@
-import { Button, FormLabel, Grid, Paper, TextField, Toolbar, Typography } from "@mui/material";
+import {
+  Button,
+  FormLabel,
+  Grid,
+  Paper,
+  TextField,
+  Toolbar,
+  Typography
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import React, { useRef, useState } from "react";
+import { AnyARecord } from "dns";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { cancelButton, forImagePreview, note, noteAll, smartphoneSmall, subCategory, successSaveButton } from "../../theme/CategoryStyle";
+import {
+  cancelButton,
+  forImagePreview,
+  note,
+  noteAll,
+  smartphoneSmall,
+  subCategory,
+  successSaveButton,
+  uploadImageCategory
+} from "../../theme/CategoryStyle";
 
 const useStyles = makeStyles({
   categoryInput: {
@@ -11,24 +29,32 @@ const useStyles = makeStyles({
     fontSize: "14px",
     fontWeight: "400",
     padding: "2px 0 2px 0 !important",
-    width: "320px",
+    width: "320px"
+  },
+  forImagePreview: {
+    width: "95px",
+    height: "95px",
+    border: "none !important"
   }
 });
 
 const CategoryCreateList = () => {
   const { t } = useTranslation();
-  const classes = useStyles()
+  const classes = useStyles();
   const fileInputRef = useRef<any>();
   const [preview, setPreview] = useState<any>();
-  const [image, setImage] = useState<any>();
 
-  const handleInputChange = (e: any): void => {
-    const file = e.target.files[0];
-    if (file && file.type.substr(0, 5) === "image") {
-      setImage(file);
-    } else {
-      setImage(null);
-    }
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+
+  const onSelectedFile = (event: any) => {
+    const selectedFiles = event.target.files;
+    const selectedFilesArray: string[] = Array.from(selectedFiles);
+
+    const imagesArray: string[] = selectedFilesArray.map((file: any) => {
+      return URL.createObjectURL(file);
+    });
+
+    setSelectedImages(imagesArray);
   };
 
   return (
@@ -55,49 +81,43 @@ const CategoryCreateList = () => {
             </Typography>
 
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
-              <Grid>
-                <img
-                  style={{ padding: "5px" }}
-                  src={require("../../../Img/phone_img.png")}
-                  alt=""
-                />
-                <img
-                  style={{ padding: "5px" }}
-                  src={require("../../../Img/phone_img.png")}
-                  alt=""
-                />
-                <img
-                  style={{ padding: "5px" }}
-                  src={require("../../../Img/phone_img.png")}
-                  alt=""
-                />
-                <img
-                  style={{ padding: "5px" }}
-                  src={require("../../../Img/korzinka.png")}
-                  alt=""
-                />
+              <Grid sx={{ display: "flex" }}>
+                {selectedImages.map((image) => {
+                  return (
+                    <>
+                      <div key={image} style={{ paddingRight: "5px" }}>
+                        <img style={uploadImageCategory} src={image} alt="" />
+                      </div>
+                    </>
+                  );
+                })}
               </Grid>
               <Grid>
-                <FormLabel
-                  htmlFor="file-input"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    fileInputRef.current.click();
-                  }}
-                >
+                <form style={{ display: "flex", alignItems: "center" }}>
                   <img
-                    src={require("../../../Img/save.png")}
-                    alt="dddd"
-                    style={forImagePreview}
+                    src={preview}
+                    style={{ display: preview ? "block" : "none" }}
+                    className={classes.forImagePreview}
+                    alt="img"
                   />
-                </FormLabel>
-                <input
-                  type="file"
-                  style={{ display: "none" }}
-                  ref={fileInputRef}
-                  accept="image/*"
-                  onChange={handleInputChange}
-                />
+                  <FormLabel
+                    htmlFor="file-input"
+                    onClick={(event: any) => {
+                      event.preventDefault();
+                      fileInputRef.current.click();
+                    }}
+                  >
+                    <img src={require("../../../Img/save.png")} alt="dddd" />
+                  </FormLabel>
+                  <input
+                    type="file"
+                    multiple
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    accept="image/*"
+                    onChange={onSelectedFile}
+                  />
+                </form>
               </Grid>
             </Toolbar>
             <Typography style={note}>
@@ -108,11 +128,19 @@ const CategoryCreateList = () => {
             </Typography>
             <div style={{ textAlign: "end", marginTop: "400px" }}>
               <Button sx={{ textTransform: "none" }} style={cancelButton}>
-                <img src={require("../../../Img/Cancel.png")} alt="" />{" "}
+                <img
+                  src={require("../../../Img/Cancel.png")}
+                  style={{ marginRight: "10px" }}
+                  alt=""
+                />{" "}
                 O`chirish
               </Button>
               <Button sx={{ textTransform: "none" }} style={successSaveButton}>
-                <img src={require("../../../Img/Success.png")} style={{ marginRight: "10px" }} alt="" /> 
+                <img
+                  src={require("../../../Img/Success.png")}
+                  style={{ marginRight: "10px" }}
+                  alt=""
+                />
                 Saqlash
               </Button>
             </div>
