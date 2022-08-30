@@ -14,17 +14,25 @@ const LandingTop = (props: any) => {
           }}
         >
           <Grid>
-            <h1 style={mainText}>{props.mainText}</h1>
+            <Typography variant="h3" style={mainText}>
+              {props.mainText}
+            </Typography>
             <Grid sx={{ display: "flex" }}>
-              <p style={createCategoryDirection}>{props.dashboardText}</p>{" "}
-              <p style={createCategoryDirection}>{">"}</p>
-              <p style={createCategoryDirection}>{props.pageText}</p>
-              <p style={createCategoryDirection}>{">"}</p>
-              <p style={createCategoryDirectionSpan}>{props.pageTextSpan}</p>
+              <Typography style={createCategoryDirection}>
+                {props.dashboardText}
+              </Typography>{" "}
+              <Typography style={createCategoryDirection}>{">"}</Typography>
+              <Typography style={createCategoryDirection}>
+                {props.pageText}
+              </Typography>
+              <Typography style={createCategoryDirection}>{">"}</Typography>
+              <Typography style={createCategoryDirectionSpan}>
+                {props.pageTextSpan}
+              </Typography>
             </Grid>
           </Grid>
           <Grid>
-            <button style={ButtonStyle}>{props.createButton}</button>
+            <Button style={ButtonStyle}>+ {props.createButton}</Button>
           </Grid>
         </Grid>
     </>

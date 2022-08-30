@@ -1,0 +1,73 @@
+image: 
+  name: gcr.io/kaniko-project/executor:debug
+  entrypoint: [""]
+
+variables:
+  # Use TLS https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+  CONTAINER_RELEASE_IMAGE: $CI_REGISTRY_IMAGE:latest
+
+
+stages:
+  - build_kaniko
+  - deploy_prod
+
+build_kaniko:
+  stage: build_kaniko
+  variables:
+    IMAGE_DESTINATION: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
+  tags:
+    - shop
+  only:
+    - development
+  image:
+      # We recommend using the CERN version of the Kaniko image: gitlab-registry.cern.ch/ci-tools/docker-image-builder
+      name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
+      entrypoint: [""]
+  script:
+      # Prepare Kaniko configuration file
+      - echo $CI_REGISTRY_IMAGE
+      - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+      # Build and push the image from the Dockerfile at the root of the project.
+      - /kaniko/executor --force --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $IMAGE_DESTINATION --cache-dir=/workspace/cache 
+      # Print the full registry path of the pushed image
+      - echo "Image pushed successfully to ${IMAGE_DESTINATION}"
+      - echo "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
+      # - executor --context "dir://${CI_PROJECT_DIR}"
+      #            --dockerfile Dockerfile
+      #            --destination "${CI_REGISTRY_IMAGE}:latest" || true
+
+
+
+deploy_prod:
+  stage: deploy_prod
+  # image: kroniak/ssh-client
+  image: docker:latest
+  services:
+    - docker:18.09.7-dind
+  variables:
+    DOCKER_HOST: tcp://localhost:2375/
+  image: docker:18-dind
+  tags:
+    - shop
+  only:
+    - development
+  services: 
+    - docker:dind
+  before_script:
+    - echo "deploying app"
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    # - echo "${SSH_PRIVATE_KEY}" | ssh-add -
+  only:
+    - development
+  script:
+    - apk update
+    - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
+    - rm -rf /var/cache/apk/*
+    - apk add --no-cache openssh
+    - chmod 400 $SSH_PRIVATE_KEY
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker pull registry.gitlab.com/1itech_company_uz/shop_admin:deploy"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker stop shop_admin && docker rm shop_admin && docker run -e "REACT_APP_BASE_URL=https://api.uz" -e "PORT=3030" -e "REACT_APP_MINIO_ENPOINT=https://minio..uz" -e "REACT_APP_MERCHANT_ID=62a7601817d208a46387c0bf" -e "REACT_APP_PAYME_URL=https://checkout.paycom.uz/" -p 3030:3030 --name shop_admin -d registry.gitlab.com/1itech_company_uz/shop_admin:main"

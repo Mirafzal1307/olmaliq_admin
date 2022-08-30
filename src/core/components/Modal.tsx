@@ -17,7 +17,7 @@ const StyledModal = styled(ModalUnstyled)`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.5)
-`;
+`
 const style = {
   width: 500,
   bgcolor: "#fff !important",
@@ -65,12 +65,11 @@ const useStyles = makeStyles({
     lineHeight: "138%",
   },
   deleteButton: {
-    width: '45px',
-    height: '45px',
+    width: "45px",
+    height: "45px",
     backgroundColor: "#2DA55F !important",
-    cursor: "pointer",
+    border: "none",
     borderRadius: "5px",
-    border: 'none'
   },
   cancel: {
     background: "#FF4B4B !important",
@@ -92,15 +91,6 @@ const useStyles = makeStyles({
       paddingRight: "12px",
     },
   },
-  Backdrop: {
-    zIndex: "-1",
-    position: "fixed",
-    right: 0,
-    bottom: 0,
-    top: 0,
-    left: 0,
-    backgroundColor: "#000",
-  },
 });
 
 function Modal(props: any): JSX.Element {
@@ -114,7 +104,10 @@ function Modal(props: any): JSX.Element {
   return (
     <>
       <Tooltip title="Yuklash">
-        <button onClick={handleOpen} className={classes.deleteButton}>
+        <button
+          onClick={handleOpen}
+          className={classes.deleteButton}
+        >
           <img src={require("../../Img/Download.png")} alt="rasm bor edi" />
         </button>
       </Tooltip>
@@ -123,7 +116,6 @@ function Modal(props: any): JSX.Element {
         aria-describedby="unstyled-modal-description"
         open={open}
         onClose={handleClose}
-        className={classes.Backdrop}
       >
         <Box sx={style} className={classes.box}>
           <h1 className={classes.h1}>
@@ -145,10 +137,7 @@ function Modal(props: any): JSX.Element {
               }}
               className={classes.deletes}
             >
-              <img
-                src={require("../../Img/Success.png")}
-                alt="rasm bor edi"
-              />
+              <img src={require("../../Img/Success.png")} alt="rasm bor edi" />
               {t("admin.adverts_page.adverts_page_modal.modal_green")}
             </Button>
           </div>
