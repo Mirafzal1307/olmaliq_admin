@@ -47,9 +47,10 @@ const Adverts = () => {
           </Typography>
           <Grid item>
             <Grid item xs={6}>
-              <img src={require("../../../Img/CategoryImg1.png")} alt="" />
+              <img src={require("../../../Img/Download.png")} alt="" />
             </Grid>
           </Grid>
+          <Modal/>
         </Paper>
       </Container>
     </>

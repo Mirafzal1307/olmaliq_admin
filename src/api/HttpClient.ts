@@ -4,6 +4,7 @@ import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
 
 class ApiClient {
   instance: AxiosInstance;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(baseURL: any) {
     this.instance = axios.create({
       baseURL,
@@ -22,19 +23,19 @@ class ApiClient {
       },
     });
   }
-  get<T>(url: string, params?: any): AxiosPromise<T> {
+  get<T>(url: string, params?: unknown): AxiosPromise<T> {
     return this.fetch<T>({ method: "GET", url, params });
   }
 
-  delete<T>(url: string, data?: any): AxiosPromise<T> {
+  delete<T>(url: string, data?: unknown): AxiosPromise<T> {
     return this.fetch<T>({ method: "DELETE", url, data });
   }
 
-  post<T>(url: string, data: any): AxiosPromise<T> {
+  post<T>(url: string, data: unknown): AxiosPromise<T> {
     return this.fetch<T>({ method: "POST", url, data });
   }
 
-  put<T>(url: string, data: any): AxiosPromise<T> {
+  put<T>(url: string, data: unknown): AxiosPromise<T> {
     return this.fetch<T>({ method: "PUT", url, data });
   }
 }

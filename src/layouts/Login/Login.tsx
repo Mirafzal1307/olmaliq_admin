@@ -1,3 +1,4 @@
+import React from "react";
 import { Grid, Radio, TextField } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import "./style.css"
@@ -59,7 +60,7 @@ const Login = () => {
   });
 
   const handleLogin = (email: string, password: string) => {
-    
+    console.log(email, password);
   }
 
   const formik = useFormik({

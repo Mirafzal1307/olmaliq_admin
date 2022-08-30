@@ -41,6 +41,14 @@
         "category_list_actions": "Actions",
         "category_list_actions_edit": "Edit",
         "category_list_actions_delete": "Delete"
+      },
+      "category_create_list": {
+        "data_name": "Smartphones (Subcategory)",
+        "small_categories": "1.The name of the subcategory",
+        "plaseholder_name": "Smartphones",
+        "small_categories_photos": "2.Subcategory main image",
+        "note_about": "Note:",
+        "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide."
       }
     },
     "adverts_page": {

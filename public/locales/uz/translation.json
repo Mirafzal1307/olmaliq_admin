@@ -41,6 +41,14 @@
         "category_list_actions": "Amallar",
         "category_list_actions_edit": "Tahrirlash",
         "category_list_actions_delete": "O’chirish"
+      },
+      "category_create_list": {
+        "data_name": "Smartfonlar (Ichki turkumlar)",
+        "small_categories": "1.Pastki toifalarga nom bering",
+        "plaseholder_name": "Smartfonlar",
+        "small_categories_photos": "2.Pastki toifadagi asosiy rasm",
+        "note_about": "Eslatma:",
+        "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak."
       }
     },
     "adverts_page": {

@@ -1,3 +1,4 @@
+import React from "react";
 import { Container } from "@mui/material";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
@@ -7,7 +8,7 @@ import MiniDrawer from "../../layouts/Drawer/Drawer";
 
 const Home = () => {
   const getData = async () => {
-    const res: any = await getUsersList();
+    const res: unknown = await getUsersList();
     console.log(res);
   };
 

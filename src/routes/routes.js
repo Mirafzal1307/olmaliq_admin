@@ -1,3 +1,4 @@
+import React from "react";
 import Home from "../core/components/Home"
 import Product from "../core/components/Product"
 import ProductIcon from "../Img/icons/ProductIcon";
