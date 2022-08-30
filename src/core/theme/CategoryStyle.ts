@@ -40,6 +40,7 @@ export const createButton = {
 export const categoryListButton = {
   background: "transparent",
   border: "none",
+  fontFamily: "Poppins"
 };
 
 export const categoryListInfo = {
@@ -83,8 +84,9 @@ export const noteAll = {
 
 export const forImagePreview = {
   width: "auto",
-  height: "auto"
-}
+  height: "auto",
+  fontFamily: "Poppins"
+};
 
 export const successSaveButton = {
   background: "#2DA55F",
@@ -109,4 +111,13 @@ export const cancelButton = {
   fontWeight: "600",
   fontSize: "17px",
   borderRadius: "5px",
+};
+
+export const uploadImageCategory = {
+  padding: "5px",
+  width: "44px",
+  height: "44px",
+  border: "1px solid #2DA55F",
+  borderRadius: "5px",
+  fontFamily: "Poppins"
 };

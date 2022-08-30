@@ -187,7 +187,7 @@ export default function MiniDrawer() {
               <ListItemButton>
                 <ListItemIcon>{item?.icon}</ListItemIcon>
                 <ListItemText style={routeText}>
-                  {/* {t(`${item?.title}`)} */} {item.title}
+                  {item.title}
                 </ListItemText>
               </ListItemButton>
             </ListItem>

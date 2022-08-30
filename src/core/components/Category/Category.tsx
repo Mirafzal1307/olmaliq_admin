@@ -16,12 +16,7 @@ const Category = () => {
   return (
     <>
       <MiniDrawer />
-      <LandingTop />
       <Container>
-        <Toolbar style={{padding: 0}} sx={{ justifyContent: "space-between" }}>
-          <CategoryCreate />
-          {categories.length === 0 ? <CategoryListNone /> : <CategoryList />}
-        </Toolbar>
         <LandingTop
           mainText={t("admin.category_page.category_landing_side.main_text")}
           dashboardText={t(
@@ -39,12 +34,9 @@ const Category = () => {
         />
         <Grid container>
           <Grid item xs={5}>
-            {/* <Toolbar sx={{ justifyContent: "space-beetwen" }}> */}
               <CategoryCreate />
-            {/* </Toolbar> */}
           </Grid>
           <Grid item xs={7}>
-              {/* {categories.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
               <CategoryCreateList />
           </Grid>
         </Grid>
