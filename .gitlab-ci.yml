@@ -62,13 +62,19 @@ deploy_prod:
     # - echo "${SSH_PRIVATE_KEY}" | ssh-add -
   only:
     - development
+  before_script:
+    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
   script:
     - apk update
     - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
     - rm -rf /var/cache/apk/*
     - apk add --no-cache openssh
     - chmod 400 $SSH_PRIVATE_KEY
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    # - ssh-add <(echo "$SSH_PRIVATE_KEY")
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY"
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker pull registry.gitlab.com/1itech_company_uz/shop_admin:deploy"
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $USER@$PROD_SERVER_IP "docker stop shop_admin && docker rm shop_admin && docker run -e "REACT_APP_BASE_URL=https://api.uz" -e "PORT=3030" -e "REACT_APP_MINIO_ENPOINT=https://minio..uz" -e "REACT_APP_MERCHANT_ID=62a7601817d208a46387c0bf" -e "REACT_APP_PAYME_URL=https://checkout.paycom.uz/" -p 3030:3030 --name shop_admin -d registry.gitlab.com/1itech_company_uz/shop_admin:main"
