@@ -65,11 +65,10 @@ deploy_prod:
   script:
     # - which ssh-agent || ( apk --update add openssh-client ) $ eval $(ssh-agent -s) $ echo "$SSH_PRIVATE_KEY" | ssh-add -
 
-    # - apk update
-    # - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
-    # - rm -rf /var/cache/apk/*
-    # - apk add --no-cache openssh
-    - eval $(ssh-agent -s)
+    - apk update
+    - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
+    - rm -rf /var/cache/apk/*
+    - apk add --no-cache openssh
     - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")
 
     - chmod 400 $SSH_PRIVATE_KEY
