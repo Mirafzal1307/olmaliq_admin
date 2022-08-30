@@ -72,7 +72,7 @@ deploy_prod:
 
     - apk add --update openssh-client bash
     - eval $(ssh-agent -s)
-    - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)'
+    - bash -c 'ssh-add <(echo "${SSH_priv_key_b64}" | base64 --decode | tr -d "\r")'
     - mkdir ~/.ssh
     - ssh-keyscan -t rsa devsb01 >> ~/.ssh/known_hosts    
   script:
