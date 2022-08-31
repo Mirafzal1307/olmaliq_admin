@@ -63,12 +63,13 @@ deploy_prod:
   only:
     - development
   image: alpine
-  before_script:
-    - apk add openssh-client
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh    
+  
+  # before_script:
+  #   - apk add openssh-client
+  #   - eval $(ssh-agent -s)
+  #   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  #   - mkdir -p ~/.ssh
+  #   - chmod 700 ~/.ssh    
 
     # - apk add --update openssh-client bash
     # - eval $(ssh-agent -s)
@@ -76,6 +77,8 @@ deploy_prod:
     # - mkdir ~/.ssh
     # - ssh-keyscan -t rsa devsb01 >> ~/.ssh/known_hosts    
   script:
+    - chmod og= $SSH_PRIVATE_KEY
+    - apk update && apk add openssh-client
     # - which ssh-agent || ( apk --update add openssh-client ) $ eval $(ssh-agent -s) $ echo "$SSH_PRIVATE_KEY" | ssh-add -
 
     # - apk update
