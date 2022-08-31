@@ -44,14 +44,11 @@ export const categoryListButton = {
 };
 
 export const categoryListInfo = {
-  border: "2px solid #2DA55F",
-  borderTopLeftRadius: "5px",
-  borderBottomLeftRadius: "5px",
-  padding: "9.5px",
   fontFamily: "Poppins",
   fontSize: "16px",
   fontWeight: "600",
   color: "#2DA55F",
+  background: "white"
 };
 export const smartphoneSmall = {
   color: "#2DA55F",
