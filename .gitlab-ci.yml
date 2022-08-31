@@ -70,6 +70,10 @@ deploy_prod:
   #   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
   #   - mkdir -p ~/.ssh
   #   - chmod 700 ~/.ssh    
+    - chmod og= $SSH_PRIVATE_KEY
+    - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
+    - rm -rf /var/cache/apk/*
+    - apk add --no-cache openssh
 
     # - apk add --update openssh-client bash
     # - eval $(ssh-agent -s)
@@ -77,10 +81,6 @@ deploy_prod:
     # - mkdir ~/.ssh
     # - ssh-keyscan -t rsa devsb01 >> ~/.ssh/known_hosts    
   script:
-    - chmod og= $SSH_PRIVATE_KEY
-    - apk --no-cache --update upgrade && apk --no-cache add ca-certificates
-    - rm -rf /var/cache/apk/*
-    - apk add --no-cache openssh
 
     # - which ssh-agent || ( apk --update add openssh-client ) $ eval $(ssh-agent -s) $ echo "$SSH_PRIVATE_KEY" | ssh-add -
 
