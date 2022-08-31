@@ -20,8 +20,8 @@ const LandingTop = (props: any) => {
             <Grid sx={{ display: "flex" }}>
               <Typography style={createCategoryDirection}>
                 {props.dashboardText}
-              </Typography>{" "}
-              <Typography style={createCategoryDirection}>{">"}</Typography>
+              </Typography>
+              <Typography style={createCategoryDirection}>{" > "}</Typography>
               <Typography style={createCategoryDirection}>
                 {props.pageText}
               </Typography>
