@@ -18,8 +18,8 @@ build_kaniko:
   stage: build_kaniko
   variables:
     IMAGE_DESTINATION: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
-  tags:
-    - shop
+  # tags:
+  #   - shop
   only:
     - development
   image:
@@ -50,8 +50,8 @@ deploy_prod:
   variables:
     DOCKER_HOST: tcp://localhost:2375/
   # image: docker:18-dind
-  tags:
-    - shop
+  # tags:
+  #   - shop
   only:
     - development
   # services: 
