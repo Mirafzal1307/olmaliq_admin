@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { ButtonStyle, createCategoryDirection, createCategoryDirectionSpan, mainText } from "../theme/LandingTopStyle";
 
 const LandingTop = (props: any) => {
@@ -32,7 +32,7 @@ const LandingTop = (props: any) => {
             </Grid>
           </Grid>
           <Grid>
-            <Button style={ButtonStyle}>+ {props.createButton}</Button>
+            <Button style={ButtonStyle}>{props.createButton}</Button>
           </Grid>
         </Grid>
     </>

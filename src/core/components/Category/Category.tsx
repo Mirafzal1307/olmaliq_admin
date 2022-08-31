@@ -37,6 +37,7 @@ const Category = () => {
               <CategoryCreate />
           </Grid>
           <Grid item xs={7}>
+              {/* {categories?.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
               <CategoryCreateList />
           </Grid>
         </Grid>
