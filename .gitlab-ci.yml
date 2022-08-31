@@ -64,17 +64,17 @@ deploy_prod:
     - development
   image: alpine
   before_script:
-    # - apk add openssh-client
-    # - eval $(ssh-agent -s)
-    # - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    # - mkdir -p ~/.ssh
-    # - chmod 700 ~/.ssh    
-
-    - apk add --update openssh-client bash
+    - apk add openssh-client
     - eval $(ssh-agent -s)
-    - bash -c 'ssh-add <(echo "${SSH_priv_key_b64}" | base64 --decode | tr -d "\r")'
-    - mkdir ~/.ssh
-    - ssh-keyscan -t rsa devsb01 >> ~/.ssh/known_hosts    
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh    
+
+    # - apk add --update openssh-client bash
+    # - eval $(ssh-agent -s)
+    # - bash -c 'ssh-add <(echo "${SSH_priv_key_b64}" | base64 --decode | tr -d "\r")'
+    # - mkdir ~/.ssh
+    # - ssh-keyscan -t rsa devsb01 >> ~/.ssh/known_hosts    
   script:
     # - which ssh-agent || ( apk --update add openssh-client ) $ eval $(ssh-agent -s) $ echo "$SSH_PRIVATE_KEY" | ssh-add -
 
