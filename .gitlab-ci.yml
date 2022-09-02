@@ -46,11 +46,10 @@ deploy:
   before_script:
     - echo "deploying app"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    # - echo "${SSH_PRIVATE_KEY}" | ssh-add -
     - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
     - eval $(ssh-agent -s)
     # - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | DISPLAY=":0.0" SSH_ASKPASS=~/.ssh/.print_ssh_password setsid ssh-add - > /dev/null
+    - echo "${SSH_PRIVATE_KEY}" | ssh-add -
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh    
   only:
