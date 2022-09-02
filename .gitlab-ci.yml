@@ -1,4 +1,7 @@
-image: docker:19.03.13
+image: gitlab/dind
+
+services:
+  - docker:dind
 
 
 stages:
@@ -31,12 +34,12 @@ deploy:
   stage: deploy
   # image: kroniak/ssh-client
 
-  image: docker:latest
-  services:
-    - docker:dind
-  variables:
-    DOCKER_DRIVER: overlay2 # not sure if this is needed
-    DOCKER_TLS_CERTDIR: "/certs"
+  # image: docker:latest
+  # services:
+  #   - docker:dind
+  # variables:
+  #   DOCKER_DRIVER: overlay2 # not sure if this is needed
+  #   DOCKER_TLS_CERTDIR: "/certs"
 
   # services: 
   #   - docker:18.09.7-dind # older version that does not need demand TLS (see below)
