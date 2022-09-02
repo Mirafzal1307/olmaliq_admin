@@ -53,10 +53,8 @@ const CategoryCreateList = () => {
     const imagesArray: string[] = selectedFilesArray.map((file: any) => {
       return URL.createObjectURL(file);
     });
-
     setSelectedImages(imagesArray);
   };
-
   return (
     <>
       <Grid container>
@@ -79,8 +77,18 @@ const CategoryCreateList = () => {
                 "admin.category_page.category_create_list.small_categories_photos"
               )}
             </Typography>
-
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
+              <Grid sx={{display: "flex",}}>
+              {selectedImages.map((image) => {
+                return (
+                  <>
+                    <div key={image} style={{ paddingRight: "5px" }}>
+                      <img style={uploadImageCategory} src={image} alt="" />
+                    </div>
+                  </>
+                );
+              })}
+              </Grid> 
               <Grid sx={{ display: "flex" }}>
                 {selectedImages.map((image) => {
                   return (

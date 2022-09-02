@@ -117,7 +117,7 @@ export default function MiniDrawer() {
   };
   const handleDrawerClose = () => {
     setOpen(false);
-  };
+  };  
 
   return (
     <Box sx={{ display: "flex" }}>
