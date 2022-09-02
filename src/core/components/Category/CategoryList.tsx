@@ -1,9 +1,7 @@
 import React from 'react';
-import { FormControl, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
+import { Grid, Paper, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { useTranslation } from "react-i18next"
-import { styled } from "@mui/material/styles";
-import InputBase from "@mui/material/InputBase";
-import { categoryListButton, categoryListInfo } from '../../theme/CategoryStyle';
+import SplitButton from '../Info';
 
 const CategoryPhone = () => {
     return <img src={require("../../../Img/CategoryPhone.png")} alt="" />;
@@ -54,17 +52,6 @@ export const categories = [
   },
 ];
 
-const BootstrapInput = styled(InputBase)(() => ({
-  "& .MuiInputBase-input": {
-    borderTopRightRadius: "5px",
-    borderBottomRightRadius: "5px",
-    position: "relative",
-    border: "2px solid #2DA55F",
-    fontSize: 16,
-    padding: "10px 26px 10px 12px",
-  },
-}));
-
 const CategoryList = () => {
     const { t } = useTranslation()
 
@@ -99,29 +86,7 @@ const CategoryList = () => {
                   <TableCell>{item?.date}</TableCell>
                   <TableCell>
                     <Grid sx={{ display: "flex", alignItems: "center" }}>
-                      <Typography style={categoryListInfo}>Info</Typography>
-                      <FormControl variant="standard">
-                        <Select
-                          labelId="demo-customized-select-label"
-                          id="demo-customized-select"
-                          input={<BootstrapInput />}
-                        >
-                          <MenuItem>
-                            <button style={categoryListButton}>
-                              {t(
-                                "admin.category_page.category_list.category_list_actions_edit"
-                              )}
-                            </button>
-                          </MenuItem>
-                          <MenuItem>
-                            <button style={categoryListButton}>
-                              {t(
-                                "admin.category_page.category_list.category_list_actions_delete"
-                              )}
-                            </button>
-                          </MenuItem>
-                        </Select>
-                      </FormControl>
+                      <SplitButton />
                     </Grid>
                   </TableCell>
                 </TableRow>

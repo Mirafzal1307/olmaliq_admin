@@ -84,6 +84,7 @@ const Adverts = () => {
   return (
     <>
       <MiniDrawer />
+      <Container>
       <LandingTop
         mainText={t(
           "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
@@ -101,7 +102,6 @@ const Adverts = () => {
           "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_button"
         )}
       />
-      <Container>
         <Paper style={{ padding: "30px" }}>
           <Typography className={classes.PaperTitle}>
             {t(
