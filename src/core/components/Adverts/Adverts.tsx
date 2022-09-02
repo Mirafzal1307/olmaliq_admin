@@ -30,7 +30,6 @@ const useStyles = makeStyles({
     margin: "10px 0 !important",
   },
   Grid: {
-    display: 'flex', 
     "& Button": {
       marginRight: "10px",
       padding: "0",
@@ -113,7 +112,7 @@ const Adverts = () => {
               )}
             </Typography>
             <Grid container>
-              <Grid item xs={6} className={classes.Grid}>
+              <Grid item xs={6} style={{display: 'flex'}}>
                 {selectedImages.map((image) => {
                   return (
                     <>
