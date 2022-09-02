@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     margin: "10px 0 !important",
   },
   Grid: {
+    display: 'flex', 
     "& Button": {
       marginRight: "10px",
       padding: "0",
@@ -57,11 +58,6 @@ const useStyles = makeStyles({
     borderRadius: "5px",
     fontFamily: "Poppins",
   },
-  // forImagePreview: {
-  //   width: "95px",
-  //   height: "95px",
-  //   border: "none !important",
-  // },
 });
 const Adverts = () => {
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
@@ -138,6 +134,11 @@ const Adverts = () => {
                 style={{ display: "flex", justifyContent: "end" }}
               >
                 <form style={{ display: "flex", alignItems: "center" }}>
+                  <img
+                    src={preview}
+                    style={{ display: preview ? "block" : "none" }}
+                    alt="img"
+                  />
                   <FormLabel
                     htmlFor="file-input"
                     onClick={(event: any) => {
@@ -147,6 +148,14 @@ const Adverts = () => {
                   >
                     <img src={require("../../../Img/save.png")} alt="dddd" />
                   </FormLabel>
+                  <input
+                    type="file"
+                    multiple
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    accept="image/*"
+                    onChange={onSelectedFile}
+                  />
                 </form>
               </Grid>
               <Typography className={classes.Typography}>
