@@ -57,7 +57,7 @@ const CategoryCreateList = () => {
   };
   return (
     <>
-      <Grid container >
+      <Grid container>
         <Grid xs={12} item>
           <Paper sx={{ padding: "30px 30px 20px" }}>
             <Typography style={smartphoneSmall}>
@@ -88,6 +88,17 @@ const CategoryCreateList = () => {
                   </>
                 );
               })}
+              </Grid> 
+              <Grid sx={{ display: "flex" }}>
+                {selectedImages.map((image) => {
+                  return (
+                    <>
+                      <div key={image} style={{ paddingRight: "5px" }}>
+                        <img style={uploadImageCategory} src={image} alt="" />
+                      </div>
+                    </>
+                  );
+                })}
               </Grid>
               <Grid>
                 <form style={{ display: "flex", alignItems: "center" }}>
@@ -123,7 +134,7 @@ const CategoryCreateList = () => {
             <Typography style={noteAll}>
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
-            <div style={{ textAlign: "end", marginTop: "380px" }}>
+            <div style={{ textAlign: "end", marginTop: "400px" }}>
               <Button sx={{ textTransform: "none" }} style={cancelButton}>
                 <img
                   src={require("../../../Img/Cancel.png")}

@@ -52,15 +52,43 @@
       }
     },
     "adverts_page": {
+      "adverts_page_landingTop": {
+        "adverts_page_landingTop_name": "Реклама",
+        "adverts_page_landingTop_url1": "Домашняя страница",
+        "adverts_page_landingTop_url2": "Реклама",
+        "adverts_page_landingTop_url3": "Реклама настройки",
+        "adverts_page_landingTop_button": "+ Создать рекламу"
+      },
       "adverts_page_paper": {
         "adverts_page_paper_title": "Реклама",
-        "adverts_page_paper_categoryTitle": "Основное изображение подкатегории"
+        "adverts_page_paper_categoryTitle": "Основное изображение подкатегории",
+        "adverts_page_paper_noteSpan": "Напоминание: ",
+        "adverts_page_paper_note": "Выберите фотографию для просмотра. При загрузке новой фотографии размер фотографии не может превышать 1060x300 пикселей."
       },
       "adverts_page_modal": {
         "modal_name": "Внимание",
         "modal_text": "Тебе очень нравится эта картинка ты хочешь удалить",
         "modal_red": "Удалить",
         "modal_green": "Отмена"
+      }
+    },
+    "product_page": {
+      "product_landing_side": {
+        "main_text": "Продукт",
+        "product_direction_home": "Панель задач",
+        "product_direction": "Продукт",
+        "create_product_direction": "Создать продукт",
+        "all_categories": "Все категории",
+        "product_status": "Статус продукта",
+        "add_product": "+  Добавить продукт"
+      }
+    },
+    "order_page": {
+      "order_landing_side": {
+        "main_text": "Заказ",
+        "order_direction_home": "Панель задач",
+        "order_direction": "Заказ",
+        "add_order": "+ Создать заказ"
       }
     }
   }

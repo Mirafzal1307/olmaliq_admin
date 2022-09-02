@@ -52,15 +52,43 @@
       }
     },
     "adverts_page": {
+      "adverts_page_landingTop": {
+        "adverts_page_landingTop_name": "Advert",
+        "adverts_page_landingTop_url1": "Home",
+        "adverts_page_landingTop_url2": "Advert",
+        "adverts_page_landingTop_url3": "Adverts settings",
+        "adverts_page_landingTop_button": "+ Create advert"
+      },
       "adverts_page_paper": {
         "adverts_page_paper_title": "Adverts",
-        "adverts_page_paper_categoryTitle": "Subcategory main image"
+        "adverts_page_paper_categoryTitle": "Subcategory main image",
+        "adverts_page_paper_noteSpan": "Note: ",
+        "adverts_page_paper_note": "Select a photo to view it. When you upload a new photo, the photo size cannot exceed 1060x300 px."
       },
       "adverts_page_modal": {
         "modal_name": "Attention",
         "modal_text": "You really love this photo do you want to delete",
         "modal_red": "Delete",
         "modal_green": "Cancellation"
+      }
+    },
+    "product_page": {
+      "product_landing_side": {
+        "main_text": "Product",
+        "product_direction_home": "Admin dashboard",
+        "product_direction": "Product",
+        "create_product_direction": "Create product",
+        "all_categories": "All categories",
+        "product_status": "Status of product",
+        "add_product": "+  Create product"
+      }
+    },
+    "order_page": {
+      "order_landing_side": {
+        "main_text": "Order",
+        "order_direction_home": "Admin dashboard",
+        "order_direction": "Order",
+        "add_order": "+ Create order"
       }
     }
   }

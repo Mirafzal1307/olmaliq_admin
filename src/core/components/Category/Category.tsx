@@ -9,6 +9,7 @@ import CategoryListNone from "./CategoryListNone";
 import { categories } from "./CategoryList";
 import { useTranslation } from "react-i18next";
 import CategoryCreateList from "./CategoryCreateList";
+import SplitButton from "../Info";
 
 const Category = () => {
   const { t } = useTranslation()
@@ -22,11 +23,9 @@ const Category = () => {
           dashboardText={t(
             "admin.category_page.category_landing_side.category_direction_home"
           )}
-          pageText={t(
-            "admin.category_page.category_landing_side.category_direction_category"
-          )}
+          prevIcon={">"}
           pageTextSpan={t(
-            "admin.category_page.category_landing_side.category_direction_create_category"
+            "admin.category_page.category_landing_side.category_direction_category"
           )}
           createButton={t(
             "admin.category_page.category_landing_side.create_category"
@@ -34,10 +33,11 @@ const Category = () => {
         />
         <Grid container>
           <Grid item xs={5}>
-              <CategoryCreate />
+            <CategoryCreate />
           </Grid>
           <Grid item xs={7}>
-              <CategoryCreateList />
+            {/* {categories?.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
+            <CategoryCreateList />
           </Grid>
         </Grid>
       </Container>

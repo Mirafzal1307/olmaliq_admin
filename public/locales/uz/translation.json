@@ -20,8 +20,7 @@
         "main_text": "Turkum",
         "create_category": "+ Turkum yaratish",
         "category_direction_home": "Boshqaruv paneli",
-        "category_direction_category": "Turkum",
-        "category_direction_create_category": "Turkumga qo'shish"
+        "category_direction_category": "Turkum"
       },
       "category_create_side": {
         "create_main_text": "Turkum yaratish",
@@ -52,15 +51,43 @@
       }
     },
     "adverts_page": {
+      "adverts_page_landingTop": {
+        "adverts_page_landingTop_name": "Reklom",
+        "adverts_page_landingTop_url1": "Bosh sahifa",
+        "adverts_page_landingTop_url2": "Reklom",
+        "adverts_page_landingTop_url3": "Reklom sozlamasi",
+        "adverts_page_landingTop_button": "+ Reklama yaratish"
+      },
       "adverts_page_paper": {
         "adverts_page_paper_title": "Reklama",
-        "adverts_page_paper_categoryTitle": "Ichki turkum asosiy surati"
+        "adverts_page_paper_categoryTitle": "Ichki turkum asosiy surati",
+        "adverts_page_paper_noteSpan": "Eslatma: ",
+        "adverts_page_paper_note": "Suratni ko'rish uchun uni tanlang. Yangi surat yuklaganingizda, surat o'lchami 1060x300 px'dan oshmasligilozim.",
+        "adverts_page_paper_categoryTitle2": "Reklama surati",
+        "adverts_page_paper_noteSpan2": "Eslatma:",
+        "adverts_page_paper_note2": "Suratni ko'rish uchun uni tanlang. Yangi surat yuklaganingizda, surat o'lchami 1060x300 px'dan oshmasligilozim."
       },
       "adverts_page_modal": {
         "modal_name": "Diqqat",
         "modal_text": "Siz rostdan ham ushbu suratni o’chirmoqchimisiz?",
         "modal_red": "O'chirish",
         "modal_green": "Bekor qilish"
+      }
+    },
+    "product_page": {
+      "product_landing_side": {
+        "main_text": "Mahsulot",
+        "product_direction_home": "Boshqaruv paneli",
+        "product_direction": "Mahsulot",
+        "add_product": "+  Mahsulot qo`shish"
+      }
+    },
+    "order_page": {
+      "order_landing_side": {
+        "main_text": "Buyurtma",
+        "order_direction_home": "Boshqaruv paneli",
+        "order_direction": "Buyurtma",
+        "add_order": "+ Order qo`shish"
       }
     }
   }
