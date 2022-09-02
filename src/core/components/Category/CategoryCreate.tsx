@@ -23,6 +23,10 @@ const CategoryCreate = () => {
     setSelectNewSubCategory(event.target.value as string);
   };
 
+
+  
+
+
   return (
     <>
       <Grid sx={{ display: "flex", justifyContent: "space-between" }} xs={12}>

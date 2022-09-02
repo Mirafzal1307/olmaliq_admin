@@ -53,10 +53,8 @@ const CategoryCreateList = () => {
     const imagesArray: string[] = selectedFilesArray.map((file: any) => {
       return URL.createObjectURL(file);
     });
-
     setSelectedImages(imagesArray);
   };
-
   return (
     <>
       <Grid container >
@@ -79,11 +77,8 @@ const CategoryCreateList = () => {
                 "admin.category_page.category_create_list.small_categories_photos"
               )}
             </Typography>
-
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
               <Grid sx={{display: "flex",}}>
-
-                
               {selectedImages.map((image) => {
                 return (
                   <>
@@ -95,27 +90,6 @@ const CategoryCreateList = () => {
               })}
               </Grid>
               <Grid>
-                {/* <FormLabel
-                  htmlFor="file-input"
-                  onClick={(event) => {
-                    event.preventDefault();
-                    fileInputRef.current.click();
-                  }}
-                >
-                  <img
-                    src={require("../../../Img/save.png")}
-                    alt="dddd"
-                    style={forImagePreview}
-                  />
-                </FormLabel>
-                <input
-                  type="file"
-                  style={{ display: "none" }}
-                  ref={fileInputRef}
-                  accept="image/*"
-                  onChange={handleInputChange}
-                  className="filetype"
-                /> */}
                 <form style={{ display: "flex", alignItems: "center" }}>
                   <img
                     src={preview}
