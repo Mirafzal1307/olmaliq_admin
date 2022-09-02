@@ -29,9 +29,11 @@ build_kaniko_prod:
 
 deploy:
   stage: deploy
-  image: kroniak/ssh-client
+  # image: kroniak/ssh-client
+  image: docker:latest
+
   services: 
-    - docker
+    - docker:18.09.7-dind # older version that does not need demand TLS (see below)
   before_script:
     - echo "deploying app"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
