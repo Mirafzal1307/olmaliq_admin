@@ -1,60 +1,56 @@
-image: gitlab/dind
-
-services:
-  - docker:dind
-
+image: docker:19.03.13
 
 stages:
-  - build_kaniko
-  - deploy
+  - build_kaniko_prod
+  - deploy_prod  
 
 build_kaniko_prod:
-  stage: build_kaniko
+  stage: build_kaniko_prod
   variables:
     IMAGE_DESTINATION: ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}
   only:
     - development
+  tags: 
+    - shop_front
   image:
       # We recommend using the CERN version of the Kaniko image: gitlab-registry.cern.ch/ci-tools/docker-image-builder
-      #      name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
+      # name: gitlab-registry.cern.ch/ci-tools/docker-image-builder
       name: gcr.io/kaniko-project/executor:debug
-
+      
       entrypoint: [""]
   script:
       # Prepare Kaniko configuration file
       - echo $CI_REGISTRY_IMAGE
       - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
       # Build and push the image from the Dockerfile at the root of the project.
-      - /kaniko/executor --context $CI_PROJECT_DIR  --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $IMAGE_DESTINATION --cache-dir=/workspace/cache 
+      - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination $IMAGE_DESTINATION --cache-dir=/workspace/cache 
       # Print the full registry path of the pushed image
       - echo "Image pushed successfully to ${IMAGE_DESTINATION}"
       - echo "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"      
 
-deploy:
-  stage: deploy
+
+deploy_prod:
+  stage: deploy_prod
   # image: kroniak/ssh-client
-
-  # image: docker:latest
-  # services:
-  #   - docker:dind
-  # variables:
-  #   DOCKER_DRIVER: overlay2 # not sure if this is needed
-  #   DOCKER_TLS_CERTDIR: "/certs"
-
+  image: docker
   # services: 
-  #   - docker:18.09.7-dind # older version that does not need demand TLS (see below)
+  #   - docker:dind
+  services:
+    - docker:19.03.13-dind
+
   before_script:
     - echo "deploying app"
+    - chmod og= $SSH_PRIVATE_KEY
+    - apk update && apk add openssh-client
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-    - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - echo "${SSH_PRIVATE_KEY}" | ssh-add -
-    - chmod 600 ~/.ssh/id_rsa
-    - ssh-add ~/.ssh/id_rsa
-    - ssh-keyscan -H $PROD_SERVER_IP >> ~/.ssh/known_hosts
-    # - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh    
+  only:
+    - development
+  tags: 
+    - shop_front    
+  script:
+    - apk add --update --no-cache openssh
+
+
   only:
     - development
   script:
