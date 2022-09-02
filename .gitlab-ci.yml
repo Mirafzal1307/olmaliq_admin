@@ -29,10 +29,9 @@ build_kaniko_prod:
 
 deploy:
   stage: deploy
-  # image: kroniak/ssh-client
-  image: docker
+  image: kroniak/ssh-client
   services: 
-    - docker:19.03.13
+    - docker
   before_script:
     - echo "deploying app"
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
