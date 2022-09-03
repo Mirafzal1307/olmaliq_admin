@@ -8,9 +8,10 @@ import {
   Typography
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { AnyARecord } from "dns";
+import { AnyARecord } from "dns";``
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   cancelButton,
   forImagePreview,
@@ -35,8 +36,25 @@ const useStyles = makeStyles({
     width: "95px",
     height: "95px",
     border: "none !important"
+  },
+  bigFatherPosition: {
+    position: "relative"
+  },
+  ClickedImage: {
+    "&:hover": {
+      widt: "100%",
+      height: "100%",
+      background: "gray",
+      opacity: 1
+    }
+  },
+  positionImage: {
+    position: "absolute",
+    top: 0
   }
 });
+
+
 
 const CategoryCreateList = () => {
   const { t } = useTranslation();
@@ -82,24 +100,25 @@ const CategoryCreateList = () => {
               {selectedImages.map((image) => {
                 return (
                   <>
-                    <div key={image} style={{ paddingRight: "5px" }}>
-                      <img style={uploadImageCategory} src={image} alt="" />
+                    <div
+                      key={image}
+                      style={{ paddingRight: "5px" }}
+                      className={classes.bigFatherPosition}
+                    >
+                      <img
+                        style={uploadImageCategory}
+                        className={classes.ClickedImage}
+                        src={image}
+                        alt=""
+                      />
+                      <Grid className={classes.positionImage}>
+                        <DeleteIcon />
+                      </Grid>
                     </div>
                   </>
                 );
               })}
               </Grid> 
-              <Grid sx={{ display: "flex" }}>
-                {selectedImages.map((image) => {
-                  return (
-                    <>
-                      <div key={image} style={{ paddingRight: "5px" }}>
-                        <img style={uploadImageCategory} src={image} alt="" />
-                      </div>
-                    </>
-                  );
-                })}
-              </Grid>
               <Grid>
                 <form style={{ display: "flex", alignItems: "center" }}>
                   <img

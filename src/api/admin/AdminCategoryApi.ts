@@ -1,5 +1,5 @@
-import HttClient from "../HttpClient";
+import HttpClient from "../HttpClient";
 
-export function getUsersList(data: object = {}) {
-  return HttClient().get(`/users`, data);
+export function getSubCategory(data: object = {}) {
+  return HttpClient().get(`/subcategory`, data);
 }
