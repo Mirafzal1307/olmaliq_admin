@@ -8,13 +8,11 @@ import {
   Typography
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { AnyARecord } from "dns";``
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
   cancelButton,
-  forImagePreview,
   note,
   noteAll,
   smartphoneSmall,
@@ -42,7 +40,7 @@ const useStyles = makeStyles({
   },
   ClickedImage: {
     "&:hover": {
-      widt: "100%",
+      width: "100%",
       height: "100%",
       background: "gray",
       opacity: 1

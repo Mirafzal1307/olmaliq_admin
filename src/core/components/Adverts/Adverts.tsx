@@ -10,9 +10,9 @@ import {
   FormLabel,
   Grid,
   Paper,
-  Toolbar,
   Typography,
 } from "@mui/material";
+import { ImgList } from "../../theme/AdvertStyles";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -31,10 +31,10 @@ const useStyles = makeStyles({
   },
   Grid: {
     "& Button": {
-      marginRight: "10px",
-      padding: "0",
-      maxWidth: "45px",
-      minWidth: "45px",
+      marginRight: 10,
+      padding: 0,
+      maxWidth: 45,
+      minWidth: 45,
       "&:hover": {
         background: "rgba(0, 0, 0, .5)",
       },
@@ -51,11 +51,20 @@ const useStyles = makeStyles({
       color: "#2DA55F",
     },
   },
-  uploadImageCategory: {
-    width: "45px",
-    height: "45px",
-    borderRadius: "5px",
-    fontFamily: "Poppins",
+  ImgList: {
+    marginRight: 10,
+    width: 45,
+    height: 45,
+    
+    "&:hover": {
+      position: 'relative',
+    },
+
+    "& img": {
+      borderRadius: 5,
+      width: "100%",
+      height: "100%",
+    },
   },
 });
 const Adverts = () => {
@@ -80,30 +89,30 @@ const Adverts = () => {
     <>
       <MiniDrawer />
       <Container>
-      <LandingTop
-        mainText={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
-        )}
-        dashboardText={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url1"
-        )}
-        pageText={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url2"
-        )}
-        pageTextSpan={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url3"
-        )}
-        createButton={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_button"
-        )}
-      />
+        <LandingTop
+          mainText={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
+          )}
+          dashboardText={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url1"
+          )}
+          pageText={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url2"
+          )}
+          pageTextSpan={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url3"
+          )}
+          createButton={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_button"
+          )}
+        />
         <Paper style={{ padding: "30px" }}>
           <Typography className={classes.PaperTitle}>
             {t(
               "admin.adverts_page.adverts_page_paper.adverts_page_paper_title"
             )}
             {" №1"}
-          </Typography>
+          </Typography> 
           <Grid container>
             <Typography className={classes.PaperText1}>
               {"1. "}
@@ -112,16 +121,21 @@ const Adverts = () => {
               )}
             </Typography>
             <Grid container>
-              <Grid item xs={6} style={{display: 'flex'}}>
+              <Grid item xs={6} style={{ display: "flex" }}>
                 {selectedImages.map((image) => {
                   return (
                     <>
-                      <div key={image} style={{ paddingRight: "10px" }}>
-                        <img
-                          className={classes.uploadImageCategory}
-                          src={image}
-                          alt=""
-                        />
+                      <div key={image} className={classes.ImgList}>
+                        <img src={image} alt="" />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "0",
+                            left: "0",
+                          }}
+                        >
+                          <Modal />
+                        </div>
                       </div>
                     </>
                   );

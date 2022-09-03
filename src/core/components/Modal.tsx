@@ -22,8 +22,9 @@ const style = {
   width: 500,
   bgcolor: "#fff !important",
   borderRadius: "10px",
-  pt: 2,
-  pb: 3,
+  // pt: 3,
+  // pb: 4,
+  padding: '30px'
 };
 const useStyles = makeStyles({
   titleRows: {
@@ -67,9 +68,16 @@ const useStyles = makeStyles({
   deleteButton: {
     width: "45px",
     height: "45px",
-    backgroundColor: "#2DA55F !important",
+    background: "rgba(0, 0, 0, .5)",
     border: "none",
     borderRadius: "5px",
+
+    "& img": {
+      color: "#fff",
+      width: "18px !important",
+      height: "18px !important",
+      borderRadius: "0 !important",
+    },
   },
   cancel: {
     background: "#FF4B4B !important",
@@ -108,7 +116,7 @@ function Modal(props: any): JSX.Element {
           onClick={handleOpen}
           className={classes.deleteButton}
         >
-          <img src={require("../../Img/Download.png")} alt="rasm bor edi" />
+          <img src={require("../../Img/Zoom.png")} alt="rasm bor edi" />
         </button>
       </Tooltip>
       <StyledModal
@@ -118,6 +126,7 @@ function Modal(props: any): JSX.Element {
         onClose={handleClose}
       >
         <Box sx={style} className={classes.box}>
+          <img src={require("../../Img/advertImg.png")} style={{width:"90%"}} alt="" />
           <h1 className={classes.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
