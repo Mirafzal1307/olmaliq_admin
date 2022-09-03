@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { getSubCategory } from "../../api/admin/AdminCategoryApi";
 import MiniDrawer from "../../layouts/Drawer/Drawer";
+import TableComponent from "../../layouts/Table/Table";
 
 const Home = () => {
   const getData = async () => {

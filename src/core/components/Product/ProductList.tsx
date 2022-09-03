@@ -1,74 +1,68 @@
-import React from 'react';
 import { FormControl, Grid, MenuItem, Paper, Select, SelectChangeEvent, Table, TableBody, TableCell, TableContainer, TableRow, Toolbar } from '@mui/material';
-import { useTranslation } from "react-i18next"
-import SplitButton from '../Info';
+import React from 'react'
+import { useTranslation } from 'react-i18next';
 import TableComponent from '../../../layouts/Table/Table';
+import { statusProduct } from '../../theme/Table';
+import SplitButton from '../Info';
 
-const CategoryPhone = () => {
-    return <img src={require("../../../Img/CategoryPhone.png")} alt="" />;
-}
-const CategoryNotebook = () => {
-    return <img src={require("../../../Img/CategoryNotebook.png")} alt="" />;
-}
-const CategoryTV = () => {
-    return <img src={require("../../../Img/CategoryTV.png")} alt="" />;
-}
-const CategoryTechno = () => {
-  return <img src={require("../../../Img/CategoryTechno.png")} alt="" />;
-};
-const CategoryAvto = () => {
-  return <img src={require("../../../Img/CategoryAvto.png")} alt="" />;
+const IphonePhoto = () => {
+  return <img src={require("../../../Img/Iphone.png")} alt="" />;
 };
 
-export const categories = [
+export const products = [
   {
     id: 1,
-    photo: <CategoryPhone />,
-    categoryName: "Telefon va gadjetlar",
-    subCategoryName: "",
-    mainCategoryName: "",
-    name: "Telefon va gadjetlar",
+    photo: <IphonePhoto />,
+    price: "155 000 so`m",
+    discount: "99%",
+    count: "10 000",
+    status: "Bor",
+    name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
   {
     id: 2,
-    photo: <CategoryNotebook />,
-    categoryName: "Orgtexnika va Kompyuterlar",
-    subCategoryName: "",
-    mainCategoryName: "",
-    name: "Orgtexnika va Kompyuterlar",
+    photo: <IphonePhoto />,
+    price: "155 000 so`m",
+    discount: "99%",
+    count: "10 000",
+    status: "Bor",
+    name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
   {
     id: 3,
-    photo: <CategoryTV />,
-    categoryName: "Televizor va videotexnikalar",
-    subCategoryName: "",
-    mainCategoryName: "",
-    name: "Televizor va videotexnikalar",
+    photo: <IphonePhoto />,
+    price: "155 000 so`m",
+    discount: "99%",
+    count: "10 000",
+    status: "Bor",
+    name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
   {
     id: 4,
-    photo: <CategoryTechno />,
-    categoryName: "Maishiy texnikalar",
-    subCategoryName: "",
-    mainCategoryName: "",
-    name: "Maishiy texnikalar",
+    photo: <IphonePhoto />,
+    price: "155 000 so`m",
+    discount: "99%",
+    count: "10 000",
+    status: "Bor",
+    name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
   {
     id: 5,
-    photo: <CategoryAvto />,
-    categoryName: "Avtojihozlar",
-    subCategoryName: "",
-    mainCategoryName: "",
-    name: "Avtojihozlar",
+    photo: <IphonePhoto />,
+    price: "155 000 so`m",
+    discount: "99%",
+    count: "10 000",
+    status: "Bor",
+    name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
 ];
 
-const CategoryList = () => {
+const ProductList = () => {
   const { t } = useTranslation();
   const [countPerPage, setCountPerPage] = React.useState("");
 
@@ -104,14 +98,17 @@ const CategoryList = () => {
                   "admin.category_page.category_list.category_list_photo"
                 )}
                 Name={t("admin.category_page.category_list.category_list_name")}
-                CategoryName={t(
-                  "admin.category_page.category_list.category_name_product"
+                PriceProduct={t(
+                  "admin.category_page.category_list.price_product"
                 )}
-                SubCategoryName={t(
-                  "admin.category_page.category_list.subcategory_name_product"
+                SaleProduct={t(
+                  "admin.category_page.category_list.sale_product"
                 )}
-                MainCategoryName={t(
-                  "admin.category_page.category_list.landing_category_name_product"
+                CountProduct={t(
+                  "admin.category_page.category_list.count_product"
+                )}
+                StatusProduct={t(
+                  "admin.category_page.category_list.status_product"
                 )}
                 Date={t("admin.category_page.category_list.category_list_date")}
                 Actions={t(
@@ -119,7 +116,7 @@ const CategoryList = () => {
                 )}
               />
               <TableBody>
-                {categories.map((item) => (
+                {products.map((item) => (
                   <TableRow key={item?.id}>
                     {item?.photo ? (
                       <TableCell>{item?.photo}</TableCell>
@@ -135,29 +132,34 @@ const CategoryList = () => {
                         {t("admin.category_page.category_list.name_none")}
                       </TableCell>
                     )}
-                    {item?.categoryName ? (
-                      <TableCell>{item?.categoryName}</TableCell>
+                    {item?.price ? (
+                      <TableCell>{item?.price}</TableCell>
                     ) : (
                       <TableCell>
-                        {t("admin.category_page.category_list.category_none")}
+                        {t("admin.category_page.category_list.name_none")}
                       </TableCell>
                     )}
-                    {item?.subCategoryName ? (
-                      <TableCell>{item?.subCategoryName}</TableCell>
+                    {item?.discount ? (
+                      <TableCell>{item?.discount}</TableCell>
                     ) : (
                       <TableCell>
-                        {t(
-                          "admin.category_page.category_list.sub_category_none"
-                        )}
+                        {t("admin.category_page.category_list.name_none")}
                       </TableCell>
                     )}
-                    {item?.mainCategoryName ? (
-                      <TableCell>{item?.mainCategoryName}</TableCell>
+                    {item?.count ? (
+                      <TableCell>{item?.count}</TableCell>
                     ) : (
                       <TableCell>
-                        {t(
-                          "admin.category_page.category_list.main_category_none"
-                        )}
+                        {t("admin.category_page.category_list.name_none")}
+                      </TableCell>
+                    )}
+                    {item?.status ? (
+                      <TableCell>
+                        <div style={statusProduct}>{item?.status}</div>
+                      </TableCell>
+                    ) : (
+                      <TableCell>
+                        {t("admin.category_page.category_list.name_none")}
                       </TableCell>
                     )}
                     {item?.date ? (
@@ -183,4 +185,4 @@ const CategoryList = () => {
   );
 }
 
-export default CategoryList
+export default ProductList

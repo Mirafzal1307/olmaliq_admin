@@ -40,7 +40,21 @@
         "category_list_date": "Дата",
         "category_list_actions": "Действия",
         "category_list_actions_edit": "Изменить",
-        "category_list_actions_delete": "Удалить"
+        "category_list_actions_delete": "Удалить",
+        "category_name_product": "Категория",
+        "subcategory_name_product": "Подкатегория",
+        "landing_category_name_product": "Главная Категория",
+        "price_product": "Цена",
+        "sale_product": "Скидка",
+        "count_product": "Продано",
+        "status_product": "Статус",
+        "photo_none": "Нет фотографии",
+        "name_none": "Нет названии",
+        "category_none": "Нет категории",
+        "sub_category_none": "Нет подкатегории",
+        "main_category_none": "Нет главной категории",
+        "data_none": "Нет даты",
+        "text_per_page": "Показать"
       },
       "category_create_list": {
         "data_name": "Смартфоны (Подкатегория)",
