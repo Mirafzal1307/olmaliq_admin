@@ -10,7 +10,7 @@ import {
   selectValueCategory,
   selectValueCreate
 } from "../../theme/CategoryStyle";
-import { getSubCategory } from "../../../api/admin/AdminCategoryApi";
+import { deleteSubCategory, getSubCategory } from "../../../api/admin/AdminCategoryApi";
 
 interface subCategoryData {
   sub_category_id: string;
@@ -42,6 +42,7 @@ const CategoryCreate = () => {
     const res: any = await getSubCategory();
     setSubCategory(res?.data?.data);
   };
+  
 
   useEffect(() => {
     getData();
