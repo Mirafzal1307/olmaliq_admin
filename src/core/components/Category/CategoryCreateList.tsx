@@ -50,7 +50,8 @@ const useStyles = makeStyles({
   },
   positionImage: {
     position: "absolute",
-    top: 0
+    top:0,
+    textAlign: "center"
   }
 });
 
