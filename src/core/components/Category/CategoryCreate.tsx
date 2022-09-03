@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormControl, Grid, MenuItem, Paper, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { createButton, createMainText, selectCategoryText, selectValueCategory, selectValueCreate } from "../../theme/CategoryStyle";
+import {
+  createButton,
+  createMainText,
+  selectCategoryText,
+  selectValueCategory,
+  selectValueCreate
+} from "../../theme/CategoryStyle";
+import { getSubCategory } from "../../../api/admin/AdminCategoryApi";
+
+interface subCategoryData {
+  sub_category_id: string;
+  parent_id: string;
+  sub_category_name: string;
+  img: string;
+}
 
 const CategoryCreate = () => {
   const { t } = useTranslation();
 
   const [selectCategory, setSelectCategory] = useState("");
+  const [subCategory, setSubCategory] = useState<subCategoryData[]>([]);
   const [selectSubCategory, setSelectSubCategory] = useState("");
   const [selectNewSubCategory, setSelectNewSubCategory] = useState("");
   const handleChangeCategory = (event: SelectChangeEvent) => {
@@ -23,9 +38,14 @@ const CategoryCreate = () => {
     setSelectNewSubCategory(event.target.value as string);
   };
 
+  const getData = async () => {
+    const res: any = await getSubCategory();
+    setSubCategory(res?.data?.data);
+  };
 
-  
-
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <>
@@ -50,15 +70,9 @@ const CategoryCreate = () => {
                     onChange={handleChangeCategory}
                     displayEmpty
                     style={{
-                      height: "40px",
+                      height: "40px"
                     }}
                   >
-                    <MenuItem style={selectValueCategory} value={10}>
-                      Twenty
-                    </MenuItem>
-                    <MenuItem style={selectValueCategory} value={20}>
-                      Thirty
-                    </MenuItem>
                     <MenuItem style={selectValueCreate}>
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
@@ -86,15 +100,19 @@ const CategoryCreate = () => {
                     onChange={handleChangeSubCategory}
                     displayEmpty
                     style={{
-                      height: "40px",
+                      height: "40px"
                     }}
                   >
-                    <MenuItem style={selectValueCategory} value={10}>
-                      Twenty
-                    </MenuItem>
-                    <MenuItem style={selectValueCategory} value={20}>
-                      Thirty
-                    </MenuItem>
+                    {subCategory?.map((item) => (
+                      <MenuItem
+                        style={selectValueCategory}
+                        key={item?.sub_category_id}
+                        value={item?.sub_category_id}
+                      >
+                        {item?.sub_category_name}
+                      </MenuItem>
+                    ))}
+
                     <MenuItem style={selectValueCreate}>
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
@@ -122,7 +140,7 @@ const CategoryCreate = () => {
                     onChange={handleChangeNewSubCategory}
                     displayEmpty
                     style={{
-                      height: "40px",
+                      height: "40px"
                     }}
                   >
                     <MenuItem style={selectValueCategory} value={10}>
