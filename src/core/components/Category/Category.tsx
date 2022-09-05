@@ -17,7 +17,7 @@ const Category = () => {
   return (
     <>
       <MiniDrawer />
-      <Container maxWidth="xl">
+      <Container>
         <LandingTop
           mainText={t("admin.category_page.category_landing_side.main_text")}
           dashboardText={t(
@@ -32,10 +32,10 @@ const Category = () => {
           )}
         />
         <Grid container>
-          <Grid item xs={4}>
+          <Grid item xs={5}>
             <CategoryCreate />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={7}>
             {/* {categories?.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
             <CategoryCreateList />
             {/* <CategoryList /> */}

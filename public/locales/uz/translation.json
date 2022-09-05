@@ -61,7 +61,8 @@
         "plaseholder_name": "Smartfonlar",
         "small_categories_photos": "2.Asosiy turkum surati",
         "note_about": "Eslatma:",
-        "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak."
+        "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak.",
+        "createButton": "Saqlash"
       }
     },
     "adverts_page": {
@@ -103,6 +104,10 @@
         "order_direction": "Buyurtma",
         "add_order": "+ Order qo`shish"
       }
+    },
+    "modal": {
+      "tooltip_title_delete": "O'chirish",
+      "modal_main_text": "Siz rostdanham o’chirmoqchimisiz?"
     }
   }
 }

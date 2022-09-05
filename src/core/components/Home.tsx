@@ -1,22 +1,10 @@
 import React from "react";
 import { Container } from "@mui/material";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { getSubCategory } from "../../api/admin/AdminCategoryApi";
 import MiniDrawer from "../../layouts/Drawer/Drawer";
-import TableComponent from "../../layouts/Table/Table";
 
 const Home = () => {
-  const getData = async () => {
-    const res: unknown = await getSubCategory();
-    console.log(res);
-  };
-
-  useEffect(() => {
-    getData();
-  });
-
   const { t } = useTranslation();
 
   return (

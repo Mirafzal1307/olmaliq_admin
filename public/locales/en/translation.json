@@ -62,7 +62,8 @@
         "plaseholder_name": "Smartphones",
         "small_categories_photos": "2.Subcategory main image",
         "note_about": "Note:",
-        "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide."
+        "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide.",
+        "createButton": "Save"
       }
     },
     "adverts_page": {
@@ -104,6 +105,10 @@
         "order_direction": "Order",
         "add_order": "+ Create order"
       }
+    },
+    "modal": {
+      "tooltip_title_delete": "Delete",
+      "modal_main_text": "Are you sure you want to delete?"
     }
   }
 }
