@@ -10,7 +10,11 @@ import {
   selectValueCategory,
   selectValueCreate
 } from "../../theme/CategoryStyle";
-import { deleteSubCategory, getSubCategory } from "../../../api/admin/AdminCategoryApi";
+import {
+  deleteSubCategory,
+  getChildCategory,
+  getSubCategory
+} from "../../../api/admin/AdminCategoryApi";
 
 interface subCategoryData {
   sub_category_id: string;
@@ -19,11 +23,20 @@ interface subCategoryData {
   img: string;
 }
 
+interface childSubCategory {
+  child_category_id: string;
+  child_category_name: string;
+  child_category_image: string;
+}
+
 const CategoryCreate = () => {
   const { t } = useTranslation();
 
   const [selectCategory, setSelectCategory] = useState("");
   const [subCategory, setSubCategory] = useState<subCategoryData[]>([]);
+  const [child_sub_category, setSubCayegoryChild] = useState<
+    childSubCategory[]
+  >([]);
   const [selectSubCategory, setSelectSubCategory] = useState("");
   const [selectNewSubCategory, setSelectNewSubCategory] = useState("");
   const handleChangeCategory = (event: SelectChangeEvent) => {
@@ -42,11 +55,54 @@ const CategoryCreate = () => {
     const res: any = await getSubCategory();
     setSubCategory(res?.data?.data);
   };
-  
 
   useEffect(() => {
     getData();
-  }, []);
+    getSubChildCategory();
+  });
+
+  const getSubChildCategory = async () => {
+    const data: any = await getChildCategory();
+    setSubCayegoryChild(data?.data?.data);
+  };
+
+  const SubCategories = () => {
+    alert("msg");
+    return (
+      <>
+        <Select
+          value={selectNewSubCategory}
+          onChange={handleChangeNewSubCategory}
+          displayEmpty
+          style={{
+            height: "40px"
+          }}
+        >
+          {child_sub_category?.map((childs) => {
+            return (
+              <MenuItem
+                key={childs.child_category_id}
+                style={selectValueCategory}
+                value={childs.child_category_id}
+              >
+                {childs.child_category_name}
+              </MenuItem>
+            );
+          })}
+          <MenuItem style={selectValueCreate}>
+            <button style={createButton}>
+              <img src={require("../../../Img/Plus.png")} alt="" />
+              <Typography style={{ marginLeft: "10px" }}>
+                {t(
+                  "admin.category_page.category_create_side.create_category_select"
+                )}
+              </Typography>
+            </button>
+          </MenuItem>
+        </Select>
+      </>
+    );
+  };
 
   return (
     <>
@@ -104,17 +160,21 @@ const CategoryCreate = () => {
                       height: "40px"
                     }}
                   >
-                    {subCategory?.map((item) => (
-                      <MenuItem
-                        style={selectValueCategory}
-                        key={item?.sub_category_id}
-                        value={item?.sub_category_id}
-                      >
-                        {item?.sub_category_name}
-                      </MenuItem>
-                    ))}
-
-                    <MenuItem style={selectValueCreate}>
+                    {subCategory?.map((item: any) => {
+                      return (
+                        <MenuItem
+                          style={selectValueCategory}
+                          key={item?.sub_category_id}
+                          value={item?.sub_category_id}
+                        >
+                          {item?.sub_category_name}
+                        </MenuItem>
+                      );
+                    })}
+                    <MenuItem
+                      style={selectValueCreate}
+                      onClick={() => SubCategories()}
+                    >
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
                         <Typography style={{ marginLeft: "10px" }}>
@@ -135,33 +195,7 @@ const CategoryCreate = () => {
                 </Typography>
                 <FormControl
                   sx={{ m: 1, minWidth: "100%", margin: 0, padding: 0 }}
-                >
-                  <Select
-                    value={selectNewSubCategory}
-                    onChange={handleChangeNewSubCategory}
-                    displayEmpty
-                    style={{
-                      height: "40px"
-                    }}
-                  >
-                    <MenuItem style={selectValueCategory} value={10}>
-                      Twenty
-                    </MenuItem>
-                    <MenuItem style={selectValueCategory} value={20}>
-                      Thirty
-                    </MenuItem>
-                    <MenuItem style={selectValueCreate}>
-                      <button style={createButton}>
-                        <img src={require("../../../Img/Plus.png")} alt="" />
-                        <Typography style={{ marginLeft: "10px" }}>
-                          {t(
-                            "admin.category_page.category_create_side.create_category_select"
-                          )}
-                        </Typography>
-                      </button>
-                    </MenuItem>
-                  </Select>
-                </FormControl>
+                ></FormControl>
               </Grid>
             </Grid>
           </Paper>

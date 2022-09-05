@@ -81,7 +81,6 @@ const CategoryCreateList = () => {
     setSelectedImages(
       selectedImages.filter((todo: any) => todo.id !== id)
     );
-    console.log(id);
   };
   return (
     <>
