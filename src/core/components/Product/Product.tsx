@@ -1,8 +1,9 @@
 import React from "react";
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import MiniDrawer from "../../../layouts/Drawer/Drawer";
 import { useTranslation } from "react-i18next"
 import LandingTop from "../LandingTop";
+import ProductList from "./ProductList";
 
 const Product = () => {
   const { t } = useTranslation()
@@ -24,6 +25,9 @@ const Product = () => {
             "admin.product_page.product_landing_side.add_product"
           )}
         />
+        <Grid xs={12}>
+          <ProductList />
+        </Grid>
       </Container>
     </>
   );

@@ -6,6 +6,7 @@ import LandingTop from "../LandingTop";
 
 const Order = () => {
   const { t } = useTranslation();
+
   return (
     <>
       <MiniDrawer />

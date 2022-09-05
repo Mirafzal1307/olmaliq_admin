@@ -23,8 +23,7 @@ import {
   successSaveButton,
   uploadImageCategory
 } from "../../theme/CategoryStyle";
-import { deleteSubCategory } from "../../../api/admin/AdminCategoryApi";
-import { useParams } from "react-router-dom";
+import Modal from "../Modal";
 
 const useStyles = makeStyles({
   categoryInput: {
@@ -165,21 +164,22 @@ const CategoryCreateList = () => {
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
             <div style={{ textAlign: "end", marginTop: "400px" }}>
-              <Button sx={{ textTransform: "none" }} style={cancelButton}>
-                <img
-                  src={require("../../../Img/Cancel.png")}
-                  style={{ marginRight: "10px" }}
-                  alt=""
-                />{" "}
-                O`chirish
-              </Button>
+              <Modal
+                TooltipTitle={t("admin.modal.tooltip_title_delete")}
+                deleteButton={"have"}
+                successText={t(
+                  "admin.adverts_page.adverts_page_modal.modal_green"
+                )}
+                exitText={t("admin.adverts_page.adverts_page_modal.modal_red")}
+                style={cancelButton}
+              />
               <Button sx={{ textTransform: "none" }} style={successSaveButton}>
                 <img
                   src={require("../../../Img/Success.png")}
                   style={{ marginRight: "10px" }}
                   alt=""
                 />
-                Saqlash
+                {t("admin.category_page.category_create_list.createButton")}
               </Button>
             </div>
           </Paper>

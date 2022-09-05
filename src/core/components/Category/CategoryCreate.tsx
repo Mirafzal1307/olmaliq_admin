@@ -10,11 +10,8 @@ import {
   selectValueCategory,
   selectValueCreate
 } from "../../theme/CategoryStyle";
-import {
-  deleteSubCategory,
-  getChildCategory,
-  getSubCategory
-} from "../../../api/admin/AdminCategoryApi";
+import { getCategory } from "../../../api/admin/AdminCategoryApi";
+import CategoryCreateList from "./CategoryCreateList";
 
 interface subCategoryData {
   sub_category_id: string;
@@ -51,9 +48,10 @@ const CategoryCreate = () => {
     setSelectNewSubCategory(event.target.value as string);
   };
 
-  const getData = async () => {
-    const res: any = await getSubCategory();
-    setSubCategory(res?.data?.data);
+  const getCategoryData = async () => {
+    const res: any = await getCategory();
+    setCategory(res?.data?.data);
+    console.log(res?.data?.data);
   };
 
   useEffect(() => {
@@ -130,6 +128,14 @@ const CategoryCreate = () => {
                       height: "40px"
                     }}
                   >
+                    {category?.map((item) => (
+                      <MenuItem
+                        key={item?.category_id}
+                        value={item?.category_id}
+                      >
+                        {item?.category_name}
+                      </MenuItem>
+                    ))}
                     <MenuItem style={selectValueCreate}>
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
