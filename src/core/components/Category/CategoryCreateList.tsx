@@ -8,7 +8,8 @@ import {
   Typography
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { AnyARecord } from "dns";``
+import { AnyARecord } from "dns";
+``;
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -51,21 +52,20 @@ const useStyles = makeStyles({
   },
   positionImage: {
     position: "absolute",
-    top:0,
-    textAlign: "center"
+    right: "32%",
+    top: "18%"
   }
 });
-
-
 
 const CategoryCreateList = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const fileInputRef = useRef<any>();
   const [preview, setPreview] = useState<any>();
+  const { id } = useParams();
 
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
-
+  const [selectedImages, setSelectedImages] = useState<any>([]);
+  // console.log(selectedImages);
   const onSelectedFile = (event: any) => {
     const selectedFiles = event.target.files;
     const selectedFilesArray: string[] = Array.from(selectedFiles);
@@ -74,6 +74,12 @@ const CategoryCreateList = () => {
       return URL.createObjectURL(file);
     });
     setSelectedImages(imagesArray);
+  };
+
+  const deleteUser = (id: any) => (e: any) => {
+    setSelectedImages(
+      selectedImages.filter((todo: any) => todo.id !== id)
+    );
   };
   return (
     <>
@@ -99,25 +105,27 @@ const CategoryCreateList = () => {
             </Typography>
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
               <Grid sx={{ display: "flex" }}>
-                {selectedImages.map((image) => {
+                {selectedImages.map((image: any) => {
+                  console.log(image);
                   return (
-                    <>
-                      <div
-                        key={image}
-                        style={{ paddingRight: "5px" }}
-                        className={classes.bigFatherPosition}
+                    <div
+                      key={id}
+                      style={{ paddingRight: "5px" }}
+                      className={classes.bigFatherPosition}
+                    >
+                      <img
+                        style={uploadImageCategory}
+                        className={classes.ClickedImage}
+                        src={image}
+                        alt=""
+                      />
+                      <Grid
+                        className={classes.positionImage}
+                        onClick={deleteUser(id)}
                       >
-                        <img
-                          style={uploadImageCategory}
-                          className={classes.ClickedImage}
-                          src={image}
-                          alt=""
-                        />
-                        <Grid className={classes.positionImage}>
-                          <DeleteIcon />
-                        </Grid>
-                      </div>
-                    </>
+                        <DeleteIcon style={{ color: "black" }} />
+                      </Grid>
+                    </div>
                   );
                 })}
               </Grid>
