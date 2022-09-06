@@ -62,7 +62,7 @@ const CategoryCreateList = () => {
   const classes = useStyles();
   const fileInputRef = useRef<any>();
   const [preview, setPreview] = useState<any>();
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const [selectedImages, setSelectedImages] = useState<any>([]);
   // console.log(selectedImages);
@@ -85,7 +85,9 @@ const CategoryCreateList = () => {
     <>
       <Grid container>
         <Grid xs={12} item>
-          <Paper sx={{ padding: "30px 30px 20px" }}>
+          <Paper
+            sx={{ padding: "30px 30px 20px" }}
+          >
             <Typography style={smartphoneSmall}>
               {t("admin.category_page.category_create_list.data_name")}
             </Typography>
@@ -105,7 +107,7 @@ const CategoryCreateList = () => {
             </Typography>
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
               <Grid sx={{ display: "flex" }}>
-                {selectedImages.map((image: any) => {
+                {selectedImages.map((image: any, id: any) => {
                   console.log(image);
                   return (
                     <div

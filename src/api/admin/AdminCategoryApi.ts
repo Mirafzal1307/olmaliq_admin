@@ -5,9 +5,12 @@ export function getCategory(data: object = {}) {
 }
 
 export function getChildCategory(data: object = {}){
-  return HttpClient().get(`/childcategory`, data)
+  return HttpClient().get(`/subcategory`, data)
 }
 
+export function getSubChildCategory(data: object = {}){
+  return HttpClient().get(`/childcategory`, data);
+}
 
 export function deleteSubCategory(id: string){
   return HttpClient().delete(`/subcategory/delete/${id}`)

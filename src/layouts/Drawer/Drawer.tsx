@@ -106,7 +106,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function MiniDrawer() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
   const classes = useStyles()
   const { t, i18n } = useTranslation();
   const handleLanguageChange = (event: SelectChangeEvent<unknown>) => {
