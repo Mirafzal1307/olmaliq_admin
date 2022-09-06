@@ -10,12 +10,17 @@ import {
   selectValueCategory,
   selectValueCreate
 } from "../../theme/CategoryStyle";
-import {
-  deleteSubCategory,
-  getChildCategory,
-  getSubCategory
-} from "../../../api/admin/AdminCategoryApi";
+import { getCategory, getChildCategory, getSubChildCategory } from "../../../api/admin/AdminCategoryApi";
+import CategoryCreateList from "./CategoryCreateList";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 
+
+interface getCategory {
+  category_id: string;
+  category_name: string;
+  category_image_id: string;
+  category_description: string
+}
 interface subCategoryData {
   sub_category_id: string;
   parent_id: string;
@@ -34,6 +39,7 @@ const CategoryCreate = () => {
 
   const [selectCategory, setSelectCategory] = useState("");
   const [subCategory, setSubCategory] = useState<subCategoryData[]>([]);
+  const [category, setCategory] = useState<getCategory[]>([]);
   const [child_sub_category, setSubCayegoryChild] = useState<
     childSubCategory[]
   >([]);
@@ -51,20 +57,36 @@ const CategoryCreate = () => {
     setSelectNewSubCategory(event.target.value as string);
   };
 
-  const getData = async () => {
-    const res: any = await getSubCategory();
-    setSubCategory(res?.data?.data);
-  };
+  // const getCategoryData = async () => {
+  //   const res: any = await getCategory();
+  //   setCategory(res?.data?.data);
+  //   console.log(res?.data?.data);
+  // };
 
   useEffect(() => {
+    getChildCategorySub();
     getData();
-    getSubChildCategory();
-  });
+    getChildCategorytwo();
+  }, []);
+   const getData = async () => {
+     const res: any = await getCategory();
+     setCategory(res?.data?.data);
+   };
 
-  const getSubChildCategory = async () => {
+  const getChildCategorytwo = async () => {
     const data: any = await getChildCategory();
-    setSubCayegoryChild(data?.data?.data);
+    setSubCategory(data?.data?.data);
   };
+
+  const getChildCategorySub = async () => {
+    const child: any = await getSubChildCategory();
+    console.log(child.data.data);
+    setSubCayegoryChild(child?.data?.data)
+  }
+
+  // const 
+
+
   const [clickedone, setClickedOne] = useState(false);
   const [clicked, setClicked] = useState(false);
 
@@ -84,7 +106,12 @@ const CategoryCreate = () => {
     <>
       <Grid sx={{ display: "flex", justifyContent: "space-between" }} xs={12}>
         <Grid item>
-          <Paper sx={{ padding: "30px 30px 454px", width: "380px" }}>
+          <Paper
+            sx={{
+              padding: "30px 30px 454px",
+              width: "380px"
+            }}
+          >
             <Grid>
               <Typography style={createMainText}>
                 {t("admin.category_page.category_create_side.create_main_text")}
@@ -106,6 +133,25 @@ const CategoryCreate = () => {
                       height: "40px"
                     }}
                   >
+                    {category?.map((item) => (
+                      <MenuItem
+                        key={item?.category_id}
+                        value={item?.category_id}
+                        style={selectValueCategory}
+                      >
+                        {item?.category_name}{" "}
+                        <CheckCircleOutlineOutlinedIcon
+                          sx={{
+                            fontSize: "18px",
+                            color: "green",
+                            position: "absolute",
+                            left: "270px",
+                            top: "11px"
+                          }}
+                        />
+                      </MenuItem>
+                    ))}
+
                     <MenuItem
                       style={selectValueCreate}
                       onClick={handleClickOne}
@@ -122,7 +168,9 @@ const CategoryCreate = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid sx={!clickedone ? { display: "none" } : { display: "block" }}>
+              <Grid
+                sx={!clickedone ? { display: "none" } : { display: "block" }}
+              >
                 <Typography style={selectCategoryText}>
                   {t(
                     "admin.category_page.category_create_side.create_select_subcategory"
@@ -147,6 +195,15 @@ const CategoryCreate = () => {
                           value={item?.sub_category_id}
                         >
                           {item?.sub_category_name}
+                          <CheckCircleOutlineOutlinedIcon
+                            sx={{
+                              fontSize: "18px",
+                              color: "green",
+                              position: "absolute",
+                              left: "270px",
+                              top: "11px"
+                            }}
+                          />
                         </MenuItem>
                       );
                     })}
@@ -180,17 +237,24 @@ const CategoryCreate = () => {
                       height: "40px"
                     }}
                   >
-                    {child_sub_category?.map((childs) => {
-                      return (
-                        <MenuItem
-                          key={childs.child_category_id}
-                          style={selectValueCategory}
-                          value={childs.child_category_id}
-                        >
-                          {childs.child_category_name}
-                        </MenuItem>
-                      );
-                    })}
+                    {child_sub_category.map((child) => (
+                      <MenuItem
+                        key={child.child_category_id}
+                        style={selectValueCategory}
+                        value={child.child_category_id}
+                      >
+                        {child.child_category_name}
+                        <CheckCircleOutlineOutlinedIcon
+                          sx={{
+                            fontSize: "18px",
+                            color: "green",
+                            position: "absolute",
+                            left: "270px",
+                            top: "11px"
+                          }}
+                        />
+                      </MenuItem>
+                    ))}
                     <MenuItem style={selectValueCreate}>
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />

@@ -23,8 +23,7 @@ import {
   successSaveButton,
   uploadImageCategory
 } from "../../theme/CategoryStyle";
-import { deleteSubCategory } from "../../../api/admin/AdminCategoryApi";
-import { useParams } from "react-router-dom";
+import Modal from "../Modal";
 
 const useStyles = makeStyles({
   categoryInput: {
@@ -63,7 +62,7 @@ const CategoryCreateList = () => {
   const classes = useStyles();
   const fileInputRef = useRef<any>();
   const [preview, setPreview] = useState<any>();
-  const { id } = useParams();
+  // const { id } = useParams();
 
   const [selectedImages, setSelectedImages] = useState<any>([]);
   // console.log(selectedImages);
@@ -86,7 +85,9 @@ const CategoryCreateList = () => {
     <>
       <Grid container>
         <Grid xs={12} item>
-          <Paper sx={{ padding: "30px 30px 20px" }}>
+          <Paper
+            sx={{ padding: "30px 30px 20px" }}
+          >
             <Typography style={smartphoneSmall}>
               {t("admin.category_page.category_create_list.data_name")}
             </Typography>
@@ -106,7 +107,7 @@ const CategoryCreateList = () => {
             </Typography>
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
               <Grid sx={{ display: "flex" }}>
-                {selectedImages.map((image: any) => {
+                {selectedImages.map((image: any, id: any) => {
                   console.log(image);
                   return (
                     <div
@@ -165,21 +166,22 @@ const CategoryCreateList = () => {
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
             <div style={{ textAlign: "end", marginTop: "400px" }}>
-              <Button sx={{ textTransform: "none" }} style={cancelButton}>
-                <img
-                  src={require("../../../Img/Cancel.png")}
-                  style={{ marginRight: "10px" }}
-                  alt=""
-                />{" "}
-                O`chirish
-              </Button>
+              <Modal
+                TooltipTitle={t("admin.modal.tooltip_title_delete")}
+                deleteButton={"have"}
+                successText={t(
+                  "admin.adverts_page.adverts_page_modal.modal_green"
+                )}
+                exitText={t("admin.adverts_page.adverts_page_modal.modal_red")}
+                style={cancelButton}
+              />
               <Button sx={{ textTransform: "none" }} style={successSaveButton}>
                 <img
                   src={require("../../../Img/Success.png")}
                   style={{ marginRight: "10px" }}
                   alt=""
                 />
-                Saqlash
+                {t("admin.category_page.category_create_list.createButton")}
               </Button>
             </div>
           </Paper>

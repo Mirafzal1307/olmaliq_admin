@@ -39,7 +39,21 @@
         "category_list_date": "Sana",
         "category_list_actions": "Amallar",
         "category_list_actions_edit": "Tahrirlash",
-        "category_list_actions_delete": "O’chirish"
+        "category_list_actions_delete": "O’chirish",
+        "category_name_product": "Turkum",
+        "subcategory_name_product": "Ichki turkum",
+        "landing_category_name_product": "Asosiy turkum",
+        "price_product": "Narx",
+        "sale_product": "Chegirma",
+        "count_product": "Sotilgan",
+        "status_product": "Holat",
+        "photo_none": "Rasm yoq",
+        "name_none": "Nomi yoq",
+        "category_none": "Turkum yoq",
+        "sub_category_none": "Ichki turkum yoq",
+        "main_category_none": "Asosiy turkum yoq",
+        "data_none": "Sana yoq",
+        "text_per_page": "Ko’rsatish"
       },
       "category_create_list": {
         "data_name": "Smartfonlar (Ichki turkumlar)",
@@ -47,7 +61,8 @@
         "plaseholder_name": "Smartfonlar",
         "small_categories_photos": "2.Asosiy turkum surati",
         "note_about": "Eslatma:",
-        "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak."
+        "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak.",
+        "createButton": "Saqlash"
       }
     },
     "adverts_page": {
@@ -89,6 +104,10 @@
         "order_direction": "Buyurtma",
         "add_order": "+ Order qo`shish"
       }
+    },
+    "modal": {
+      "tooltip_title_delete": "O'chirish",
+      "modal_main_text": "Siz rostdanham o’chirmoqchimisiz?"
     }
   }
 }
