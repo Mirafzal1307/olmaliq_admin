@@ -77,17 +77,24 @@ const CategoryCreateList = () => {
   };
 
   const deleteUser = (id: any) => (e: any) => {
-    setSelectedImages(
-      selectedImages.filter((todo: any) => todo.id !== id)
-    );
+    setSelectedImages(selectedImages.filter((todo: any) => todo.id !== id));
   };
+
+  const [clickedone, setClickedOne] = useState(false);
+
+  const handleClickOne = () => {
+    if (!clickedone) {
+      setClickedOne(true);
+    }
+  };
+
+  //  sx={!clickedone ? { display: "none" } : { display: "block" }}
+
   return (
     <>
       <Grid container>
         <Grid xs={12} item>
-          <Paper
-            sx={{ padding: "30px 30px 20px" }}
-          >
+          <Paper sx={{ padding: "30px 30px 20px" }}>
             <Typography style={smartphoneSmall}>
               {t("admin.category_page.category_create_list.data_name")}
             </Typography>
