@@ -4,6 +4,7 @@ import { styled } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
+import { cancelButton } from "../theme/CategoryStyle";
 // import { refresh } from "./refresh";
 
 const StyledModal = styled(ModalUnstyled)`
@@ -16,14 +17,16 @@ const StyledModal = styled(ModalUnstyled)`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.5)
-`
+  background: rgba(0, 0, 0, 0.5);
+`;
 const style = {
-  width: 500,
+  // width: 'auto',
+  maxHeight: '90vh',
   bgcolor: "#fff !important",
   borderRadius: "10px",
-  pt: 2,
-  pb: 3,
+  // pt: 3,
+  // pb: 4,
+  padding: '30px'
 };
 const useStyles = makeStyles({
   titleRows: {
@@ -67,9 +70,16 @@ const useStyles = makeStyles({
   deleteButton: {
     width: "45px",
     height: "45px",
-    backgroundColor: "#2DA55F !important",
+    background: "rgba(0, 0, 0, .5)",
     border: "none",
     borderRadius: "5px",
+
+    "& img": {
+      color: "#fff",
+      width: "18px !important",
+      height: "18px !important",
+      borderRadius: "0 !important",
+    },
   },
   cancel: {
     background: "#FF4B4B !important",
@@ -91,6 +101,14 @@ const useStyles = makeStyles({
       paddingRight: "12px",
     },
   },
+  cancels: {
+    background: "#065374 !important",
+    borderRadius: "5px",
+    color: "#ffffff !important",
+    textTransform: "lowercase",
+    marginRight: "20px",
+    padding: "9px 20px 8px 20px !important",
+  },
 });
 
 function Modal(props: any): JSX.Element {
@@ -100,17 +118,24 @@ function Modal(props: any): JSX.Element {
   const { t } = useTranslation();
   const classes = useStyles();
 
-
   return (
     <>
-      <Tooltip title="Yuklash">
-        <button
-          onClick={handleOpen}
-          className={classes.deleteButton}
-        >
-          <img src={require("../../Img/Download.png")} alt="rasm bor edi" />
-        </button>
-      </Tooltip>
+      {props.deleteButton ? (
+        <Tooltip title={props.TooltipTitle}>
+          <Button
+            sx={{ textTransform: "none" }}
+            onClick={handleOpen}
+            style={props.style}
+          >
+            <img
+              src={require("../../Img/Cancel.png")}
+              style={{ marginRight: "10px" }}
+              alt=""
+            />{" "}
+            {t("admin.modal.tooltip_title_delete")}
+          </Button>
+        </Tooltip>
+      ) : null}
       <StyledModal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"
@@ -118,27 +143,21 @@ function Modal(props: any): JSX.Element {
         onClose={handleClose}
       >
         <Box sx={style} className={classes.box}>
+          <img src={props.image} style={{ width: "100%", maxHeight: '500px'}} alt="" />
           <h1 className={classes.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
           <h2 id="unstyled-modal-title" className={classes.h2}>
-            {t("admin.adverts_page.adverts_page_modal.modal_text")}!
+            {t("admin.modal.modal_main_text")}
           </h2>
           <div>
             <Button onClick={handleClose} className={classes.cancel}>
               <img src={require("../../Img/Exit.png")} alt="rasm bor edi" />
-              {t("admin.adverts_page.adverts_page_modal.modal_red")}
+              {props.exitText ? <p>{props.exitText}</p> : null}
             </Button>
-            <Button
-              onClick={() => {
-                handleClose();
-                props.data();
-                // refresh();
-              }}
-              className={classes.deletes}
-            >
+            <Button onClick={handleClose} className={classes.deletes}>
               <img src={require("../../Img/Success.png")} alt="rasm bor edi" />
-              {t("admin.adverts_page.adverts_page_modal.modal_green")}
+              {props.successText ? <p>{props.successText}</p> : null}
             </Button>
           </div>
         </Box>

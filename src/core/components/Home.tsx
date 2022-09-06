@@ -1,21 +1,10 @@
 import React from "react";
 import { Container } from "@mui/material";
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { getUsersList } from "../../api/admin/AdminCategoryApi";
 import MiniDrawer from "../../layouts/Drawer/Drawer";
 
 const Home = () => {
-  const getData = async () => {
-    const res: unknown = await getUsersList();
-    console.log(res);
-  };
-
-  useEffect(() => {
-    getData();
-  });
-
   const { t } = useTranslation();
 
   return (

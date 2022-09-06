@@ -12,6 +12,7 @@ function App() {
         <Routes>
           {/* <Route path="/fr" element={<Adverts />} /> */}
           <Route path="/" element={<Login />} />
+          <Route path="/adverts" element={<Adverts />} />
         </Routes>
         <RoutesApi />
       </Suspense>
