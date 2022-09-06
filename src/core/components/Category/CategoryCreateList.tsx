@@ -15,7 +15,6 @@ import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
   cancelButton,
-  forImagePreview,
   note,
   noteAll,
   smartphoneSmall,
@@ -44,7 +43,7 @@ const useStyles = makeStyles({
   },
   ClickedImage: {
     "&:hover": {
-      widt: "100%",
+      width: "100%",
       height: "100%",
       background: "gray",
       opacity: 1

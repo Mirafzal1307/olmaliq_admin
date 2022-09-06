@@ -142,10 +142,7 @@ export default function MiniDrawer() {
           </Grid>
           <Grid sx={{ display: "flex" }}>
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                onChange={handleLanguageChange}
-                value={i18n.language}
-              >
+              <Select onChange={handleLanguageChange} value={i18n.language}>
                 <MenuItem value="uz">
                   {t("admin.drawer.language_label.uzbek")}
                 </MenuItem>
@@ -186,9 +183,7 @@ export default function MiniDrawer() {
             >
               <ListItemButton>
                 <ListItemIcon>{item?.icon}</ListItemIcon>
-                <ListItemText style={routeText}>
-                  {item.title}
-                </ListItemText>
+                <ListItemText style={routeText}>{item.title}</ListItemText>
               </ListItemButton>
             </ListItem>
           ))}
