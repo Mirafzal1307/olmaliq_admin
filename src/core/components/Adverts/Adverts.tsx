@@ -93,11 +93,13 @@ const Adverts = () => {
           mainText={t(
             "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
           )}
+          prevIcon={">"}
           dashboardText={t(
             "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url1"
           )}
-          pageText={t(
-            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url2"
+          prevIcon1={">"}
+          dashboardText2={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
           )}
           pageTextSpan={t(
             "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url3"
@@ -112,7 +114,7 @@ const Adverts = () => {
               "admin.adverts_page.adverts_page_paper.adverts_page_paper_title"
             )}
             {" №1"}
-          </Typography> 
+          </Typography>
           <Grid container>
             <Typography className={classes.PaperText1}>
               {"1. "}
@@ -134,7 +136,7 @@ const Adverts = () => {
                             left: "0",
                           }}
                         >
-                          <Modal />
+                          <Modal image={image} />
                         </div>
                       </div>
                     </>
@@ -198,7 +200,7 @@ const Adverts = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={6} className={classes.Grid}>
+            <Grid item xs={8} className={classes.Grid}>
               <Typography className={classes.PaperText1}>
                 {"3. "}
                 {t(
@@ -243,7 +245,7 @@ const Adverts = () => {
                 "admin.adverts_page.adverts_page_paper.adverts_page_paper_note"
               )}
             </Typography>
-            <Grid item xs={6} className={classes.Grid}>
+            <Grid item xs={8} className={classes.Grid}>
               <Typography className={classes.PaperText1}>
                 {"3. "}
                 {t(

@@ -19,7 +19,8 @@ const StyledModal = styled(ModalUnstyled)`
   background: rgba(0, 0, 0, 0.5)
 `
 const style = {
-  width: 500,
+  // width: 'auto',
+  maxHeight: '90vh',
   bgcolor: "#fff !important",
   borderRadius: "10px",
   // pt: 3,
@@ -126,7 +127,7 @@ function Modal(props: any): JSX.Element {
         onClose={handleClose}
       >
         <Box sx={style} className={classes.box}>
-          <img src={require("../../Img/advertImg.png")} style={{width:"90%"}} alt="" />
+          <img src={props.image} style={{ width: "100%", maxHeight: '500px'}} alt="" />
           <h1 className={classes.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
