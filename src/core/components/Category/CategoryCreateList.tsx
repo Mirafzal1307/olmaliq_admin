@@ -8,6 +8,8 @@ import {
   Typography
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { AnyARecord } from "dns";
+``;
 import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -20,6 +22,7 @@ import {
   successSaveButton,
   uploadImageCategory
 } from "../../theme/CategoryStyle";
+import Modal from "../Modal";
 
 const useStyles = makeStyles({
   categoryInput: {
@@ -48,21 +51,20 @@ const useStyles = makeStyles({
   },
   positionImage: {
     position: "absolute",
-    top:0,
-    textAlign: "center"
+    right: "32%",
+    top: "18%"
   }
 });
-
-
 
 const CategoryCreateList = () => {
   const { t } = useTranslation();
   const classes = useStyles();
   const fileInputRef = useRef<any>();
   const [preview, setPreview] = useState<any>();
+  // const { id } = useParams();
 
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
-
+  const [selectedImages, setSelectedImages] = useState<any>([]);
+  // console.log(selectedImages);
   const onSelectedFile = (event: any) => {
     const selectedFiles = event.target.files;
     const selectedFilesArray: string[] = Array.from(selectedFiles);
@@ -72,6 +74,21 @@ const CategoryCreateList = () => {
     });
     setSelectedImages(imagesArray);
   };
+
+  const deleteUser = (id: any) => (e: any) => {
+    setSelectedImages(selectedImages.filter((todo: any) => todo.id !== id));
+  };
+
+  const [clickedone, setClickedOne] = useState(false);
+
+  const handleClickOne = () => {
+    if (!clickedone) {
+      setClickedOne(true);
+    }
+  };
+
+  //  sx={!clickedone ? { display: "none" } : { display: "block" }}
+
   return (
     <>
       <Grid container>
@@ -95,12 +112,12 @@ const CategoryCreateList = () => {
               )}
             </Typography>
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
-              <Grid sx={{display: "flex",}}>
-              {selectedImages.map((image) => {
-                return (
-                  <>
+              <Grid sx={{ display: "flex" }}>
+                {selectedImages.map((image: any, id: any) => {
+                  console.log(image);
+                  return (
                     <div
-                      key={image}
+                      key={id}
                       style={{ paddingRight: "5px" }}
                       className={classes.bigFatherPosition}
                     >
@@ -110,14 +127,16 @@ const CategoryCreateList = () => {
                         src={image}
                         alt=""
                       />
-                      <Grid className={classes.positionImage}>
-                        <DeleteIcon />
+                      <Grid
+                        className={classes.positionImage}
+                        onClick={deleteUser(id)}
+                      >
+                        <DeleteIcon style={{ color: "black" }} />
                       </Grid>
                     </div>
-                  </>
-                );
-              })}
-              </Grid> 
+                  );
+                })}
+              </Grid>
               <Grid>
                 <form style={{ display: "flex", alignItems: "center" }}>
                   <img
@@ -153,21 +172,22 @@ const CategoryCreateList = () => {
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
             <div style={{ textAlign: "end", marginTop: "400px" }}>
-              <Button sx={{ textTransform: "none" }} style={cancelButton}>
-                <img
-                  src={require("../../../Img/Cancel.png")}
-                  style={{ marginRight: "10px" }}
-                  alt=""
-                />{" "}
-                O`chirish
-              </Button>
+              <Modal
+                TooltipTitle={t("admin.modal.tooltip_title_delete")}
+                deleteButton={"have"}
+                successText={t(
+                  "admin.adverts_page.adverts_page_modal.modal_green"
+                )}
+                exitText={t("admin.adverts_page.adverts_page_modal.modal_red")}
+                style={cancelButton}
+              />
               <Button sx={{ textTransform: "none" }} style={successSaveButton}>
                 <img
                   src={require("../../../Img/Success.png")}
                   style={{ marginRight: "10px" }}
                   alt=""
                 />
-                Saqlash
+                {t("admin.category_page.category_create_list.createButton")}
               </Button>
             </div>
           </Paper>

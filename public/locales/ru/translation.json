@@ -40,7 +40,21 @@
         "category_list_date": "Дата",
         "category_list_actions": "Действия",
         "category_list_actions_edit": "Изменить",
-        "category_list_actions_delete": "Удалить"
+        "category_list_actions_delete": "Удалить",
+        "category_name_product": "Категория",
+        "subcategory_name_product": "Подкатегория",
+        "landing_category_name_product": "Главная Категория",
+        "price_product": "Цена",
+        "sale_product": "Скидка",
+        "count_product": "Продано",
+        "status_product": "Статус",
+        "photo_none": "Нет фотографии",
+        "name_none": "Нет названии",
+        "category_none": "Нет категории",
+        "sub_category_none": "Нет подкатегории",
+        "main_category_none": "Нет главной категории",
+        "data_none": "Нет даты",
+        "text_per_page": "Показать"
       },
       "category_create_list": {
         "data_name": "Смартфоны (Подкатегория)",
@@ -48,7 +62,8 @@
         "plaseholder_name": "Смартфоны",
         "small_categories_photos": "2.Основное изображение подкатегории",
         "note_about": "Примечание:",
-        "note_about_all": "Выберите фотографию, чтобы сделать ее по умолчанию. Когда вы загружаете новую фотографию, она должна быть не более 50 пикселей в высоту и 80 пикселей в ширину."
+        "note_about_all": "Выберите фотографию, чтобы сделать ее по умолчанию. Когда вы загружаете новую фотографию, она должна быть не более 50 пикселей в высоту и 80 пикселей в ширину.",
+        "createButton": "Сохранить"
       }
     },
     "adverts_page": {
@@ -90,6 +105,10 @@
         "order_direction": "Заказ",
         "add_order": "+ Создать заказ"
       }
+    },
+    "modal": {
+      "tooltip_title_delete": "Удалить",
+      "modal_main_text": "Вы реально хотите удалить?"
     }
   }
 }

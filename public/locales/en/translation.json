@@ -40,7 +40,21 @@
         "category_list_date": "Date",
         "category_list_actions": "Actions",
         "category_list_actions_edit": "Edit",
-        "category_list_actions_delete": "Delete"
+        "category_list_actions_delete": "Delete",
+        "category_name_product": "Category",
+        "subcategory_name_product": "Sub category",
+        "landing_category_name_product": "Main category",
+        "price_product": "Price",
+        "sale_product": "Discount",
+        "count_product": "Saled",
+        "status_product": "Status",
+        "photo_none": "No photo",
+        "name_none": "No name",
+        "category_none": "No category",
+        "sub_category_none": "No sub category",
+        "main_category_none": "No main category",
+        "data_none": "No date",
+        "text_per_page": "Show"
       },
       "category_create_list": {
         "data_name": "Smartphones (Subcategory)",
@@ -48,7 +62,8 @@
         "plaseholder_name": "Smartphones",
         "small_categories_photos": "2.Subcategory main image",
         "note_about": "Note:",
-        "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide."
+        "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide.",
+        "createButton": "Save"
       }
     },
     "adverts_page": {
@@ -90,6 +105,10 @@
         "order_direction": "Order",
         "add_order": "+ Create order"
       }
+    },
+    "modal": {
+      "tooltip_title_delete": "Delete",
+      "modal_main_text": "Are you sure you want to delete?"
     }
   }
 }

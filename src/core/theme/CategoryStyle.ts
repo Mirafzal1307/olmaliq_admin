@@ -18,7 +18,7 @@ export const selectValueCategory = {
   fontFamily: "Arial",
   fontSize: "16px",
   fontWeight: "400",
-  color: "#8C8C8C",
+  color: "#444444",
   padding: "0 76px 0 20px"
 };
 
