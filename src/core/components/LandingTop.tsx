@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Grid, Typography } from "@mui/material";
 import { ButtonStyle, createCategoryDirection, createCategoryDirectionSpan, mainText } from "../theme/LandingTopStyle";
+import { Link } from "react-router-dom";
 
 const LandingTop = (props: any) => {  
   return (
@@ -22,13 +23,7 @@ const LandingTop = (props: any) => {
               {props.dashboardText}
             </Typography>{" "}
             <Typography style={createCategoryDirection}>
-              {props.prevIcon}
-            </Typography>
-            <Typography style={createCategoryDirection}>
-              {props.dashboardText2}
-            </Typography>
-            <Typography style={createCategoryDirection}>
-              {props.prevIcon1}
+              {props.prevIcon ? <p>{props.prevIcon}</p> : null}
             </Typography>
             <Typography style={createCategoryDirectionSpan}>
               {props.pageTextSpan}
@@ -36,9 +31,11 @@ const LandingTop = (props: any) => {
           </Grid>
         </Grid>
         <Grid>
+          <Link style={{ textDecoration: "none" }} to={props.toPage ? `/${props.toPage}` : `/dashboard`}>
           <Button sx={{ textTransform: "none" }} style={ButtonStyle}>
             {props.createButton}
           </Button>
+          </Link>
         </Grid>
       </Grid>
     </>

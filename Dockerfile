@@ -14,6 +14,7 @@
 #CMD [ "yarn", "start" ]
 
 
+
 #FROM node:16-alpine3.14
 FROM node:latest
 WORKDIR /usr/src/app
@@ -28,5 +29,5 @@ ADD . /usr/src/app
 # RUN npm run tsc
 # Start
 EXPOSE 2003
-CMD [ "npm", "start" ]
 # set Docker port
+CMD [ "yarn", "start" ]

@@ -4,6 +4,7 @@ import Adverts from "./core/components/Adverts/Adverts";
 import Login from "./layouts/Login/Login";
 import RoutesApi from "./routes/index";
 import Loader from "./core/components/Loader";
+import ProductCreate from "./core/components/Product/ProductCreate";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           {/* <Route path="/fr" element={<Adverts />} /> */}
           <Route path="/" element={<Login />} />
           <Route path="/adverts" element={<Adverts />} />
+          <Route path="/product/create" element={<ProductCreate />} />
         </Routes>
         <RoutesApi />
       </Suspense>
