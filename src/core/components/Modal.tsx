@@ -29,30 +29,6 @@ const style = {
   padding: '30px'
 };
 const useStyles = makeStyles({
-  titleRows: {
-    color: "#065374 !important",
-    fontFamily: "Poppins !important",
-    fontWeight: "600 !important",
-    fontSize: "17px !important",
-    margin: 0,
-    paddingTop: "0 !important",
-  },
-  forValueCols: {
-    color: "#000 !important",
-    fontSize: "17px !important",
-    fontFamily: "Poppins !important",
-    fontWeight: "300 !important",
-    margin: 0,
-  },
-  brandImages: {
-    width: "50px !important",
-    height: "50px !important",
-    borderRadius: "5px !important",
-  },
-
-  box: {
-    textAlign: "center",
-  },
   h1: {
     fontStyle: "normal",
     fontWeight: "600",
@@ -66,20 +42,6 @@ const useStyles = makeStyles({
     fontWeight: "400",
     margin: "10px 0 20px 0",
     lineHeight: "138%",
-  },
-  deleteButton: {
-    width: "45px",
-    height: "45px",
-    background: "rgba(0, 0, 0, .5)",
-    border: "none",
-    borderRadius: "5px",
-
-    "& img": {
-      color: "#fff",
-      width: "18px !important",
-      height: "18px !important",
-      borderRadius: "0 !important",
-    },
   },
   cancel: {
     background: "#FF4B4B !important",
@@ -101,14 +63,6 @@ const useStyles = makeStyles({
       paddingRight: "12px",
     },
   },
-  cancels: {
-    background: "#065374 !important",
-    borderRadius: "5px",
-    color: "#ffffff !important",
-    textTransform: "lowercase",
-    marginRight: "20px",
-    padding: "9px 20px 8px 20px !important",
-  },
 });
 
 function Modal(props: any): JSX.Element {
@@ -117,33 +71,33 @@ function Modal(props: any): JSX.Element {
   const handleClose = (): void => setOpen(false);
   const { t } = useTranslation();
   const classes = useStyles();
-
+  
   return (
     <>
-      {props.deleteButton ? (
+      {/* {props.deleteButton ? ( */}
         <Tooltip title={props.TooltipTitle}>
           <Button
             sx={{ textTransform: "none" }}
             onClick={handleOpen}
-            style={props.style}
+          style={props.style}
           >
             <img
-              src={require("../../Img/Cancel.png")}
-              style={{ marginRight: "10px" }}
+              src={props.image2}
+              style={{ marginRight: "10px"}}
               alt=""
             />{" "}
-            {t("admin.modal.tooltip_title_delete")}
+            {/* {t("admin.modal.tooltip_title_delete")} */}
           </Button>
         </Tooltip>
-      ) : null}
+      {/* ) : null} */}
       <StyledModal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"
         open={open}
         onClose={handleClose}
       >
-        <Box sx={style} className={classes.box}>
-          <img src={props.image} style={{ width: "100%", maxHeight: '500px'}} alt="" />
+        <Box sx={style} style={{ textAlign: 'center'}}>
+          <img src={props.image1} style={{ width: "100%", maxHeight: '500px'}} alt="" />
           <h1 className={classes.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
