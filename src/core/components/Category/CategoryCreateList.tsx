@@ -8,9 +8,7 @@ import {
   Typography
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { AnyARecord } from "dns";
-``;
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
@@ -61,10 +59,9 @@ const CategoryCreateList = () => {
   const classes = useStyles();
   const fileInputRef = useRef<any>();
   const [preview, setPreview] = useState<any>();
-  // const { id } = useParams();
 
   const [selectedImages, setSelectedImages] = useState<any>([]);
-  // console.log(selectedImages);
+  const [file, setFile] = useState<any>([]);
   const onSelectedFile = (event: any) => {
     const selectedFiles = event.target.files;
     const selectedFilesArray: string[] = Array.from(selectedFiles);
@@ -72,22 +69,18 @@ const CategoryCreateList = () => {
     const imagesArray: string[] = selectedFilesArray.map((file: any) => {
       return URL.createObjectURL(file)
     });
-    setSelectedImages(imagesArray);
+    setSelectedImages([...imagesArray]);
   };
 
   const deleteUser = (id: any) => (e: any) => {
     setSelectedImages(selectedImages.filter((todo: any) => todo.id !== id));
   };
 
-  const [clickedone, setClickedOne] = useState(false);
-
-  const handleClickOne = () => {
-    if (!clickedone) {
-      setClickedOne(true);
-    }
-  };
-
-  //  sx={!clickedone ? { display: "none" } : { display: "block" }}
+  function deleteFile(e: any) {
+    const s = selectedImages.filter((index: any) => index !== e);
+    setSelectedImages(s);
+    console.log(s);
+  }
 
   return (
     <>
@@ -114,7 +107,6 @@ const CategoryCreateList = () => {
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
               <Grid sx={{ display: "flex" }}>
                 {selectedImages.map((image: any, id: any) => {
-                  console.log(image);
                   return (
                     <div
                       key={id}
@@ -127,12 +119,15 @@ const CategoryCreateList = () => {
                         src={image}
                         alt=""
                       />
-                      <Grid
+                      {/* <Grid
                         className={classes.positionImage}
-                        onClick={deleteUser(id)}
+                        onClick={() => deleteFile(id)}
                       >
                         <DeleteIcon style={{ color: "black" }} />
-                      </Grid>
+                      </Grid> */}
+                      <button onClick={() => deleteFile(id)}>
+                        Delete
+                      </button>
                     </div>
                   );
                 })}
