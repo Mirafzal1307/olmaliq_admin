@@ -1,15 +1,8 @@
 import React from "react";
-import { Button, FormControl, Grid, MenuItem, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import { ButtonStyle, createCategoryDirection, createCategoryDirectionSpan, mainText } from "../theme/LandingTopStyle";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-const LandingTop = (props: any) => {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value);
-  };
-
+const LandingTop = (props: any) => {  
   return (
     <>
       <Grid
