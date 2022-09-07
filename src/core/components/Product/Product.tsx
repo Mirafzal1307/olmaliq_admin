@@ -21,6 +21,7 @@ const Product = () => {
             "admin.product_page.product_landing_side.product_direction"
           )}
           prevIcon={">"}
+          toPage={`product/create`}
           createButton={t(
             "admin.product_page.product_landing_side.add_product"
           )}

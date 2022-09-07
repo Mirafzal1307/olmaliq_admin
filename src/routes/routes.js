@@ -47,7 +47,7 @@ const MainRoutes = [
     icon: <AdvertsIcon />,
     title: "Reklom",
     path: "/adverts",
-    element: <Adverts />
+    // element: <Adverts />
   },
 ]
 

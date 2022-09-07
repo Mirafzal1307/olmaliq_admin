@@ -32,6 +32,7 @@ const Category = () => {
             "admin.category_page.category_landing_side.category_direction_home"
           )}
           prevIcon={">"}
+          prevIcon2={">"}
           pageTextSpan={t(
             "admin.category_page.category_landing_side.category_direction_category"
           )}
