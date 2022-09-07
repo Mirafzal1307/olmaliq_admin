@@ -15,7 +15,6 @@ import { useTranslation } from "react-i18next";
 import DeleteIcon from "@mui/icons-material/Delete";
 import {
   cancelButton,
-  forImagePreview,
   note,
   noteAll,
   smartphoneSmall,
@@ -44,7 +43,7 @@ const useStyles = makeStyles({
   },
   ClickedImage: {
     "&:hover": {
-      widt: "100%",
+      width: "100%",
       height: "100%",
       background: "gray",
       opacity: 1
@@ -77,17 +76,24 @@ const CategoryCreateList = () => {
   };
 
   const deleteUser = (id: any) => (e: any) => {
-    setSelectedImages(
-      selectedImages.filter((todo: any) => todo.id !== id)
-    );
+    setSelectedImages(selectedImages.filter((todo: any) => todo.id !== id));
   };
+
+  const [clickedone, setClickedOne] = useState(false);
+
+  const handleClickOne = () => {
+    if (!clickedone) {
+      setClickedOne(true);
+    }
+  };
+
+  //  sx={!clickedone ? { display: "none" } : { display: "block" }}
+
   return (
     <>
       <Grid container>
         <Grid xs={12} item>
-          <Paper
-            sx={{ padding: "30px 30px 20px" }}
-          >
+          <Paper sx={{ padding: "30px 30px 20px" }}>
             <Typography style={smartphoneSmall}>
               {t("admin.category_page.category_create_list.data_name")}
             </Typography>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Toolbar } from "@mui/material";
 import { Container } from "@mui/system";
 import MiniDrawer from "../../../layouts/Drawer/Drawer";
@@ -12,7 +12,15 @@ import CategoryCreateList from "./CategoryCreateList";
 import SplitButton from "../Info";
 
 const Category = () => {
-  const { t } = useTranslation()
+  const { t } = useTranslation();
+
+  const [clickedone, setClickedOne] = useState(false);
+
+  const handleClick = () => {
+    if (!clickedone) {
+      setClickedOne(true);
+    }
+  };
 
   return (
     <>
@@ -33,11 +41,12 @@ const Category = () => {
         />
         <Grid container>
           <Grid item xs={5}>
-            <CategoryCreate />
+            <CategoryCreate handleClick={handleClick} />
           </Grid>
           <Grid item xs={7}>
-            {/* {categories?.length === 0 ? <CategoryListNone /> : <CategoryList />} */}
-            <CategoryCreateList />
+            {/* {categories?.length === 0 ?  : <CategoryList />} */}
+            {clickedone ? <CategoryCreateList /> : <CategoryListNone />}
+
             {/* <CategoryList /> */}
           </Grid>
         </Grid>

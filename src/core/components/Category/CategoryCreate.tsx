@@ -34,7 +34,7 @@ interface childSubCategory {
   child_category_image: string;
 }
 
-const CategoryCreate = () => {
+const CategoryCreate = (props: any) => {
   const { t } = useTranslation();
 
   const [selectCategory, setSelectCategory] = useState("");
@@ -68,6 +68,7 @@ const CategoryCreate = () => {
     getData();
     getChildCategorytwo();
   }, []);
+
    const getData = async () => {
      const res: any = await getCategory();
      setCategory(res?.data?.data);
@@ -87,17 +88,13 @@ const CategoryCreate = () => {
   const [clickedone, setClickedOne] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  const handleClick = () => {
-    if (!clicked) {
-      setClicked(true);
-    }
-  };
+  
 
-  const handleClickOne = () => {
-     if (!clickedone) {
-       setClickedOne(true);
-     }
-  }
+  // const handleClickOne = () => {
+  //    if (!clickedone) {
+  //      setClickedOne(true);
+  //    }
+  // }
 
   return (
     <>
@@ -151,7 +148,7 @@ const CategoryCreate = () => {
 
                     <MenuItem
                       style={selectValueCreate}
-                      onClick={handleClickOne}
+                      onClick={props.handleClick}
                     >
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
@@ -165,9 +162,7 @@ const CategoryCreate = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid
-                sx={!clickedone ? { display: "none" } : { display: "block" }}
-              >
+              <Grid>
                 <Typography style={selectCategoryText}>
                   {t(
                     "admin.category_page.category_create_side.create_select_subcategory"
@@ -204,7 +199,10 @@ const CategoryCreate = () => {
                         </MenuItem>
                       );
                     })}
-                    <MenuItem style={selectValueCreate} onClick={handleClick}>
+                    <MenuItem
+                      style={selectValueCreate}
+                      onClick={props.handleClick}
+                    >
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
                         <Typography style={{ marginLeft: "10px" }}>
@@ -217,7 +215,7 @@ const CategoryCreate = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid sx={!clicked ? { display: "none" } : { display: "block" }}>
+              <Grid>
                 <Typography style={selectCategoryText}>
                   {t(
                     "admin.category_page.category_create_side.create_select_new_subcategory"
@@ -252,7 +250,10 @@ const CategoryCreate = () => {
                         />
                       </MenuItem>
                     ))}
-                    <MenuItem style={selectValueCreate}>
+                    <MenuItem
+                      style={selectValueCreate}
+                      onClick={props.handleClick}
+                    >
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />
                         <Typography style={{ marginLeft: "10px" }}>

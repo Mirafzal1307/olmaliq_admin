@@ -10,9 +10,9 @@ import {
   FormLabel,
   Grid,
   Paper,
-  Toolbar,
   Typography,
 } from "@mui/material";
+import { ImgList } from "../../theme/AdvertStyles";
 import { makeStyles } from "@mui/styles";
 
 const useStyles = makeStyles({
@@ -31,10 +31,10 @@ const useStyles = makeStyles({
   },
   Grid: {
     "& Button": {
-      marginRight: "10px",
-      padding: "0",
-      maxWidth: "45px",
-      minWidth: "45px",
+      marginRight: 10,
+      padding: 0,
+      maxWidth: 45,
+      minWidth: 45,
       "&:hover": {
         background: "rgba(0, 0, 0, .5)",
       },
@@ -51,17 +51,21 @@ const useStyles = makeStyles({
       color: "#2DA55F",
     },
   },
-  uploadImageCategory: {
-    width: "45px",
-    height: "45px",
-    borderRadius: "5px",
-    fontFamily: "Poppins",
+  ImgList: {
+    marginRight: 10,
+    width: 45,
+    height: 45,
+    
+    "&:hover": {
+      position: 'relative',
+    },
+
+    "& img": {
+      borderRadius: 5,
+      width: "100%",
+      height: "100%",
+    },
   },
-  // forImagePreview: {
-  //   width: "95px",
-  //   height: "95px",
-  //   border: "none !important",
-  // },
 });
 const Adverts = () => {
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
@@ -85,23 +89,25 @@ const Adverts = () => {
     <>
       <MiniDrawer />
       <Container>
-      <LandingTop
-        mainText={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
-        )}
-        dashboardText={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url1"
-        )}
-        pageText={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url2"
-        )}
-        pageTextSpan={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url3"
-        )}
-        createButton={t(
-          "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_button"
-        )}
-      />
+        <LandingTop
+          mainText={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
+          )}
+          prevIcon={">"}
+          dashboardText={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url1"
+          )}
+          prevIcon1={">"}
+          dashboardText2={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_name"
+          )}
+          pageTextSpan={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_url3"
+          )}
+          createButton={t(
+            "admin.adverts_page.adverts_page_landingTop.adverts_page_landingTop_button"
+          )}
+        />
         <Paper style={{ padding: "30px" }}>
           <Typography className={classes.PaperTitle}>
             {t(
@@ -117,16 +123,21 @@ const Adverts = () => {
               )}
             </Typography>
             <Grid container>
-              <Grid item xs={6} className={classes.Grid}>
+              <Grid item xs={6} style={{ display: "flex" }}>
                 {selectedImages.map((image) => {
                   return (
                     <>
-                      <div key={image} style={{ paddingRight: "10px" }}>
-                        <img
-                          className={classes.uploadImageCategory}
-                          src={image}
-                          alt=""
-                        />
+                      <div key={image} className={classes.ImgList}>
+                        <img src={image} alt="" />
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: "0",
+                            left: "0",
+                          }}
+                        >
+                          <Modal image={image} />
+                        </div>
                       </div>
                     </>
                   );
@@ -138,6 +149,11 @@ const Adverts = () => {
                 style={{ display: "flex", justifyContent: "end" }}
               >
                 <form style={{ display: "flex", alignItems: "center" }}>
+                  <img
+                    src={preview}
+                    style={{ display: preview ? "block" : "none" }}
+                    alt="img"
+                  />
                   <FormLabel
                     htmlFor="file-input"
                     onClick={(event: any) => {
@@ -147,6 +163,14 @@ const Adverts = () => {
                   >
                     <img src={require("../../../Img/save.png")} alt="dddd" />
                   </FormLabel>
+                  <input
+                    type="file"
+                    multiple
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    accept="image/*"
+                    onChange={onSelectedFile}
+                  />
                 </form>
               </Grid>
               <Typography className={classes.Typography}>
@@ -176,7 +200,7 @@ const Adverts = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={6} className={classes.Grid}>
+            <Grid item xs={8} className={classes.Grid}>
               <Typography className={classes.PaperText1}>
                 {"3. "}
                 {t(
@@ -221,7 +245,7 @@ const Adverts = () => {
                 "admin.adverts_page.adverts_page_paper.adverts_page_paper_note"
               )}
             </Typography>
-            <Grid item xs={6} className={classes.Grid}>
+            <Grid item xs={8} className={classes.Grid}>
               <Typography className={classes.PaperText1}>
                 {"3. "}
                 {t(
