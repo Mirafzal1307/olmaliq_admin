@@ -14,7 +14,6 @@ import { getCategory, getChildCategory, getSubChildCategory } from "../../../api
 import CategoryCreateList from "./CategoryCreateList";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 
-
 interface getCategory {
   category_id: string;
   category_name: string;
@@ -57,12 +56,6 @@ const CategoryCreate = (props: any) => {
     setSelectNewSubCategory(event.target.value as string);
   };
 
-  // const getCategoryData = async () => {
-  //   const res: any = await getCategory();
-  //   setCategory(res?.data?.data);
-  //   console.log(res?.data?.data);
-  // };
-
   useEffect(() => {
     getChildCategorySub();
     getData();
@@ -84,17 +77,6 @@ const CategoryCreate = (props: any) => {
     console.log(child.data.data);
     setSubCayegoryChild(child?.data?.data)
   }
-
-  const [clickedone, setClickedOne] = useState(false);
-  const [clicked, setClicked] = useState(false);
-
-  
-
-  // const handleClickOne = () => {
-  //    if (!clickedone) {
-  //      setClickedOne(true);
-  //    }
-  // }
 
   return (
     <>

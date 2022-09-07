@@ -15,6 +15,7 @@ import {
   cancelButton,
   note,
   noteAll,
+  saveButton,
   smartphoneSmall,
   subCategory,
   successSaveButton,
@@ -61,26 +62,23 @@ const CategoryCreateList = () => {
   const [preview, setPreview] = useState<any>();
 
   const [selectedImages, setSelectedImages] = useState<any>([]);
-  const [file, setFile] = useState<any>([]);
+
   const onSelectedFile = (event: any) => {
+    console.log(event.target.files.length);
     const selectedFiles = event.target.files;
     const selectedFilesArray: string[] = Array.from(selectedFiles);
 
     const imagesArray: string[] = selectedFilesArray.map((file: any) => {
       return URL.createObjectURL(file)
     });
-    setSelectedImages([...imagesArray]);
+    setSelectedImages(imagesArray);
   };
 
-  const deleteUser = (id: any) => (e: any) => {
-    setSelectedImages(selectedImages.filter((todo: any) => todo.id !== id));
+  const deleteFile = (id: any) => {
+    selectedImages.filter((user: any) => user.id !== id);
+    setSelectedImages(selectedImages);
+    console.log(selectedImages);
   };
-
-  function deleteFile(e: any) {
-    const s = selectedImages.filter((index: any) => index !== e);
-    setSelectedImages(s);
-    console.log(s);
-  }
 
   return (
     <>
@@ -119,20 +117,17 @@ const CategoryCreateList = () => {
                         src={image}
                         alt=""
                       />
-                      {/* <Grid
+                      <Grid
                         className={classes.positionImage}
                         onClick={() => deleteFile(id)}
                       >
                         <DeleteIcon style={{ color: "black" }} />
-                      </Grid> */}
-                      <button onClick={() => deleteFile(id)}>
-                        Delete
-                      </button>
+                      </Grid>
                     </div>
                   );
                 })}
               </Grid>
-              <Grid>
+              <Grid sx={{ display: "flex" }}>
                 <form style={{ display: "flex", alignItems: "center" }}>
                   <img
                     src={preview}
@@ -158,6 +153,9 @@ const CategoryCreateList = () => {
                     onChange={onSelectedFile}
                   />
                 </form>
+                {selectedImages == false ? null : <button style={saveButton}>
+                  Save
+                </button>}
               </Grid>
             </Toolbar>
             <Typography style={note}>
