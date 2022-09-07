@@ -14,7 +14,8 @@
 #CMD [ "yarn", "start" ]
 
 
-FROM node:16-alpine3.14
+#FROM node:16-alpine3.14
+FROM node:latest
 WORKDIR /usr/src/app
 # Only copy the package.json file to work directory
 COPY package*.json ./
@@ -26,7 +27,6 @@ ADD . /usr/src/app
 # TypeScript
 # RUN npm run tsc
 # Start
-CMD [ "yarn", "start" ]
-# set Docker port
 EXPOSE 2003
-
+CMD [ "npm", "start" ]
+# set Docker port
