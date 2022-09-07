@@ -84,9 +84,6 @@ const CategoryCreate = () => {
     setSubCayegoryChild(child?.data?.data)
   }
 
-  // const 
-
-
   const [clickedone, setClickedOne] = useState(false);
   const [clicked, setClicked] = useState(false);
 

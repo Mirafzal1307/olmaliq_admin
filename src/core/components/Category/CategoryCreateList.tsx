@@ -71,7 +71,7 @@ const CategoryCreateList = () => {
     const selectedFilesArray: string[] = Array.from(selectedFiles);
 
     const imagesArray: string[] = selectedFilesArray.map((file: any) => {
-      return URL.createObjectURL(file);
+      return URL.createObjectURL(file)
     });
     setSelectedImages(imagesArray);
   };
