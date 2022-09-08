@@ -58,4 +58,4 @@ deploy_prod:
     - chmod 400 $SSH_PRIVATE_KEY
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $PROD_SERVER_USER@$PROD_SERVER_IP "docker login -u '$CI_REGISTRY_USER' -p '$CI_REGISTRY_PASSWORD' $CI_REGISTRY"
     - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $PROD_SERVER_USER@$PROD_SERVER_IP "docker pull registry.gitlab.com/1itech_company_uz/shop_admin:development"
-    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $PROD_SERVER_USER@$PROD_SERVER_IP "docker stop shop_admin && docker rm shop_admin && docker run -e "PORT=3001" -p 3001:3001 --name shop_admin -d registry.gitlab.com/1itech_company_uz/shop_admin:development"
+    - ssh -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY $PROD_SERVER_USER@$PROD_SERVER_IP "docker stop shop_admin && docker rm shop_admin && docker run -e 'PORT=2003' -p 2003:2003 --name shop_admin -d registry.gitlab.com/1itech_company_uz/shop_admin:development"

@@ -19,7 +19,7 @@ export const selectValueCategory = {
   fontSize: "16px",
   fontWeight: "400",
   color: "#444444",
-  padding: "0 76px 0 20px"
+  padding: "0 76px 0 20px",
 };
 
 export const selectValueCreate = {
@@ -117,4 +117,13 @@ export const uploadImageCategory = {
   border: "1px solid #2DA55F",
   borderRadius: "5px",
   fontFamily: "Arial"
+};
+
+export const saveButton = {
+  background: "#2DA55F",
+  border: "none",
+  color: "white",
+  padding: "10px 20px",
+  borderRadius: "5px",
+  marginLeft: "10px"
 };
