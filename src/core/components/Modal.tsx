@@ -76,18 +76,16 @@ function Modal(props: any): JSX.Element {
     <>
       {/* {props.deleteButton ? ( */}
         <Tooltip title={props.TooltipTitle}>
-          <Button
-            sx={{ textTransform: "none" }}
+          <button
             onClick={handleOpen}
-          style={props.style}
-          >
+            style={props.style}
+            >
             <img
               src={props.image2}
-              style={{ marginRight: "10px"}}
               alt=""
-            />{" "}
+            />
             {/* {t("admin.modal.tooltip_title_delete")} */}
-          </Button>
+          </button>
         </Tooltip>
       {/* ) : null} */}
       <StyledModal

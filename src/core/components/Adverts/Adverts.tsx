@@ -7,7 +7,7 @@ import LandingTop from "../LandingTop";
 import { Box, Button, FormLabel, Grid, Paper, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import {
-  cancelButton,
+  cancelButton, successSaveButton,
 } from "../../theme/AdvertStyles";
 
 const useStyles = makeStyles({
@@ -60,6 +60,18 @@ const useStyles = makeStyles({
       width: "100%",
       height: "100%",
     },
+  },
+  successSaveButton: {
+    background: "#2DA55F !important",
+    color: "white",
+    border: "none",
+    alignItems: "center",
+    padding: "15px 20px",
+    fontFamily: "Arial",
+    fontWeight: "600",
+    fontSize: "17px",
+    borderRadius: "5px",
+    marginLeft: "10px"
   },
 });
 const Adverts = () => {
@@ -135,6 +147,12 @@ const Adverts = () => {
                             image2={require("../../../Img/Zoom.png")}
                             image1={image}
                             TooltipTitle={t("admin.modal.tooltip_title_delete")}
+                            exitText={t(
+                              "admin.adverts_page.adverts_page_modal.modal_green"
+                            )}
+                            successText={t(
+                              "admin.adverts_page.adverts_page_modal.modal_red"
+                            )}
                             style={cancelButton}
                             // deleteButton={"have"}
                           />
@@ -278,6 +296,27 @@ const Adverts = () => {
               )}
             </Typography>
           </Grid>
+          <div style={{ textAlign: "end", marginTop: "400px" }}>
+            <Modal
+              image2={require("../../../Img/Exit.png")}
+              TooltipTitle={t("admin.modal.tooltip_title_delete")}
+              deleteButton={"have"}
+              successText={t(
+                "admin.adverts_page.adverts_page_modal.modal_green"
+              )}
+              exitText={t("admin.adverts_page.adverts_page_modal.modal_red")}
+              style={cancelButton}
+            />
+            Bekor qilish
+            <Button sx={{ textTransform: "none" }} style={successSaveButton}>
+              <img
+                src={require("../../../Img/Success.png")}
+                style={{ marginRight: "10px" }}
+                alt=""
+              />
+              {t("admin.category_page.category_create_list.createButton")}
+            </Button>
+          </div>
         </Paper>
       </Container>
     </>
