@@ -5,7 +5,6 @@ import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
 import { cancelButton } from "../theme/CategoryStyle";
-// import { refresh } from "./refresh";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -74,30 +73,34 @@ function Modal(props: any): JSX.Element {
   
   return (
     <>
-      {/* {props.deleteButton ? ( */}
+      {props.deleteButton ? (
         <Tooltip title={props.TooltipTitle}>
           <Button
             sx={{ textTransform: "none" }}
             onClick={handleOpen}
-          style={props.style}
+            style={props.style}
           >
             <img
-              src={props.image2}
-              style={{ marginRight: "10px"}}
+              src={require("../../Img/Cancel.png")}
+              style={{ marginRight: "10px" }}
               alt=""
             />{" "}
-            {/* {t("admin.modal.tooltip_title_delete")} */}
+            {t("admin.modal.tooltip_title_delete")}
           </Button>
         </Tooltip>
-      {/* ) : null} */}
+      ) : null}
       <StyledModal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"
         open={open}
         onClose={handleClose}
       >
-        <Box sx={style} style={{ textAlign: 'center'}}>
-          <img src={props.image1} style={{ width: "100%", maxHeight: '500px'}} alt="" />
+        <Box sx={style} style={{ textAlign: "center" }}>
+          <img
+            src={props.image1}
+            style={{ width: "100%", maxHeight: "500px" }}
+            alt=""
+          />
           <h1 className={classes.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>

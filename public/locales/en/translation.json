@@ -109,6 +109,11 @@
     "modal": {
       "tooltip_title_delete": "Delete",
       "modal_main_text": "Are you sure you want to delete?"
+    },
+    "upload_image": {
+      "cancel_button": "Cancel",
+      "clear_button": "Clear",
+      "save_button": "Save"
     }
   }
 }

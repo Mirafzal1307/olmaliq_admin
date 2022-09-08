@@ -13,6 +13,7 @@ import {
 import { getCategory, getChildCategory, getSubChildCategory } from "../../../api/admin/AdminCategoryApi";
 import CategoryCreateList from "./CategoryCreateList";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
+import {styleCategory} from "./Style"
 
 interface getCategory {
   category_id: string;
@@ -83,10 +84,7 @@ const CategoryCreate = (props: any) => {
       <Grid sx={{ display: "flex", justifyContent: "space-between" }} xs={12}>
         <Grid item>
           <Paper
-            sx={{
-              padding: "30px 30px 454px",
-              width: "380px"
-            }}
+            sx={styleCategory.sx}
           >
             <Grid>
               <Typography style={createMainText}>
