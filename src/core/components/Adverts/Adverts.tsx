@@ -4,16 +4,11 @@ import { Container } from "@mui/system";
 import MiniDrawer from "../../../layouts/Drawer/Drawer";
 import { useTranslation } from "react-i18next";
 import LandingTop from "../LandingTop";
-import {
-  Box,
-  Button,
-  FormLabel,
-  Grid,
-  Paper,
-  Typography,
-} from "@mui/material";
-import { ImgList } from "../../theme/AdvertStyles";
+import { Box, Button, FormLabel, Grid, Paper, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import {
+  cancelButton,
+} from "../../theme/AdvertStyles";
 
 const useStyles = makeStyles({
   PaperTitle: {
@@ -29,7 +24,7 @@ const useStyles = makeStyles({
     color: "#444",
     margin: "10px 0 !important",
   },
-  Grid: {
+  GridStyle: {
     "& Button": {
       marginRight: 10,
       padding: 0,
@@ -40,7 +35,7 @@ const useStyles = makeStyles({
       },
     },
   },
-  Typography: {
+  TypographyStyle: {
     fontFamily: "Montserrat",
     fontSize: "11px !important",
     color: "#8C8C8C",
@@ -55,9 +50,9 @@ const useStyles = makeStyles({
     marginRight: 10,
     width: 45,
     height: 45,
-    
+
     "&:hover": {
-      position: 'relative',
+      position: "relative",
     },
 
     "& img": {
@@ -136,13 +131,20 @@ const Adverts = () => {
                             left: "0",
                           }}
                         >
-                          <Modal image={image} />
+                          <Modal
+                            image2={require("../../../Img/Zoom.png")}
+                            image1={image}
+                            TooltipTitle={t("admin.modal.tooltip_title_delete")}
+                            style={cancelButton}
+                            // deleteButton={"have"}
+                          />
                         </div>
                       </div>
                     </>
                   );
                 })}
               </Grid>
+
               <Grid
                 item
                 xs={6}
@@ -173,7 +175,7 @@ const Adverts = () => {
                   />
                 </form>
               </Grid>
-              <Typography className={classes.Typography}>
+              <Typography className={classes.TypographyStyle}>
                 <span>
                   {t(
                     "admin.adverts_page.adverts_page_paper.adverts_page_paper_noteSpan"
@@ -200,7 +202,7 @@ const Adverts = () => {
               </Box>
             </Grid>
 
-            <Grid item xs={8} className={classes.Grid}>
+            <Grid item xs={8} className={classes.GridStyle}>
               <Typography className={classes.PaperText1}>
                 {"3. "}
                 {t(
@@ -235,7 +237,7 @@ const Adverts = () => {
                 <img src={require("../../../Img/categoryImg1.png")} alt="" />
               </Button>
             </Grid>
-            <Typography className={classes.Typography}>
+            <Typography className={classes.TypographyStyle}>
               <span>
                 {t(
                   "admin.adverts_page.adverts_page_paper.adverts_page_paper_noteSpan"
@@ -245,7 +247,7 @@ const Adverts = () => {
                 "admin.adverts_page.adverts_page_paper.adverts_page_paper_note"
               )}
             </Typography>
-            <Grid item xs={8} className={classes.Grid}>
+            <Grid item xs={8} className={classes.GridStyle}>
               <Typography className={classes.PaperText1}>
                 {"3. "}
                 {t(
@@ -265,7 +267,7 @@ const Adverts = () => {
                 <img src={require("../../../Img/categoryImg1.png")} alt="" />
               </Button>
             </Grid>
-            <Typography className={classes.Typography}>
+            <Typography className={classes.TypographyStyle}>
               <span>
                 {t(
                   "admin.adverts_page.adverts_page_paper.adverts_page_paper_noteSpan"
