@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "@mui/material";
+import { Container, Typography } from "@mui/material";
 import MiniDrawer from "../../layouts/Drawer/Drawer";
 import { useTranslation } from "react-i18next";
 
@@ -9,7 +9,7 @@ const Settings = () => {
     <>
       <MiniDrawer />
       <Container>
-        <h1>Settings page</h1>
+        <Typography variant="h1">Settings page</Typography>
         {t("admin.drawer.menu_title.settings")}
       </Container>
     </>

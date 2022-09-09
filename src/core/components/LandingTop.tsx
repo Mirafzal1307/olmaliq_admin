@@ -23,7 +23,7 @@ const LandingTop = (props: any) => {
               {props.dashboardText}
             </Typography>{" "}
             <Typography style={createCategoryDirection}>
-              {props.prevIcon ? <p>{props.prevIcon}</p> : null}
+              {props.prevIcon ? <>{props.prevIcon}</> : null}
             </Typography>
             <Typography style={createCategoryDirectionSpan}>
               {props.pageTextSpan}

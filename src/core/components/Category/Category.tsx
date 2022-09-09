@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import { Grid, Toolbar } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import MiniDrawer from "../../../layouts/Drawer/Drawer";
 import LandingTop from "../LandingTop";
 import CategoryCreate from "./CategoryCreate";
-import CategoryList from "./CategoryList";
+// import CategoryList from "./CategoryList";
 import CategoryListNone from "./CategoryListNone";
-import { categories } from "./CategoryList";
+// import { categories } from "./CategoryList";
 import { useTranslation } from "react-i18next";
 import CategoryCreateList from "./CategoryCreateList";
-import SplitButton from "../Info";
+// import SplitButton from "../Info";
 
 const Category = () => {
   const { t } = useTranslation();
