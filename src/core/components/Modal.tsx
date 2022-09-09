@@ -75,8 +75,7 @@ function Modal(props: any): JSX.Element {
     <>
       {props.deleteButton ? (
         <Tooltip title={props.TooltipTitle}>
-          <Button
-            sx={{ textTransform: "none" }}
+          <button
             onClick={handleOpen}
             style={props.style}
           >
