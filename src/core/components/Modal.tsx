@@ -1,10 +1,10 @@
-import { Box, Button, Tooltip } from "@mui/material";
+import { Box, Button, Tooltip, Grid } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
-import { cancelButton } from "../theme/CategoryStyle";
+import { Typography } from "@mui/material";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -107,16 +107,16 @@ function Modal(props: any): JSX.Element {
           <h2 id="unstyled-modal-title" className={classes.h2}>
             {t("admin.modal.modal_main_text")}
           </h2>
-          <div>
+          <Grid>
             <Button onClick={handleClose} className={classes.cancel}>
               <img src={require("../../Img/Exit.png")} alt="rasm bor edi" />
-              {props.exitText ? <p>{props.exitText}</p> : null}
+              {props.exitText ? <Typography>{props.exitText}</Typography> : null}
             </Button>
             <Button onClick={handleClose} className={classes.deletes}>
               <img src={require("../../Img/Success.png")} alt="rasm bor edi" />
-              {props.successText ? <p>{props.successText}</p> : null}
+              {props.successText ? <Typography>{props.successText}</Typography> : null}
             </Button>
-          </div>
+          </Grid>
         </Box>
       </StyledModal>
     </>

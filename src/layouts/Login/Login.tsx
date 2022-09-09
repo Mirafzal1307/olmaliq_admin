@@ -1,52 +1,13 @@
 import React from "react";
 import { Grid, Radio, TextField } from "@mui/material";
-import { makeStyles } from "@mui/styles";
 import "./style.css"
 import { useFormik } from "formik"
 import * as Yup from "yup"
 import { useState } from "react";
-
-const useStyles = makeStyles({
-  styleGrid: {
-    background: "#2DA55F",
-    width: "50%",
-    height: "975px",
-  },
-  styleGridImg: {
-    display: "block",
-    margin: "auto",
-    marginTop: "30px",
-  },
-  loginForm: {
-    width: "540px",
-  },
-  mainText: {
-    color: "#2DA55F",
-    fontFamily: "Montserrat !important",
-    fontSize: "43px",
-    fontWeight: "700"
-  },
-  rememberText: {
-    fontFamily: "Montserrat",
-    fontSize: "14px",
-    fontWeight: "400",
-    color: "#444444",
-  },
-  loginButton: {
-    color: "white",
-    background: "#2DA55F",
-    border: "1px solid #2DA55F",
-    borderRadius: "5px",
-    padding: "11px 250px",
-    fontFamily: "Montserrat",
-    fontSize: "14px",
-    fontWeight: "600",
-  },
-});
+import { Link } from "react-router-dom";
+import { LoginStyle } from "../theme/LoginPage";
 
 const Login = () => {
-  const classes = useStyles()
-
   const [selectedValue, setSelectedValue] = useState("a");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
@@ -81,12 +42,16 @@ const Login = () => {
 
   return (
     <>
-      <Grid sx={{ display: "flex", margin: "0" }}>
-        <Grid className={classes.styleGrid}>
-          <img className={classes.styleGridImg} src={require("../../Img/AllLogin.png")} alt="" />
+      <Grid sx={LoginStyle.loginPageMainGrid}>
+        <Grid sx={LoginStyle.styleGrid}>
+          <img
+            style={LoginStyle.styleGridImg}
+            src={require("../../Img/AllLogin.png")}
+            alt=""
+          />
         </Grid>
-        <Grid sx={{ textAlign: "center", margin: "auto" }}>
-          <h1 className={classes.mainText}>Boshqaruv paneli</h1>
+        <Grid sx={LoginStyle.loginChildGrid}>
+          <h1 style={LoginStyle.mainText}>Boshqaruv paneli</h1>
           <TextField
             margin="normal"
             variant="outlined"
@@ -95,7 +60,7 @@ const Login = () => {
             label="Ma'mur"
             type="string"
             id="login"
-            className={classes.loginForm}
+            sx={LoginStyle.loginForm}
             value={formik.values.login}
             onChange={formik.handleChange}
             error={formik.touched.login && Boolean(formik.errors.login)}
@@ -109,19 +74,21 @@ const Login = () => {
             label="Parolni kiriting"
             type="password"
             id="password"
-            className={classes.loginForm}
+            sx={LoginStyle.loginForm}
             value={formik.values.password}
             onChange={formik.handleChange}
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
-          <Grid sx={{ display: "flex", alignItems: "center", marginLeft: "22%" }}>
+          <Grid
+            sx={LoginStyle.radioGrid}
+          >
             <Radio {...controlProps("c")} color="success" />
-            <p className={classes.rememberText}>Eslab qolinsinmi?</p>
+            <p style={LoginStyle.rememberText}>Eslab qolinsinmi?</p>
           </Grid>
-          <button
-            className={classes.loginButton}
-          >Kirish</button>
+          <Link to="/dashboard">
+            <button style={LoginStyle.loginButton}>Kirish</button>
+          </Link>
         </Grid>
       </Grid>
     </>
