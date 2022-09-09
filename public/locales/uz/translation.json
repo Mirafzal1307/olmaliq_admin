@@ -108,6 +108,11 @@
     "modal": {
       "tooltip_title_delete": "O'chirish",
       "modal_main_text": "Siz rostdanham o’chirmoqchimisiz?"
+    },
+    "upload_image": {
+      "cancel_button": "Bekor qilish",
+      "clear_button": "Tozalash",
+      "save_button": "Saqlash"
     }
   }
 }

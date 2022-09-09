@@ -1,5 +1,19 @@
 import React from 'react';
-import { FormControl, Grid, MenuItem, Paper, Select, SelectChangeEvent, Table, TableBody, TableCell, TableContainer, TableRow, Toolbar } from '@mui/material';
+import {
+  FormControl,
+  Grid,
+  MenuItem,
+  Paper,
+  Select,
+  SelectChangeEvent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { useTranslation } from "react-i18next"
 import SplitButton from '../Info';
 import TableComponent from '../../../layouts/Table/Table';
@@ -81,7 +95,7 @@ const CategoryList = () => {
       <Grid>
         <Paper sx={{ height: "789px", padding: "20px 30px 30px 30px" }}>
           <Toolbar>
-            <p>{t("admin.category_page.category_list.text_per_page")}</p>
+            <Typography>{t("admin.category_page.category_list.text_per_page")}</Typography>
             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
               <Select
                 value={countPerPage}

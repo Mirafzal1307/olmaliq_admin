@@ -9,21 +9,9 @@ import { makeStyles } from "@mui/styles";
 import {
   cancelButton, successSaveButton,
 } from "../../theme/AdvertStyles";
+import { AdvertPageStyle } from "../../theme/AdvertPageStyle";
 
 const useStyles = makeStyles({
-  PaperTitle: {
-    fontFamily: "Montserrat",
-    fontWeight: "600 !important",
-    fontSize: "17px !important",
-    color: "#2DA55F",
-  },
-  PaperText1: {
-    fontFamily: "Montserrat",
-    fontWeight: "600 !important",
-    fontSize: "17px !important",
-    color: "#444",
-    margin: "10px 0 !important",
-  },
   GridStyle: {
     "& Button": {
       marginRight: 10,
@@ -76,7 +64,7 @@ const useStyles = makeStyles({
 });
 const Adverts = () => {
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
-  const [preview, setPreview] = useState<any>();
+  const [preview, setPreview] = useState();
   const fileInputRef = useRef<any>();
   const { t } = useTranslation();
   const classes = useStyles();
@@ -116,14 +104,14 @@ const Adverts = () => {
           )}
         />
         <Paper style={{ padding: "30px" }}>
-          <Typography className={classes.PaperTitle}>
+          <Typography sx={AdvertPageStyle.PaperTitle}>
             {t(
               "admin.adverts_page.adverts_page_paper.adverts_page_paper_title"
             )}
             {" №1"}
           </Typography>
           <Grid container>
-            <Typography className={classes.PaperText1}>
+            <Typography sx={AdvertPageStyle.PaperText1}>
               {"1. "}
               {t(
                 "admin.adverts_page.adverts_page_paper.adverts_page_paper_categoryTitle"
@@ -205,7 +193,7 @@ const Adverts = () => {
               </Typography>
             </Grid>
             <Grid item xs={8}>
-              <Typography className={classes.PaperText1}>
+              <Typography sx={AdvertPageStyle.PaperText1}>
                 {"2. "}
                 {t(
                   "admin.adverts_page.adverts_page_paper.adverts_page_paper_categoryTitle2"
@@ -221,7 +209,7 @@ const Adverts = () => {
             </Grid>
 
             <Grid item xs={8} className={classes.GridStyle}>
-              <Typography className={classes.PaperText1}>
+              <Typography sx={AdvertPageStyle.PaperText1}>
                 {"3. "}
                 {t(
                   "admin.adverts_page.adverts_page_paper.adverts_page_paper_categoryTitle"
@@ -266,7 +254,7 @@ const Adverts = () => {
               )}
             </Typography>
             <Grid item xs={8} className={classes.GridStyle}>
-              <Typography className={classes.PaperText1}>
+              <Typography sx={AdvertPageStyle.PaperText1}>
                 {"3. "}
                 {t(
                   "admin.adverts_page.adverts_page_paper.adverts_page_paper_categoryTitle"

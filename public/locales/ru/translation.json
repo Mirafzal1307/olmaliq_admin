@@ -109,6 +109,11 @@
     "modal": {
       "tooltip_title_delete": "Удалить",
       "modal_main_text": "Вы реально хотите удалить?"
+    },
+    "upload_image": {
+      "cancel_button": "Отменить",
+      "clear_button": "Очистить",
+      "save_button": "Сохранить"
     }
   }
 }

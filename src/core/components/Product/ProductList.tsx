@@ -1,8 +1,21 @@
-import { FormControl, Grid, MenuItem, Paper, Select, SelectChangeEvent, Table, TableBody, TableCell, TableContainer, TableRow, Toolbar } from '@mui/material';
+import {
+  FormControl,
+  Grid,
+  MenuItem,
+  Paper,
+  Select,
+  SelectChangeEvent,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import React from 'react'
 import { useTranslation } from 'react-i18next';
 import TableComponent from '../../../layouts/Table/Table';
-import { statusProduct } from '../../theme/Table';
 import SplitButton from '../Info';
 
 const IphonePhoto = () => {
@@ -16,7 +29,6 @@ export const products = [
     price: "155 000 so`m",
     discount: "99%",
     count: "10 000",
-    status: "Bor",
     name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
@@ -26,7 +38,6 @@ export const products = [
     price: "155 000 so`m",
     discount: "99%",
     count: "10 000",
-    status: "Bor",
     name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
@@ -36,7 +47,6 @@ export const products = [
     price: "155 000 so`m",
     discount: "99%",
     count: "10 000",
-    status: "Bor",
     name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
@@ -46,7 +56,6 @@ export const products = [
     price: "155 000 so`m",
     discount: "99%",
     count: "10 000",
-    status: "Bor",
     name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
@@ -56,7 +65,6 @@ export const products = [
     price: "155 000 so`m",
     discount: "99%",
     count: "10 000",
-    status: "Bor",
     name: "Iphone 13 pro max",
     date: "30.03.2022",
   },
@@ -75,7 +83,7 @@ const ProductList = () => {
       <Grid>
         <Paper sx={{ height: "789px", padding: "20px 30px 30px 30px" }}>
           <Toolbar>
-            <p>{t("admin.category_page.category_list.text_per_page")}</p>
+            <Typography>{t("admin.category_page.category_list.text_per_page")}</Typography>
             <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
               <Select
                 value={countPerPage}
@@ -106,9 +114,6 @@ const ProductList = () => {
                 )}
                 CountProduct={t(
                   "admin.category_page.category_list.count_product"
-                )}
-                StatusProduct={t(
-                  "admin.category_page.category_list.status_product"
                 )}
                 Date={t("admin.category_page.category_list.category_list_date")}
                 Actions={t(
@@ -148,15 +153,6 @@ const ProductList = () => {
                     )}
                     {item?.count ? (
                       <TableCell>{item?.count}</TableCell>
-                    ) : (
-                      <TableCell>
-                        {t("admin.category_page.category_list.name_none")}
-                      </TableCell>
-                    )}
-                    {item?.status ? (
-                      <TableCell>
-                        <div style={statusProduct}>{item?.status}</div>
-                      </TableCell>
                     ) : (
                       <TableCell>
                         {t("admin.category_page.category_list.name_none")}

@@ -1,11 +1,10 @@
-import { Box, Button, Tooltip } from "@mui/material";
+import { Box, Button, Tooltip, Grid } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/system";
 import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
-import { cancelButton } from "../theme/CategoryStyle";
-// import { refresh } from "./refresh";
+import { Typography } from "@mui/material";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -74,44 +73,49 @@ function Modal(props: any): JSX.Element {
   
   return (
     <>
-      {/* {props.deleteButton ? ( */}
+      {props.deleteButton ? (
         <Tooltip title={props.TooltipTitle}>
           <button
             onClick={handleOpen}
             style={props.style}
-            >
+          >
             <img
-              src={props.image2}
+              src={require("../../Img/Cancel.png")}
+              style={{ marginRight: "10px" }}
               alt=""
-            />
-            {/* {t("admin.modal.tooltip_title_delete")} */}
-          </button>
+            />{" "}
+            {t("admin.modal.tooltip_title_delete")}
+          </Button>
         </Tooltip>
-      {/* ) : null} */}
+      ) : null}
       <StyledModal
         aria-labelledby="unstyled-modal-title"
         aria-describedby="unstyled-modal-description"
         open={open}
         onClose={handleClose}
       >
-        <Box sx={style} style={{ textAlign: 'center'}}>
-          <img src={props.image1} style={{ width: "100%", maxHeight: '500px'}} alt="" />
+        <Box sx={style} style={{ textAlign: "center" }}>
+          <img
+            src={props.image1}
+            style={{ width: "100%", maxHeight: "500px" }}
+            alt=""
+          />
           <h1 className={classes.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
           <h2 id="unstyled-modal-title" className={classes.h2}>
             {t("admin.modal.modal_main_text")}
           </h2>
-          <div>
+          <Grid>
             <Button onClick={handleClose} className={classes.cancel}>
               <img src={require("../../Img/Exit.png")} alt="rasm bor edi" />
-              {props.exitText ? <p>{props.exitText}</p> : null}
+              {props.exitText ? <Typography>{props.exitText}</Typography> : null}
             </Button>
             <Button onClick={handleClose} className={classes.deletes}>
               <img src={require("../../Img/Success.png")} alt="rasm bor edi" />
-              {props.successText ? <p>{props.successText}</p> : null}
+              {props.successText ? <Typography>{props.successText}</Typography> : null}
             </Button>
-          </div>
+          </Grid>
         </Box>
       </StyledModal>
     </>
