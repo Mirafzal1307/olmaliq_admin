@@ -6,6 +6,7 @@ import * as Yup from "yup"
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { LoginStyle } from "../theme/LoginPage";
+import { motion } from 'framer-motion'
 
 const Login = () => {
   const [selectedValue, setSelectedValue] = useState("a");
@@ -41,7 +42,11 @@ const Login = () => {
   });
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Grid sx={LoginStyle.loginPageMainGrid}>
         <Grid sx={LoginStyle.styleGrid}>
           <img
@@ -80,9 +85,7 @@ const Login = () => {
             error={formik.touched.password && Boolean(formik.errors.password)}
             helperText={formik.touched.password && formik.errors.password}
           />
-          <Grid
-            sx={LoginStyle.radioGrid}
-          >
+          <Grid sx={LoginStyle.radioGrid}>
             <Radio {...controlProps("c")} color="success" />
             <p style={LoginStyle.rememberText}>Eslab qolinsinmi?</p>
           </Grid>
@@ -91,7 +94,7 @@ const Login = () => {
           </Link>
         </Grid>
       </Grid>
-    </>
+    </motion.div>
   );
 };
 
