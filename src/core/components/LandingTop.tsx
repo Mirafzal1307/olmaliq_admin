@@ -14,29 +14,32 @@ const LandingTop = (props: any) => {
           marginBottom: "32px",
         }}
       >
-        <Grid>
-          <Typography variant="h3" style={mainText}>
-            {props.mainText}
-          </Typography>
-          <Grid sx={{ display: "flex" }}>
-            <Typography style={createCategoryDirection}>
-              {props.dashboardText}
-            </Typography>{" "}
-            <Typography style={createCategoryDirection}>
-              {props.prevIcon ? <>{props.prevIcon}</> : null}
+          <Grid>
+            <Typography variant="h3" style={mainText}>
+              {props.mainText}
             </Typography>
-            <Typography style={createCategoryDirectionSpan}>
-              {props.pageTextSpan}
-            </Typography>
+            <Grid sx={{ display: "flex" }}>
+              <Typography style={createCategoryDirection}>
+                {props.dashboardText}
+              </Typography>{" "}
+              <Typography style={createCategoryDirection}>
+                {props.prevIcon ? <>{props.prevIcon}</> : null}
+              </Typography>
+              <Typography style={createCategoryDirectionSpan}>
+                {props.pageTextSpan}
+              </Typography>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid>
-          <Link style={{ textDecoration: "none" }} to={props.toPage ? `/${props.toPage}` : `/dashboard`}>
-          <Button sx={{ textTransform: "none" }} style={ButtonStyle}>
-            {props.createButton}
-          </Button>
-          </Link>
-        </Grid>
+          <Grid>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={props.toPage ? `/${props.toPage}` : `/dashboard`}
+            >
+              <Button sx={{ textTransform: "none" }} style={ButtonStyle}>
+                {props.createButton}
+              </Button>
+            </Link>
+          </Grid>
       </Grid>
     </>
   );

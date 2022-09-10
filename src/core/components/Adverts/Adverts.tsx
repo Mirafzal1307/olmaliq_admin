@@ -10,6 +10,7 @@ import {
   cancelButton, successSaveButton,
 } from "../../theme/AdvertStyles";
 import { AdvertPageStyle } from "../../theme/AdvertPageStyle";
+import { motion } from "framer-motion";
 
 const useStyles = makeStyles({
   GridStyle: {
@@ -81,7 +82,11 @@ const Adverts = () => {
   };
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <MiniDrawer />
       <Container>
         <LandingTop
@@ -104,12 +109,14 @@ const Adverts = () => {
           )}
         />
         <Paper style={{ padding: "30px" }}>
-          <Typography sx={AdvertPageStyle.PaperTitle}>
-            {t(
-              "admin.adverts_page.adverts_page_paper.adverts_page_paper_title"
-            )}
-            {" №1"}
-          </Typography>
+          {(
+            <Typography sx={AdvertPageStyle.PaperTitle}>
+              {t(
+                "admin.adverts_page.adverts_page_paper.adverts_page_paper_title"
+              )}
+              {" №1"}
+            </Typography>
+          )}
           <Grid container>
             <Typography sx={AdvertPageStyle.PaperText1}>
               {"1. "}
@@ -307,7 +314,7 @@ const Adverts = () => {
           </div>
         </Paper>
       </Container>
-    </>
+    </motion.div>
   );
 };
 
