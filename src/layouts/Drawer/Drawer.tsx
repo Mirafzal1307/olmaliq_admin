@@ -23,6 +23,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useTranslation } from "react-i18next";
 import { routeText } from '../../core/theme/Drawer';
+// import  from "../../Img/uzb flag.png"
 
 const useStyles = makeStyles({
   searchInput: {
@@ -144,12 +145,15 @@ export default function MiniDrawer() {
             <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
               <Select onChange={handleLanguageChange} value={i18n.language}>
                 <MenuItem value="uz">
+                  <img src={require("../../Img/uzb flag.png")} style={{width: "30px", padding: "0px 5px 0 5px "}} alt="" />
                   {t("admin.drawer.language_label.uzbek")}
                 </MenuItem>
                 <MenuItem value="ru">
+                  <img src={require("../../Img/russian icon.png")} style={{width: "30px", padding: "0px 5px 0 5px "}} alt="" />
                   {t("admin.drawer.language_label.russian")}
                 </MenuItem>
                 <MenuItem value="en">
+                <img src={require("../../Img/america.jpg")} style={{width: "30px", padding: "0px 5px 0 5px "}} alt="" />
                   {t("admin.drawer.language_label.english")}
                 </MenuItem>
               </Select>

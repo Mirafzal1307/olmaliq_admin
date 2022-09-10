@@ -85,7 +85,7 @@ function Modal(props: any): JSX.Element {
               alt=""
             />{" "}
             {t("admin.modal.tooltip_title_delete")}
-          </Button>
+          </button>
         </Tooltip>
       ) : null}
       <StyledModal
