@@ -11,6 +11,7 @@ import CategoryIcon from "../Img/icons/CategoryIcon"
 import OrderIcon from "../Img/icons/OrderIcon";
 import AdvertsIcon from "../Img/icons/AvertsIcon";
 import Adverts from "../core/components/Adverts/Adverts";
+import NotFoundPage from "../layouts/NotFound/404";
 
 const MainRoutes = [
   {
@@ -48,6 +49,10 @@ const MainRoutes = [
     title: "Reklom",
     path: "/adverts",
     // element: <Adverts />
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />
   },
 ]
 
