@@ -10,4 +10,5 @@ export const NotFoundStyle = {
     display: "block",
     margin: "auto",
     marginTop: "50px",
+    
 }

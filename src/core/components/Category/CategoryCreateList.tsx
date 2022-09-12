@@ -5,8 +5,7 @@ import {
   TextField,
   Typography
 } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import React, { useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import {
   cancelButton,
@@ -18,30 +17,10 @@ import {
 } from "../../theme/CategoryStyle";
 import Modal from "../Modal";
 import UploadModal from "../UploadModal";
-
-const useStyles = makeStyles({
-  categoryInput: {
-    color: "#444444",
-    fontFamily: "Poppins",
-    fontSize: "14px",
-    fontWeight: "400",
-    padding: "2px 0 2px 0 !important",
-    width: "320px",
-  }
-});
+import { styleCategory } from "./Style";
 
 const CategoryCreateList = () => {
   const { t } = useTranslation();
-  const classes = useStyles()
-  const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
-  const [selectedImages, setSelectedImages] = useState<any>([]);
-
-  // const deleteFile = (id: any) => {
-  //   selectedImages.filter((user: any) => user.id !== id);
-  //   setSelectedImages(selectedImages);
-  //   console.log(selectedImages);
-  // };
 
   return (
     <>
@@ -55,7 +34,7 @@ const CategoryCreateList = () => {
               {t("admin.category_page.category_create_list.small_categories")}
             </Typography>
             <TextField
-              className={classes.categoryInput}
+              sx={styleCategory.categoryInput}
               placeholder={t(
                 "admin.category_page.category_create_list.plaseholder_name"
               )}
@@ -67,10 +46,6 @@ const CategoryCreateList = () => {
             </Typography>
               <Grid sx={{ textAlign: "end" }}>
                 <UploadModal />
-                {/* {selectedImages == false ? null : <button style={saveButton}>
-                  Save
-                </button>} */}
-
               </Grid>
             <Typography style={note}>
               {t("admin.category_page.category_create_list.note_about")}

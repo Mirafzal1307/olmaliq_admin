@@ -11,13 +11,13 @@ const NotFoundPage = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <Container>
+      <Container sx={{ marginTop: "50px" }}>
         <img
-          style={{ width: "100%" }}
-          src={require("../../Img/404-error-page-not-found-isolated-in-white-background-vector.jpg")}
+          style={{ display: "block", margin: "auto" }}
+          src={require("../../Img/NotFoundImg.png")}
           alt=""
         />
-        <Link to="/dashboard">
+        <Link style={{ textDecoration: "none" }} to="/dashboard">
           <button style={NotFoundStyle}>Go home</button>
         </Link>
       </Container>
