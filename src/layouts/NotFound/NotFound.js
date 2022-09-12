@@ -8,5 +8,7 @@ export const NotFoundStyle = {
     fontWeight: "700",
     fontFamily: "Poppins",
     display: "block",
-    margin: "auto"
+    margin: "auto",
+    marginTop: "50px",
+    
 }

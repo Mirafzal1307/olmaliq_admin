@@ -5,6 +5,7 @@ import ModalUnstyled from "@mui/base/ModalUnstyled";
 import { makeStyles } from "@mui/styles";
 import { useTranslation } from "react-i18next";
 import { Typography } from "@mui/material";
+import { modalPageStyle } from "./ModalStyle";
 
 const StyledModal = styled(ModalUnstyled)`
   position: fixed;
@@ -19,29 +20,12 @@ const StyledModal = styled(ModalUnstyled)`
   background: rgba(0, 0, 0, 0.5);
 `;
 const style = {
-  // width: 'auto',
   maxHeight: '90vh',
   bgcolor: "#fff !important",
   borderRadius: "10px",
-  // pt: 3,
-  // pb: 4,
   padding: '30px'
 };
 const useStyles = makeStyles({
-  h1: {
-    fontStyle: "normal",
-    fontWeight: "600",
-    fontSize: "22px",
-    color: "#2DA55F",
-    margin: "0",
-  },
-  h2: {
-    fontFamily: "Poppins",
-    fontSize: "17px",
-    fontWeight: "400",
-    margin: "10px 0 20px 0",
-    lineHeight: "138%",
-  },
   cancel: {
     background: "#FF4B4B !important",
     borderRadius: "5px",
@@ -100,10 +84,10 @@ function Modal(props: any): JSX.Element {
             style={{ width: "100%", maxHeight: "500px" }}
             alt=""
           />
-          <h1 className={classes.h1}>
+          <h1 style={modalPageStyle.h1}>
             {t("admin.adverts_page.adverts_page_modal.modal_name")}!
           </h1>
-          <h2 id="unstyled-modal-title" className={classes.h2}>
+          <h2 id="unstyled-modal-title" style={modalPageStyle.h2}>
             {t("admin.modal.modal_main_text")}
           </h2>
           <Grid>

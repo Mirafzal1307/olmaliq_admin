@@ -20,6 +20,7 @@ export const selectValueCategory = {
   fontWeight: "400",
   color: "#444444",
   padding: "0 76px 0 20px",
+  justifyContent: "space-between"
 };
 
 export const selectValueCreate = {

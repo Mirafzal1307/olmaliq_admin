@@ -4,12 +4,17 @@ import MiniDrawer from "../../../layouts/Drawer/Drawer";
 import { useTranslation } from "react-i18next"
 import LandingTop from "../LandingTop";
 import ProductList from "./ProductList";
+import { motion } from "framer-motion";
 
 const Product = () => {
   const { t } = useTranslation()
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <MiniDrawer />
       <Container>
         <LandingTop
@@ -30,7 +35,7 @@ const Product = () => {
           <ProductList />
         </Grid>
       </Container>
-    </>
+    </motion.div>
   );
 };
 

@@ -10,6 +10,7 @@ import CategoryListNone from "./CategoryListNone";
 import { useTranslation } from "react-i18next";
 import CategoryCreateList from "./CategoryCreateList";
 // import SplitButton from "../Info";
+import { motion } from "framer-motion";
 
 const Category = () => {
   const { t } = useTranslation();
@@ -23,7 +24,11 @@ const Category = () => {
   };
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <MiniDrawer />
       <Container>
         <LandingTop
@@ -52,7 +57,7 @@ const Category = () => {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </motion.div>
   );
 };
 
