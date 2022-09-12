@@ -10,7 +10,7 @@ import {
   selectValueCategory,
   selectValueCreate
 } from "../../theme/CategoryStyle";
-import { getCategory, getChildCategory, getSubChildCategory } from "../../../api/admin/AdminCategoryApi";
+import { getCategory, getChildCategory, getSubChildCategory, postCategoryUpload } from "../../../api/admin/AdminCategoryApi";
 // import CategoryCreateList from "./CategoryCreateList";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import {styleCategory} from "./Style"
@@ -75,9 +75,10 @@ const CategoryCreate = (props: any) => {
 
   const getChildCategorySub = async () => {
     const child: any = await getSubChildCategory();
-    console.log(child.data.data);
     setSubCayegoryChild(child?.data?.data)
   }
+
+
 
   return (
     <>

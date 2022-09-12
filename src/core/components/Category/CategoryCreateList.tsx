@@ -3,9 +3,12 @@ import {
   Grid,
   Paper,
   TextField,
-  Typography
+  Typography,
+  Toolbar,
+  FormLabel
 } from "@mui/material";
-import React from "react";
+import { makeStyles } from "@mui/styles";
+import React, { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import {
   cancelButton,
@@ -14,13 +17,49 @@ import {
   smartphoneSmall,
   subCategory,
   successSaveButton,
+  uploadImageCategory,
 } from "../../theme/CategoryStyle";
 import Modal from "../Modal";
-import UploadModal from "../UploadModal";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { styleCategory } from "./Style";
+
+const useStyles = makeStyles({
+  ClickedImage: {
+    "&:hover": {
+      width: "100%",
+      height: "100%",
+      background: "gray",
+      opacity: 1,
+    },
+  },
+  positionImage: {
+    position: "absolute",
+    right: "23%",
+    top: "20%",
+  },
+});
 
 const CategoryCreateList = () => {
   const { t } = useTranslation();
+  const [selectedImages, setSelectedImages] = useState<any>("");
+  const fileInputRef = useRef<any>();
+  const classes = useStyles();
+
+  const onSelectedFile = async (event: any) => {
+    const selectedFiles = event.target.files;
+    const data = new FormData();
+    data.append("upload_image", selectedFiles[0])
+    const res: any = await fetch(
+      "http://192.168.100.4:3000/api/uploads/create",
+      {
+        method: "POST",
+        body: data
+      }
+    )
+    const file = await res.json()
+    console.log(file);
+    setSelectedImages(file)
+  };
 
   return (
     <>
@@ -44,9 +83,42 @@ const CategoryCreateList = () => {
                 "admin.category_page.category_create_list.small_categories_photos"
               )}
             </Typography>
-              <Grid sx={{ textAlign: "end" }}>
-                <UploadModal />
+            <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
+              {selectedImages.length === 0 ? <Grid></Grid> : <Grid sx={{ display: "flex", position: "relative" }}>
+                <img
+                  style={uploadImageCategory}
+                  className={classes.ClickedImage}
+                  src={selectedImages.length === 0 ? "" : `http://192.168.100.4:9000/shop/${selectedImages?.data?.upload_data}`}
+                  alt=""
+                />
+                {selectedImages.length === 0 ? "" : <Grid className={classes.positionImage}>
+                  <DeleteIcon style={{ color: "black" }} />
+                </Grid>}
+              </Grid>}
+              <Grid>
+                <form>
+                  <FormLabel
+                    htmlFor="file-input"
+                    onClick={(event: any) => {
+                      event.preventDefault();
+                      fileInputRef.current.click();
+                    }}
+                  >
+                    <img
+                      src={require("../../../Img/save.png")}
+                      alt="save"
+                    />
+                  </FormLabel>
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    ref={fileInputRef}
+                    accept="image/*"
+                    onChange={onSelectedFile}
+                  />
+                </form>
               </Grid>
+            </Toolbar>
             <Typography style={note}>
               {t("admin.category_page.category_create_list.note_about")}
             </Typography>
