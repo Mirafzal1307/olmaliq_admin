@@ -22,6 +22,9 @@ import {
 import Modal from "../Modal";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { styleCategory } from "./Style";
+import { postCategoryUpload } from "../../../api/admin/AdminCategoryApi";
+
+
 
 const useStyles = makeStyles({
   ClickedImage: {
@@ -39,27 +42,40 @@ const useStyles = makeStyles({
   },
 });
 
-const CategoryCreateList = () => {
-  const { t } = useTranslation();
-  const [selectedImages, setSelectedImages] = useState<any>("");
-  const fileInputRef = useRef<any>();
-  const classes = useStyles();
+// interface postCategory{}
 
-  const onSelectedFile = async (event: any) => {
+
+const CategoryCreateList = () => {
+  const [upload, setUpload] = useState<any>("");
+  const [uploadtwo, setUploadtwo] = useState<any>("");
+
+
+  const postCategoryUploads = async (event: any) => {
     const selectedFiles = event.target.files;
     const data = new FormData();
     data.append("upload_image", selectedFiles[0])
-    const res: any = await fetch(
-      "http://192.168.100.4:3000/api/uploads/create",
-      {
-        method: "POST",
-        body: data
-      }
-    )
-    const file = await res.json()
-    console.log(file);
-    setSelectedImages(file)
-  };
+    const child: any = await postCategoryUpload(data);
+    setUpload(child?.data?.data)
+    console.log(child?.data?.data);
+  }
+
+  const postCategoryUploadsTwo = async (event: any) => {
+    const evenSelect = event.target.files;
+    const dataform = new FormData();
+    dataform.append("upload_image", evenSelect[0])
+    const two: any = await postCategoryUpload(dataform);
+    setUploadtwo(two?.data?.data)
+    console.log(two?.data?.data);
+
+  }
+
+  const { t } = useTranslation();
+  const fileInputRef = useRef<any>();
+  const fileInputRefTwo = useRef<any>();
+  const classes = useStyles();
+
+
+
 
   return (
     <>
@@ -84,14 +100,14 @@ const CategoryCreateList = () => {
               )}
             </Typography>
             <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
-              {selectedImages.length === 0 ? <Grid></Grid> : <Grid sx={{ display: "flex", position: "relative" }}>
+              {upload.length === 0 ? <Grid></Grid> : <Grid sx={{ display: "flex", position: "relative" }}>
                 <img
                   style={uploadImageCategory}
                   className={classes.ClickedImage}
-                  src={selectedImages.length === 0 ? "" : `http://192.168.100.4:9000/shop/${selectedImages?.data?.upload_data}`}
+                  src={upload.length === 0 ? "" : `http://192.168.100.4:9000/shop/${upload?.upload_data}`}
                   alt=""
                 />
-                {selectedImages.length === 0 ? "" : <Grid className={classes.positionImage}>
+                {upload.length === 0 ? "" : <Grid className={classes.positionImage}>
                   <DeleteIcon style={{ color: "black" }} />
                 </Grid>}
               </Grid>}
@@ -114,7 +130,7 @@ const CategoryCreateList = () => {
                     style={{ display: "none" }}
                     ref={fileInputRef}
                     accept="image/*"
-                    onChange={onSelectedFile}
+                    onChange={postCategoryUploads}
                   />
                 </form>
               </Grid>
@@ -125,6 +141,55 @@ const CategoryCreateList = () => {
             <Typography style={noteAll}>
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
+            <Grid sx={{paddingTop: '10px'}}>
+            <Typography style={subCategory}>
+              {t("admin.category_page.category_create_list.small_categories")}
+            </Typography>
+              <Toolbar style={{ justifyContent: "space-between", padding: "0" }}>
+                {uploadtwo.length === 0 ? <Grid></Grid> : <Grid sx={{ display: "flex", position: "relative" }}>
+                  <img
+                    style={uploadImageCategory}
+                    className={classes.ClickedImage}
+                    src={uploadtwo.length === 0 ? "" : `http://192.168.100.4:9000/shop/${uploadtwo?.upload_data}`}
+                    alt=""
+                  />
+                  {uploadtwo.length === 0 ? "" : <Grid className={classes.positionImage}>
+                    <DeleteIcon style={{ color: "black" }} />
+                  </Grid>}
+                </Grid>}
+                
+                <Grid>
+                  
+                  <form>
+                    <FormLabel
+                      htmlFor="file-input"
+                      onClick={(event: any) => {
+                        event.preventDefault();
+                        fileInputRefTwo.current.click();
+                      }}
+                    >
+                      
+                      <img
+                        src={require("../../../Img/save.png")}
+                        alt="save"
+                      />
+                      
+                    </FormLabel>
+                    <input
+                      type="file"
+                      style={{ display: "none" }}
+                      ref={fileInputRefTwo}
+                      accept="image/*"
+                      onChange={postCategoryUploadsTwo}
+                    />
+                  </form>
+                  
+                </Grid>
+              </Toolbar>
+              <Typography style={noteAll}>
+              {t("admin.category_page.category_create_list.note_about_all")}
+            </Typography>
+            </Grid>
             <div style={{ textAlign: "end", marginTop: "400px" }}>
               <Modal
                 TooltipTitle={t("admin.modal.tooltip_title_delete")}
@@ -143,6 +208,7 @@ const CategoryCreateList = () => {
                 />
                 {t("admin.category_page.category_create_list.createButton")}
               </Button>
+              
             </div>
           </Paper>
         </Grid>

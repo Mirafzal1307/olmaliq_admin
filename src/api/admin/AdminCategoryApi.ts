@@ -1,20 +1,23 @@
 import HttpClient from "../HttpClient";
 
 export function getCategory(data: object = {}) {
-  return HttpClient().get(`/category`, data);
+  return HttpClient().get(`/categories`, data);
 }
 
 export function getChildCategory(data: object = {}){
-  return HttpClient().get(`/subcategory`, data)
+  return HttpClient().get(`/subcategories`, data)
 }
 
 export function getSubChildCategory(data: object = {}){
-  return HttpClient().get(`/childcategory`, data);
+  return HttpClient().get(`/childcategories`, data);
 }
-export function postCategoryUpload(data: object = {}){
-  return HttpClient().post(`/uploads`, data);
+export function postCategoryUpload(data: any){
+  return HttpClient().post(`/uploads/create`, data);
 }
+// export function postCategoryUploadTwo(data: any){
+//   return HttpClient().post(`/uploads/create`, data);
+// }
 
 export function deleteSubCategory(id: string){
-  return HttpClient().delete(`/subcategory/delete/${id}`)
+  return HttpClient().delete(`/subcategories/delete/${id}`)
 }
