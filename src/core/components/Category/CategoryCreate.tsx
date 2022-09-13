@@ -10,7 +10,7 @@ import {
   selectValueCategory,
   selectValueCreate
 } from "../../theme/CategoryStyle";
-import { getCategory, getChildCategory, getSubChildCategory, postCategoryUpload } from "../../../api/admin/AdminCategoryApi";
+import { getCategory, getChildCategory, getSubChildCategory } from "../../../api/admin/AdminCategoryApi";
 // import CategoryCreateList from "./CategoryCreateList";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import {styleCategory} from "./Style"
@@ -78,8 +78,6 @@ const CategoryCreate = (props: any) => {
     setSubCayegoryChild(child?.data?.data)
   }
 
-
-
   return (
     <>
       <Grid sx={{ display: "flex", justifyContent: "space-between" }} xs={12}>
@@ -129,7 +127,7 @@ const CategoryCreate = (props: any) => {
 
                     <MenuItem
                       style={selectValueCreate}
-                      onClick={props.handleClick}
+                      onClick={props.handleParentClick}
                     >
                       <button style={createButton}>
                         <img src={require("../../../Img/Plus.png")} alt="" />

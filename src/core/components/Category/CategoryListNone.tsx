@@ -11,7 +11,9 @@ const CategoryListNone = () => {
       <Grid item>
         <Paper sx={{ padding: "158px 253px" }}>
           <img src={require("../../../Img/Smartphone.png")} alt="" />
-          <Typography sx={styleCategory.start_text}>{t("admin.category_page.category_list_none.start_text")}</Typography>
+          <Typography sx={styleCategory.start_text}>
+            {t("admin.category_page.category_list_none.start_text")}
+          </Typography>
         </Paper>
       </Grid>
     </>

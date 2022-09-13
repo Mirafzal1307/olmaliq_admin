@@ -11,15 +11,23 @@ import { useTranslation } from "react-i18next";
 import CategoryCreateList from "./CategoryCreateList";
 // import SplitButton from "../Info";
 import { motion } from "framer-motion";
+import ParentCategoryCreate from "./ParentCategoryCreate";
 
 const Category = () => {
   const { t } = useTranslation();
 
   const [clickedone, setClickedOne] = useState(false);
+  const [parentClick, setParentClick] = useState(false);
 
   const handleClick = () => {
     if (!clickedone) {
       setClickedOne(true);
+    }
+  };
+
+  const handleParentCategoryClick = () => {
+    if (!parentClick) {
+      setParentClick(true);
     }
   };
 
@@ -47,12 +55,20 @@ const Category = () => {
         />
         <Grid container>
           <Grid item xs={5}>
-            <CategoryCreate handleClick={handleClick} />
+            <CategoryCreate
+              handleParentClick={handleParentCategoryClick}
+              handleClick={handleClick}
+            />
           </Grid>
           <Grid item xs={7}>
             {/* {categories?.length === 0 ?  : <CategoryList />} */}
-            {clickedone ? <CategoryCreateList /> : <CategoryListNone />}
-
+            {parentClick ? (
+              <ParentCategoryCreate />
+            ) : null || clickedone ? (
+              <CategoryCreateList />
+            ) : (
+              <CategoryListNone />
+            )}
             {/* <CategoryList /> */}
           </Grid>
         </Grid>
