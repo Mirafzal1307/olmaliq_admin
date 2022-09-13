@@ -60,8 +60,10 @@
         "small_categories": "1.Turkum nomi",
         "plaseholder_name": "Smartfonlar",
         "small_categories_photos": "2.Asosiy turkum surati",
+        "catalog_category_photo": "3.Katalog turkum surati",
         "note_about": "Eslatma:",
         "note_about_all": "Fotosuratni standart qilish uchun tanlang. Yangi rasm yuklaganingizda, uning balandligi 50px va kengligi 80px dan oshmasligi kerak.",
+        "note_about_all_second": "Suratni asosiy qilish uchun uni tanlang. Yuklangan surat bo'yi va eniga 24 px'dan oshmasligi lozim.",
         "createButton": "Saqlash"
       }
     },

@@ -61,8 +61,10 @@
         "small_categories": "1.The name of the subcategory",
         "plaseholder_name": "Smartphones",
         "small_categories_photos": "2.Subcategory main image",
+        "catalog_category_photo": "3.Catalog category image",
         "note_about": "Note:",
         "note_about_all": "Select a photo to make it the default. When you upload a new photo, it must be no more than 50px tall and 80px wide.",
+        "note_about_all_second": "Select a photo to make it the default. When you upload a new photo, it must be no more than 24px.",
         "createButton": "Save"
       }
     },

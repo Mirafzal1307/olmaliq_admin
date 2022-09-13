@@ -4,8 +4,11 @@ import {
   Paper,
   TextField,
   Typography,
+  Toolbar,
+  FormLabel,
 } from "@mui/material";
-import React from "react";
+import { makeStyles } from "@mui/styles";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import {
   cancelButton,
@@ -14,17 +17,40 @@ import {
   smartphoneSmall,
   subCategory,
   successSaveButton,
+  uploadImageCategory,
 } from "../../theme/CategoryStyle";
 import Modal from "../Modal";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { styleCategory } from "./Style";
+import {
+  deleteUploadImage,
+  uploadImage,
+} from "../../../api/admin/AdminUploadApi";
+import { useParams } from "react-router-dom";
 import UploadImg from "../UploadImg";
 
-const CategoryCreateList = (props: any) => {
+const useStyles = makeStyles({
+  ClickedImage: {
+    "&:hover": {
+      width: "100%",
+      height: "100%",
+      background: "gray",
+      opacity: 1,
+    },
+  },
+  positionImage: {
+    position: "absolute",
+    right: "23%",
+    top: "20%",
+  },
+});
+
+const ParentCategoryCreate = () => {
   const { t } = useTranslation();
 
   return (
     <>
-      <Grid container sx={props.display}>
+      <Grid container>
         <Grid xs={12} item>
           <Paper sx={{ padding: "30px 30px 20px" }}>
             <Typography style={smartphoneSmall}>
@@ -51,6 +77,19 @@ const CategoryCreateList = (props: any) => {
             <Typography style={noteAll}>
               {t("admin.category_page.category_create_list.note_about_all")}
             </Typography>
+            <Grid sx={{ paddingTop: "10px" }}>
+              <Typography style={subCategory}>
+                {t(
+                  "admin.category_page.category_create_list.catalog_category_photo"
+                )}
+              </Typography>
+              <UploadImg />
+              <Typography style={noteAll}>
+                {t(
+                  "admin.category_page.category_create_list.note_about_all_second"
+                )}
+              </Typography>
+            </Grid>
             <div style={{ textAlign: "end", marginTop: "400px" }}>
               <Modal
                 TooltipTitle={t("admin.modal.tooltip_title_delete")}
@@ -77,4 +116,4 @@ const CategoryCreateList = (props: any) => {
   );
 };
 
-export default CategoryCreateList;
+export default ParentCategoryCreate;
