@@ -12,37 +12,38 @@ import OrderIcon from "../Img/icons/OrderIcon";
 import AdvertsIcon from "../Img/icons/AvertsIcon";
 import Adverts from "../core/components/Adverts/Adverts";
 import NotFoundPage from "../layouts/NotFound/404";
+import ProductCreate from "../core/components/Product/ProductCreate";
 
 const MainRoutes = [
   {
     icon: <HomeIcon />,
     title: "Boshqaruv paneli",
     path: "/dashboard",
-    element: <Home />
+    element: <Home />,
   },
   {
     icon: <ProductIcon />,
     title: "Mahsulot",
     path: "/product",
-    element: <Product />
+    element: <Product />,
   },
   {
     icon: <CategoryIcon />,
     title: "Turkum",
     path: "/category",
-    element: <Category />
+    element: <Category />,
   },
   {
     icon: <OrderIcon />,
     title: "Buyurtma",
     path: "/order",
-    element: <Order />
+    element: <Order />,
   },
   {
     icon: <SettingsIcon />,
     title: "Sozlamalar",
     path: "/settings",
-    element: <Settings />
+    element: <Settings />,
   },
   {
     icon: <AdvertsIcon />,
@@ -51,9 +52,15 @@ const MainRoutes = [
     // element: <Adverts />
   },
   {
-    path: "*",
-    element: <NotFoundPage />
+    icon: <ProductIcon />,
+    title: "Mahsulot",
+    path: "/productcreate",
+    element: <ProductCreate />,
   },
-]
+  {
+    path: "*",
+    element: <NotFoundPage />,
+  },
+];
 
 export default MainRoutes

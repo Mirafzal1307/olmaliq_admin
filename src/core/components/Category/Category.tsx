@@ -25,9 +25,9 @@ const Category = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      initial={{ width: "50%" }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth }}
     >
       <MiniDrawer />
       <Container>
